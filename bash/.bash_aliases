@@ -78,7 +78,7 @@ alias myip="curl http://ipecho.net/plain; echo"  # your public IP address
 #   sleep 10; alert
 alias alert='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias nolock='cd /home/xollad/dotfiles/i3/scripts/ && ./no-screen-lock.sh'
-
+alias study='cd ~/Dropbox/TUTORIALS/must-know-topics/ && ranger'
 ############ Movements ####################
 alias doc='cd ~/Dropbox/Documents && ls -la'
 alias temp='cd ~/Dropbox/temp && ls -la'
@@ -204,6 +204,7 @@ function ranger-cd {
 bind '"\C-o":"ranger-cd\C-m"'
 alias r='ranger-cd'
 alias RR='sudo ranger'
+alias rr='nnn'
 
 #==================================================================================
 # delete last n command history
@@ -237,7 +238,7 @@ function readme() {
 #========================================================================
 function datelog(){
     date=`date '+%d-%m-%y'`
-    minute=$(cat ~/Dropbox/laptop_time/log/"$date")
+    minute=$(cat ~/Dropbox/linux_stuff/laptop_time/log/"$date")
     hour=$(($minute/60))
     min=$(($minute%60))
     echo -e "Laptop used today for : \n\t\t$hour hours and $min minutes" | lolcat -F 0.2
@@ -250,22 +251,22 @@ move_to_trash () {
 }
 alias rmv='move_to_trash'
 #========================================================================
-function ghdl_compile_and_run () {
-    rm -v work* *.vcd
-    tb='_tb'
-
-    filename_main="$1"
-    filename_tb="$1$tb"
-
-    ghdl -s $filename_main.vhdl
-    ghdl -s $filename_tb.vhdl
-
-    ghdl -a $filename_main.vhdl
-    ghdl -a $filename_tb.vhdl
-
-    ghdl --elab-run $filename_tb
-    ghdl -r $filename_tb --vcd=$filename_main.vcd
-
-    gtkwave $filename_main.vcd
-}
-alias ghdl_all='ghdl_compile_and_run'
+# function ghdl_compile_and_run () {
+#     rm -v work* *.vcd
+#     tb='_tb'
+#
+#     filename_main="$1"
+#     filename_tb="$1$tb"
+#
+#     ghdl -s $filename_main.vhdl
+#     ghdl -s $filename_tb.vhdl
+#
+#     ghdl -a $filename_main.vhdl
+#     ghdl -a $filename_tb.vhdl
+#
+#     ghdl --elab-run $filename_tb
+#     ghdl -r $filename_tb --vcd=$filename_main.vcd
+#
+#     gtkwave $filename_main.vcd
+# }
+# alias ghdl_all='ghdl_compile_and_run'
