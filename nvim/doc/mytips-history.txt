@@ -1,0 +1,25 @@
+*mytips-history.txt*  Dan's personal Vim tips   *mytips-history* *mytips-undo*
+
+Undo
+
+  u       undo
+  U       undo entire line
+
+  :undolist       see your undo tree
+
+History views
+
+  :history    Show history, without duplicates
+
+  q/          search history
+  q:          command history
+  @:          repeat last command (optionally prefix with count)
+
+  type ":" then up/down arrow to see command history
+  type "/" then up/down arrow to see search history
+
+  ctrl-f      switch from command line or search input line, to
+              command line history or search history, respectively.
+
+  :args       Shows command line you used to start vim
+

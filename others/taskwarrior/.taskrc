@@ -1,0 +1,114 @@
+# # [Created by task 2.5.0 5/28/2017 18:59:04]
+# # Taskwarrior program configuration file.
+# # For more documentation, see https://taskwarrior.org/docs/start.html or try 'man task', 'man task-color',
+# # 'man task-sync' or 'man taskrc'
+#
+# # Here is an example of entries that use the default, override and blank values
+# #   variable=foo   -- By specifying a value, this overrides the default
+# #   variable=      -- By specifying no value, this means no default
+# #   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+#
+# # Use the command 'task show' to see all defaults and overrides
+#
+# # Files
+data.location=~/Dropbox/linux_stuff/taskwarrior/.task
+# ## Holidays
+include=/usr/share/taskwarrior/holidays.de-DE.rc
+#
+#
+# # Make searches case insensitive, personal preference
+search.case.sensitive=no
+#
+# # Daily burndown
+alias.burndown=burndown.daily
+alias.bd=burndown.daily
+alias.bw=burndown.weekly
+alias.bm=burndown.monthly
+#
+active.indicator=>
+#
+# # Sort the columns a little differently
+# report.list.columns=start.active,id,project,priority,due,description,entry.age
+# report.list.labels= , ,Project,Pri,Due,Description,Age
+#
+# list.all.projects=no
+# #undo.style=diff
+# default.command=list
+#
+# ## Date format
+dateformat=DMY
+dateformat.annotation=[D-M-Y H:N:S]
+dateformat.holiday=DMY
+dateformat.report=D-M-Y
+#
+# # rm sounds better
+alias.rm=delete
+#
+# # Miscellaneous
+# verbose=blank,footnote,label,new-id,affected,edit,special,project,sync,unwait
+#
+#
+# ########################################################
+#
+# ###### Color theme (uncomment one to use) ######
+include=/usr/share/task/solarized-dark-256.theme  
+##########################################################
+#
+# # UDA's
+# uda.expected.type=duration
+# uda.expected.label=Exp
+# # urgency.uda.expected.coefficient=2.0
+#
+# # urgency.uda.priority.H.coefficient=7.0
+# # urgency.uda.priority.M.coefficient=4.0
+# # urgency.uda.priority.L.coefficient=-10.0
+# urgency.uda.priority.H.coefficient=10.0 
+# urgency.uda.priority.M.coefficient=7.0 
+# urgency.uda.priority.L.coefficient=4.0 
+#
+# ########################################################
+#
+# # TAGS
+# urgency.user.tag.later.coefficient=-10.0
+# urgency.user.tag.bcc.coefficient=0.5
+# color.tag.contest=color12
+# color.tag.bcc=color3
+#
+# ########################################################
+#
+# # REPORTS
+# report.next.labels=ID,Proj,Pri,Due,A,Exp,Urg,Tags,Description
+# report.next.columns=id,project,priority,due,start.active,expected,urgency,tags,description
+# report.next.sort=urgency-,expected+,due+,priority-,start-,project+
+# # report.next.sort=priority-,expected+,urgency-,due+,start-,project+
+#
+# report.list.columns=id,project,priority,due,start.active,entry.age,expected,description
+# report.list.labels=ID,Proj,Pri,Due,Active,Age,Exp,Description
+#
+#
+# report.expected.labels=ID,Exp
+# report.expected.columns=id,expected
+# report.expected.sort=urgency-,due+,priority-,start-,expected+,project+
+# report.expected.filter=status:pending
+#
+# # report.expected.labels=ID,Exp,Description
+# # report.expected.columns=id,expected,description
+#
+# ########################################################
+#
+# # CONTEXTS
+# context.contest=+contest
+# context.weekend=+weekend
+# context.normal=-contest and -later
+# # context.normal=-contest and -later and -reading
+# # context.reading=+reading
+#
+# ########################################################
+#
+# # GENERAL CONFIGURATIONS
+# recurrence.limit=1
+# date.iso=no
+#
+# ########################################################
+# # By default, the week starts on Sunday, let's fix that.
+weekstart=Monday

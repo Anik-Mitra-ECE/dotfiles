@@ -1,0 +1,313 @@
+"=================================================================================================="
+syntax enable
+filetype plugin on
+filetype indent on      " load filetype-specific indent files
+let mapleader=","       " leader is comma
+
+"==========================================================================="
+" toggle gundo
+nnoremap <leader>u :GundoToggle<CR>
+
+" vertical and Horizontal split
+nnoremap <leader>vs :vsplit<CR>
+nnoremap <leader>hs :split<CR>
+
+" ============ Terminal emulator  ================
+" open terminal with ,tr or ,tv
+" nnoremap <leader>tr :belowright split term://bash
+" nnoremap <leader>tv :belowright vsplit term://bash
+" To map <Esc> to exit terminal-mode:
+ 
+" vertical and Horizontal split bash terminal
+nnoremap <leader>tv :vsplit \| terminal<CR>
+nnoremap <leader>tr :split \| terminal<CR>
+
+" Toggle NERDtree with ,ne and F6
+nnoremap <leader>ne :NERDTreeToggle<cr>
+nnoremap <F6> :NERDTreeToggle<CR>
+
+""""""""""Adding copy paste functionality like windows"""""""""
+""" !!!make sure vim-gtk is installed!!! "
+set clipboard=unnamedplus
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
+"=================================================================================="
+" Search and Replace
+" read - http://vim.wikia.com/wiki/Search_and_replace
+" and - https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
+" %s/foo/<c-r><c-a>/g   " Replace each occurrence of 'foo' with the WORD under the cursor (delimited by whitespace).
+" nmap <Leader>sr :%s//<Left><Left>	   "Change all matching of 'search' to 'replace'
+"Change only whole words exactly matching 'search' to 'replace' with -confirmation.
+nnoremap <Leader>sr :%s/\<s\>/r/gc
+
+" search the number of occurences of search with ,sc
+nnoremap <Leader>sc :%s/s//gn
+inoremap <Leader>sc <Esc>:%s/s//gn
+
+" press ,h to toggle hlsearch
+nnoremap <silent><expr> <Leader>h (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
+
+"============================ Navigation ==========================================="
+"The following trick means that the cursor will not move if ESC is pressed
+inoremap <Esc> <Esc>`^
+" jj is the ESCAPE(esc)
+inoremap jj <Esc>
+
+" move to beginning/end of line
+nnoremap B 0
+nnoremap E $
+" $/0 doesn't do anything
+nnoremap $ <nop>
+nnoremap 0 <nop>
+" Move up/down editor lines
+nnoremap j gj
+nnoremap k gk
+noremap H 5h
+noremap L 5l
+noremap J 5j
+noremap K 5k
+nnoremap <Leader>d ddO<Esc> 		" delete the current line and insert a new line there
+" tab navigation mappings
+nnoremap tn :tabnext<CR>
+nnoremap tp :tabprev<CR>
+nnoremap tm :tabm<Space>
+nnoremap tt :tabnew<Space>
+nnoremap ts :tab split<CR>  		" copy current windown and create new tab of its own
+nnoremap tc :tabclose<CR>   		" close current tab
+
+" Move visual block
+vnoremap J xp´[V´]
+vnoremap K xkp´[V´]
+
+
+" navigate windows with meta+arrows (altGr+Arrow)
+map <M-Right> <c-w>l
+map <M-Left> <c-w>h
+map <M-Up> <c-w>k
+map <M-Down> <c-w>j
+imap <M-Right> <ESC><c-w>l
+imap <M-Left> <ESC><c-w>h
+imap <M-Up> <ESC><c-w>k
+imap <M-Down> <ESC><c-w>j
+
+"==========================================================================="
+
+tnoremap <Esc> <C-\><C-n>
+" To use `ALT+{h,j,k,l}` to navigate windows from any mode:
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+"==========================================================================="
+""" Press F2 or ctrl+s to save from anymode
+" Insert mode it will save and go back to inser mode"
+nnoremap <F2> :w<CR>
+vmap <F2> <Esc><F2>gv
+" inoremap <F2> <ESC>:w<CR>i  " in Insert mode it will save and go back to insert mode"
+inoremap <F3> <c-o>:w<cr>     " save and go to normal mode
+" --------Only works with neovim-----------------
+nmap <c-s> :wa<CR>
+vmap <c-s> <Esc><c-s>gv
+imap <c-s> <c-o><c-s>   "
+" ------------------------------------------------
+
+" --------status line -----------
+set statusline+=%#warning#
+" set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+"==========================================================================="
+set mouse=a             " enable mouse scrolling with scroll wheel also select all visual mood
+set expandtab           " Insert spaces when TAB is pressed.
+set tabstop=4           " number of visual spaces per TAB
+set softtabstop=4       " number of spaces in tab when editing
+set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
+set shiftwidth=4        " Indentation amount for < and > commands.
+
+set number relativenumber   " show line numbers
+set showcmd             " show command in bottom bar
+set cursorline          " highlight current line
+set lazyredraw          " redraw only when we need to.
+
+set path+=**		        " Search down into subfolders
+set ignorecase          " When both ingnorecase and smartcase are on,
+set smartcase           " if a pattern contains an uppercase, its only then case sensitive
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+
+"===================================================="
+" set modelines=1
+set hidden		          " Allow hidden buffers
+set ttyfast		          " Rendering
+set laststatus=2	      " Status bar
+set showmode            " Shows Insert or command mode
+
+set shell=/bin/bash
+
+" For % key --> jump arooud matching parenthesises, comments...
+set showmatch
+set matchtime=3
+
+set autoread            " Set to auto read when a file is changed from the outside
+set nowrap              " don't wrap lines
+set title               " change the terminal's title
+set visualbell          " don't beep
+set noerrorbells        " don't beep
+set list                " Show problematic characters.
+
+" More natural splits
+set splitbelow          " Horizontal split below current.
+set splitright          " Vertical split to right of current.
+
+if !&scrolloff
+   set scrolloff=3      " Show next 3 lines while scrolling.
+endif
+if !&sidescrolloff
+   set sidescrolloff=5  " Show next 5 columns while side-scrolling.
+endif
+set nostartofline       " Do not jump to first character with page commands.
+"===================================================="
+" (useful for handling the permission-denied error) saves the file as SUDO all time
+" enter ":W" to save as sudo
+cnoremap W w !sudo tee > /dev/null %
+" Working with split screen nicely - Resize Split When the window is resized"
+au VimResized * :wincmd =
+autocmd FileType c,cpp,java setlocal equalprg=clang-format   " but you need >> sudo apt install clang-format
+"===================================================="
+" Wildmenu completion "
+set wildmenu            		      " visual autocomplete for command menu
+set wildmode=list:longest
+set wildignore+=.hg,.git,.svn 		" Version Controls"
+set wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg,*.zip,*.rar         "Binary Imgs"
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.exe,*.so,*.jar  "Compiled Object files"
+set wildignore+=*.spl 			      " Compiled speolling world list"
+set wildignore+=*.sw? 			      " Vim swap files"
+set wildignore+=*.DS_Store 		    " OSX SHIT"
+set wildignore+=*.luac			      " Lua byte code"
+set wildignore+=migrations 		    " Django migrations"
+set wildignore+=*.pyc 			      " Python Object codes"
+set wildignore+=*.orig,*.rej 		  " Merge resolution files"
+set wildignore+=*.stats,*.bak     " Pylint stats and backup file
+
+"===================================================="
+" Netrw supports reading and writing files across networks
+let g:netrw_banner=0        " disable annoying banner
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_liststyle=3     " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+
+
+"===================================================="
+
+" No More up down arrow Keys when you are in vim
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+"==========================================================================="
+"                           Function Setup                                  "
+"===================================================="
+function! ShowDiagrapsh()
+    :digraphs
+    call getchar()
+    return "\<C-K>"
+endfunction
+
+inoremap <expr> <C-K> ShowDiagrapsh()
+
+"===================================================="
+" toggle Relative or absolute number lines
+function! NumberToggle()
+    if(&rnu == 0)
+       set relativenumber
+    else
+       set norelativenumber
+    endif
+endfunction
+
+nnoremap <Leader>rn :call NumberToggle()<CR>
+
+"===================================================="
+
+" function ShowSpaces(...)
+" Implement <<<<<<<<<<
+" for now, press ,dw to delete trailing white spaces
+nnoremap <silent><Leader>dw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+"===================================================="
+function! ToggleWrap()
+    let s:nowrap_cc_bg = [22, '#005f00']
+    redir => s:curr_cc_hi
+    silent hi ColorColumn
+    redir END
+    let s:curr_cc_ctermbg = matchstr(s:curr_cc_hi, 'ctermbg=\zs.\{-}\s\ze\1')
+    let s:curr_cc_guibg = matchstr(s:curr_cc_hi, 'guibg=\zs.\{-}\_$\ze\1')
+    if s:curr_cc_ctermbg != s:nowrap_cc_bg[0]
+        let g:curr_cc_ctermbg = s:curr_cc_ctermbg
+    endif
+    if s:curr_cc_guibg != s:nowrap_cc_bg[1]
+        let g:curr_cc_guibg = s:curr_cc_guibg
+    endif
+    if &textwidth == 80
+        set textwidth=0
+        exec 'hi ColorColumn ctermbg='.s:nowrap_cc_bg[0].
+                    \' guibg='.s:nowrap_cc_bg[1]
+    elseif &textwidth == 0
+        set textwidth=80
+        exec 'hi ColorColumn ctermbg='.g:curr_cc_ctermbg.
+                    \' guibg='.g:curr_cc_guibg
+    endif
+endfunction
+
+" press ,wc to toggle wrap
+nmap <silent><Leader>wc :call ToggleWrap()<CR>
+
+
+" =================================================================
+" File type and folding
+" press ,fc to fold the entire code
+nnoremap <leader>fc :%g/^{/normal! zf%<Esc>  
+" close all folds zM. fold level by level zm. open all folds zR and zr (level by level).
+set foldenable          	" enable folding
+"set foldlevelstart=10   	" open most folds by default
+" set foldnestmax=1    		" 2 nested fold max
+" autocmd FileType c,cpp,java set foldmethod=syntax
+" autocmd FileType Python set foldmethod=indent       " fold based on indent level or use >> set foldmethod=syntax "
+" set foldmethod=marker   	"-> equivalent to enabling folding based on regions in Visual Studio Code
+set foldmarker=##-,-##  	"-> configuration for the fold markers, their default values are {{{,}}}
+ 
+ 
+ "FILETYPES  {{{ ==========
+au BufRead,BufNewFile */templates/*.html setlocal filetype=htmldjango.html
+augroup json_autocmd
+  autocmd FileType json set foldmethod=syntax
+augroup END
+au BufRead,BufNewFile rc.lua setlocal foldmethod=marker
+au FileType python setlocal foldlevel=1000
+au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown
+au FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType sql DBCheckModeline
+
+" Read PDF files in vim with ":Rpdf example.pdf" command
+:command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
+:command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
+" END FILETYPES }}}
+"
+"===================================================="

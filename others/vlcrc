@@ -1,0 +1,100 @@
+﻿###
+###  vlc 3.0.3
+###
+
+## Annoying stuff
+ignore-config=1
+qt-privacy-ask=0
+album-art=2
+qt-autosave-volume=0
+video-title-show=0
+
+## Be more like mplayer
+#play-and-exit=1
+#qt-minimal-view=1
+key-quit=Shift+q
+key-vol-up=Up
+key-vol-down=Down
+key-next=Shift+>
+key-prev=Shift+<
+key-frame-next=.
+
+## Time Navigation
+key-jump-extrashort=Shift+Left
+key-jump+extrashort=Shift+Right
+key-jump-short=Left
+key-jump+short=Right
+key-jump-long=Control+Up
+key-jump+long=Control+Down
+
+## Video Adjustment
+key-zoom=Shift+z
+key-unzoom=z
+key-crop-bottom=Alt+c
+key-uncrop-bottom=Alt+Shift+c
+
+## Time jump sizes
+extrashort-jump-size=3
+short-jump-size=10
+medium-jump-size=60
+long-jump-size=600
+
+
+# Cycle source aspect ratio (string)
+key-aspect-ratio=Shift+a
+
+### playback speed
+# Faster (string)
+key-faster=s
+
+# Slower (string)
+key-slower=a
+
+# Normal rate (string)
+global-key-rate-normal=
+
+# Normal rate (string)
+key-rate-normal==
+
+# Faster (fine) (string)
+key-rate-faster-fine=+
+
+# Slower (fine) (string)
+key-rate-slower-fine=-
+
+
+
+
+### Audio Delay
+# Audio delay up (string)
+key-audiodelay-up=k
+
+# Audio delay down (string)
+key-audiodelay-down=j
+
+
+### Subtitle Delay
+# Subtitle delay up (string)
+key-subdelay-up=h
+
+# Subtitle delay down (string)
+key-subdelay-down=l
+
+
+### Screenshot/snapshot
+# Take video snapshot (string)
+key-snapshot=Ctrl+s
+# Video snapshot directory (or filename) (string)
+snapshot-path=/home/xollad/Pictures
+
+# Video snapshot file prefix (string)
+snapshot-prefix=vlc_screenshot_
+
+# Video snapshot format (string)
+snapshot-format=png
+
+
+
+
+# Mute (string)
+key-vol-mute=m	Volume Mute

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+rm -rf ~/.local/share/qutebrowser/Cookie*
+rm -rf ~/.local/share/qutebrowser/webengine/Cookie*'
+echo "restart" >> "$QUTE_FIFO"

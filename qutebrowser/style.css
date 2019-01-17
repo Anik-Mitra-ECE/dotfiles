@@ -1,0 +1,27 @@
+body {
+	color: #ddd;
+    background: url("/home/xollad/.config/qutebrowser/bg.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: contain;
+    
+    document.getElementById("surah").playbackRate = 2;
+}
+
+#middle{
+	border-radius: 74px;
+	float: left;
+	display: inline-block;
+	width: 215;
+	height: 105px;
+	position: absolute;
+	top: 15%;
+	bottom: 50%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	text-align: center;
+	background-color: rgba(20, 20, 20, 0.9);
+}
+

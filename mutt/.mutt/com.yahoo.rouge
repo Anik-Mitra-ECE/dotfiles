@@ -1,0 +1,28 @@
+unmailboxes *
+
+set imap_user = "gone.rouge@yahoo.com"
+set imap_pass = "PASSWORD"
+set smtp_url = "smtps://gone.rouge@smtp.mail.yahoo.com:465"
+set smtp_pass = "PASSWORD"
+
+set from = "gone.rouge@yahoo.com"
+set realname = "Gone Rouge"
+set folder = "imaps://imap.mail.yahoo.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Yahoo]/Drafts"
+
+set header_cache = ~/.mutt/com.yahoo.rouge/cache/headers
+set message_cachedir = ~/.mutt/com.yahoo.rouge/cache/bodies
+set certificate_file = ~/.mutt/com.yahoo.rouge/certificates
+
+set status_format = "$from -%r-Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---"
+
+
+mailboxes "+---- Yahoo Mailbox -----"
+set spoolfile = +INBOX
+set postponed = +Draft
+set record=+Sent
+mailboxes +INBOX
+mailboxes +Drafts
+mailboxes +Sent
+auto_view text/html

@@ -1,0 +1,234 @@
+﻿# LOCAL FOLDERS FOR CACHED HEADERS AND CERTIFICATE
+# mutt -s "Test from mutt" user@yahoo.com < /tmp/message.txt -a /tmp/file.jpg
+#set header_cache =~/.mutt/cache/headers
+#set message_cachedir =~/.mutt/cache/bodies
+#set certificate_file =~/.mutt/certificates
+#------------------------------------------------------
+# Folder Hooks
+folder-hook 'com.gmail.zazad' 'source ~/.mutt/com.gmail.zazad'
+folder-hook 'com.yandex.robot' 'source ~/.mutt/com.yandex.robot'
+folder-hook 'com.yahoo.rouge' 'source ~/.mutt/com.yahoo.rouge'
+folder-hook 'com.exchange.haw' 'source ~/.mutt/com.exchange.haw'
+# folder-hook 'com.hotmail.NAME' 'source ~/.mutt/com.hotmail.'
+#------------------------------------------------------
+# Default account
+source ~/.mutt/com.yandex.robot
+# source ~/.mutt/com.exchange.haw
+#------------------------------------------------------
+# Macros for switching accounts
+
+macro index <F7> '<sync-mailbox><enter-command>source ~/.mutt/com.yahoo.rouge<enter><change-folder>!<enter>'
+macro index <F8> '<sync-mailbox><enter-command>source ~/.mutt/com.gmail.zazad<enter><change-folder>!<enter>'
+macro index <F9> '<sync-mailbox><enter-command>source ~/.mutt/com.yandex.robot<enter><change-folder>!<enter>'
+macro index <F10> '<sync-mailbox><enter-command>source ~/.mutt/com.exchange.haw<enter><change-folder>!<enter>'
+# macro index <F12> '<sync-mailbox><enter-command>source ~/.mutt/com.hotmail.NAME<enter><change-folder>!<enter>'
+
+
+#------------------------------------------------------
+#-------- Basic Config {{{
+#------------------------------------------------------
+set move = no
+set mail_check=90     # Reduce polling frequency to a sane level
+set timeout=10        # And poll the current mailbox more often (not needed with IDLE in post 1.5.11)
+set net_inc=5         # Display download progress every 5K
+set pager_stop=yes    # Don't switch to next mail when paging down in a mail and hitting bottom
+set quit=ask-yes      # Confirm quit
+set wait_key = no     # shut up, mutt
+set beep_new          # bell on new mails
+set date_format="!%a, %b %d, %Y at %I:%M:%S%p %Z"   # Date format in index view. Standard strftime syntax.
+# Default index format
+#set index_format="%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
+set index_format="%4C %Z %{%b %d %H:%M}  %-15.15L (%?l?%4l&%4c?) %s"
+
+set copy=yes
+set record=~/.mutt/sent
+
+set ssl_starttls = yes
+set ssl_force_tls = yes
+set imap_check_subscribed
+set timeout = 300
+set imap_keepalive = 300
+set include
+set sort = 'threads'
+set sort_aux = 'reverse-last-date-received'
+set auto_tag = yes
+ignore "Authentication-Results:"
+ignore "DomainKey-Signature:"
+ignore "DKIM-Signature:"
+hdr_order Date From To Cc
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
+auto_view text/html text/Html text/x-vcard
+set implicit_autoview=yes           # Load in pager if setting in .mailcap says 'copiousoutput'.
+
+##SECURING
+set move = no  #Stop asking to "move read messages to mbox"!
+set imap_keepalive = 900
+
+##Sort by newest conversation first.
+set sort = reverse-threads
+set sort_aux = last-date-received
+
+##Set editor to create new email
+set envelope_from                    # which from?
+set sig_dashes                       # dashes before sig
+set edit_headers                     # show headers when composing
+set fast_reply                       # skip to compose when replying
+set askcc                            # ask for CC:
+set fcc_attach                       # save attachments with the body
+unset mime_forward                   # forward attachments as part of body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set attribution = "On %d, %n wrote:" # format of quoting header
+set reply_to                         # reply to Reply to: field
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+set forward_quote                    # include message in forwards
+set editor="nvim -c 'set spell spelllang=en_us'"
+
+
+
+# colorschemes
+# source ~/.mutt/colors/solarized.muttrc
+source ~/.mutt/colors/basic.muttrc
+# source ~/.mutt/colors/mutt-colors-solarized-dark-16.muttrc
+
+# Paths ----------------------------------------------
+set folder           = ~/.mutt/.mail         # mailbox location
+set alias_file       = ~/.mutt/.mutt_aliases # where to store aliases
+set header_cache     = ~/.mutt/cache/headers # where to store headers
+set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
+set certificate_file = ~/.mutt/certificates  # where to store certs
+set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
+set tmpdir           = ~/.mutt/temp          # where to keep temp files
+set signature        = ~/.mutt/signatures    # my signature file
+
+
+#------------------------------------------------------------
+# 			neomutt sidebar
+#------------------------------------------------------------
+#
+# # always show X number of mails in the index
+set pager_index_lines = 6
+# Should the Sidebar be shown?
+set sidebar_visible = yes
+# How wide should the Sidebar be in screen columns?
+set sidebar_width = 25
+# Should the mailbox paths be abbreviated?
+set sidebar_short_path = yes
+# Number of top-level mailbox path subdirectories to truncate for display
+set sidebar_component_depth = 0
+# When abbreviating mailbox path names, use any of these characters as path
+# separators. Only the part after the last separators will be shown.
+# For file folders '/' is good. For IMAP folders, often '.' is useful.
+set sidebar_delim_chars = '/.'
+# If the mailbox path is abbreviated, should it be indented?
+set sidebar_folder_indent = no
+# Indent mailbox paths with this string.
+set sidebar_indent_string = '  '
+# Make the Sidebar only display mailboxes that contain new, or flagged mail.
+set sidebar_new_mail_only = no
+# When searching for mailboxes containing new mail, should the search wrap
+# around when it reaches the end of the list?
+set sidebar_next_new_wrap = no
+# Show the Sidebar on the right-hand side of the screen
+set sidebar_on_right = no
+# The character to use as the divider between the Sidebar and the other NeoMutt
+# panels.
+set sidebar_divider_char = '|'
+# Enable extended buffy mode to calculate total, new, and flagged
+# message counts for each mailbox.
+set mail_check_stats
+# Display the Sidebar mailboxes using this format string.
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
+set sidebar_sort_method = 'unsorted'
+# --------------------------------------------------------------------------
+# FUNCTIONS – shown with an example mapping
+# --------------------------------------------------------------------------
+# Sidebar binds
+bind index,pager \CP sidebar-prev                 # Ctrl-n to select next folder
+bind index,pager \CN sidebar-next                 # Ctrl-p to select previous folder
+bind index,pager \CO sidebar-open                 # Ctrl-o to open selected folder
+# bind index,pager \CB sidebar-toggle-visible     # Ctrl-b to toggle visibility of the sidebar
+# bind index,pager b sidebar-toggle-visible
+macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+
+# Move the highlight to the previous page
+# This is useful if you have a LOT of mailboxes.
+# bind index,pager <F3> sidebar-page-up
+# Move the highlight to the next page
+# This is useful if you have a LOT of mailboxes.
+bind index,pager <F4> sidebar-page-down
+# Move the highlight to the previous mailbox containing new, or flagged,
+# mail.
+# bind index,pager <F5> sidebar-prev-new
+# Move the highlight to the next mailbox containing new, or flagged, mail.
+# bind index,pager <F6> sidebar-next-new
+# Toggle the visibility of the Sidebar.
+
+bind editor <Tab> complete-query
+bind editor ^T complete
+bind editor <space> noop
+
+# vim: syntax=neomuttrc
+
+
+#############################
+#------------------------------------------------------------
+# Vi Key Bindings and others
+#------------------------------------------------------------
+
+# Moving around
+bind attach,browser,index       g   noop
+bind attach,browser,index       gg  first-entry
+bind attach,browser,index       G   last-entry
+bind pager                      g  noop
+bind pager                      gg  top
+bind pager                      G   bottom
+bind pager                      k   previous-line
+bind pager                      j   next-line
+bind pager,index                Q   quit
+# Scrolling
+bind attach,browser,pager,index \CF next-page
+bind attach,browser,pager,index \CB previous-page
+bind attach,browser,pager,index \Cu half-up
+bind attach,browser,pager,index \Cd half-down
+bind browser,pager              \Ce next-line
+bind browser,pager              \Cy previous-line
+bind index                      \Ce next-line
+bind index                      \Cy previous-line
+
+bind pager,index                d   noop
+bind pager,index                dd  delete-message
+
+bind pager                      P   print-message # default binding p also works
+
+# right key behavior
+bind    browser <right> select-entry
+bind    index   <right> display-message
+bind    pager   <right> view-attachments
+bind    attach  <right> view-attach
+
+# left key bahavior
+bind    attach  <left>  exit
+bind    pager   <left>  exit
+macro   index   <left>  "c?"            "Browse mailfolders"
+
+# Select all
+macro   index   "\Ca"           "T.\n"  "Select all messages"
+# Mark read
+macro   index   "\Cr"           "T~N\nN\Ct.\n"  "Mark as read"
+#############################
+#------------------------------------------------------------
+#  w3m with W and then press ":"
+bind pager,index   W   noop
+# call w3m to extract URLs out of a message"
+macro index,pager  W ": unset wait_key; set pipe_decode\n|w3m\n: set wait_key; unset pipe_decode\n" 
+
+# press U to view with urlview
+macro index,pager U "<enter-command>set pipe_decode = yes<enter><pipe-message>urlview<enter><enter-command>set pipe_decode = no<enter>""view URLs"
+
+# save mutt attachment to attachment directory
+macro attach s <save-entry><kill-line>/home/xollad/Downloads/attachments
+macro attach S <save-entry><kill-line>/home/xollad/Downloads/attachments

@@ -1,0 +1,29 @@
+### German Radios -> https://wiki.ubuntuusers.de/Internetradio/Stationen/
+# Deutschlandfunk
+http://st01.dlf.de/dlf/01/64/mp3/stream.mp3
+# antenne Bayern
+http://mp3channels.webradio.antenne.de/antenne
+http://streams.br.de/b5aktuell_2.m3u     # Nachrichten
+
+# NDRinfo
+http://ndr-ndrinfo-niedersachsen.cast.addradio.de/ndr/ndrinfo/niedersachsen/mp3/128/stream.mp3
+http://addrad.io/4WRF4c
+
+#B5 aktuell
+http://br-b5aktuell-live.cast.addradio.de/br/b5aktuell/live/mp3/128/stream.mp3
+
+
+
+#EXTM3U
+#EXTINF:-1,BBC - Radio 1
+http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p
+
+
+### Music
+#EXTINF:-1,MOROW - THE BEST PROGRESSIVE ROCK OF YESTERDAY AND TODAY (mp3 128k)
+http://stream.fr.morow.com:8080/morow_med.mp3
+
+#Rock Radio Blitz.fm
+http://stream.laut.fm/blitzfm
+
+

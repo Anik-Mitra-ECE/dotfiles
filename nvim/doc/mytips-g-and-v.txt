@@ -1,0 +1,50 @@
+*mytips-g-and-v.txt*  Dan's personal Vim tips           *mytips-g* *mytips-v*
+
+|:g| globally applies the subsequent command to all lines matching a regex.
+
+|:v| is the same as :v but operates on the conVerse, lines that do not match
+the regex.
+
+Address prefixing:
+
+:.,+21g/foo/d       delete any lines matching /foo/ from current + 21 lines
+
+:.,$v/bar/d         delete any lines from here to EOF not matching /bar/
+
+Can mix this with |:s| and/or |:%| do to stuff like this:
+
+:%g/foo/s/bar/zzz/g
+
+For every line containing "foo", substitute all "bar" with "zzz".
+
+:g/foo/s/^/#/g
+
+Comment out lines containing "foo"
+
+"m" to move
+"j" to join
+
+:%g/foo/m$      Move all lines matching /foo/ to end of file,
+                while preserving their original ordering.
+
+:g/^$/d         Delete all empty lines
+:g/pattern/#    Display each line matching pattern, with line numbers
+
+===========================================================================
+
+How to affect lines surrounding your match. Example:
+
+"I want to delete the line 'Did not get valid lat and long', the line before
+it, and the line after it, everywhere in this text file, from within vim."
+
+:g/Did not get valid lat and long/-,/Did not get valid lat and long/+ d
+
+This deletes from the first pattern to the second.
+
+  Pattern 1: /Did not get valid lat and long/-
+  Pattern 2: /Did not get valid lat and long/+
+
+The trailing + and - mean the line before and the line after the match. So this
+deletes the line before through the line after (and the line in the middle just
+gets killed as a side effect).
+

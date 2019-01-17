@@ -1,0 +1,52 @@
+
+conky.config = {
+	
+    update_interval = 3,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	out_to_console = false,
+	override_utf8_locale = true,
+	double_buffer = true,
+	no_buffers = true,
+	text_buffer_size = 32768,
+	imlib_cache_size = 0,
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_argb_visual = true,
+	own_window_argb_value = 20,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	border_inner_margin = 5,
+	border_outer_margin = 5,
+	xinerama_head = 1,
+	alignment = 'bottom_right',
+	gap_x = 12,
+	gap_y = 33,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+	use_xft = true,
+	font = 'Source Code Pro:Bold:size=8',
+	xftalpha = 0.8,
+	uppercase = false,
+	default_color = '#EDEDED',
+	own_window_colour = '#000000',
+	minimum_width = 300, minimum_height = 0,
+    maximum_width = 400,
+	alignment = 'top_left',
+
+    own_window_class='Conky',
+    own_window_type='override',
+    background=true,
+
+};
+conky.text = [[
+${texeci 601 curl wttr.in/hamburg.png | convert - -transparent black $HOME/.config/conky/out.png}
+${image $HOME/.config/conky/out.png -p 0,0}
+
+
+
+
+
+# ${hr 2}
+]];

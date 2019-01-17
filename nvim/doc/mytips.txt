@@ -1,0 +1,572 @@
+*mytips.txt*  Xaheen's personal Vim tips                *mytips* *dmltips*
+
+Learn these two files inside out and upside down: |change.txt|, |motion.txt|
+
+Vim tips and tricks:
+
+Editing text                    |mytips-editing|
+Finding and opening files       |mytips-open|
+Managing files and buffers      |mytips-file-mgmt|
+Copy and paste                  |mytips-register_paste|
+Selection and matching          |mytips-select|
+Completion and expansion        |mytips-completion|
+The |:g| and |:v| commands      |mytips-g-and-v|
+Search and replace              |mytips-search|
+Indenting                       |mytips-indent|
+Navigation / jumping around     |mytips-navigate|
+Windows and tabs                |mytips-windows|
+Fold management                 |mytips-folds|
+Spell check                     |mytips-spell|
+History and undo                |mytips-history|
+Named registers                 |mytips-registers|
+Macros                          |mytips-macros|
+Variable scoping                |mytips-varscope|
+External commands               |mytips-extcommands|
+
+Tips about plugin functionality
+
+Using surround                  |mytips-surround|   plugin: |surround|
+Using Fugitive                  |mytips-fugitive|   plugin: |fugitive|
+
+
+
+
+
+*mytips-completion.txt*  Xaheen's personal Vim tips         *mytips-completion*
+
+Completion and expansion
+
+  To auto-complete what you are typing (words, variable names, etc.),
+  type part of the word and use ctrl-n or ctrl-p to show completions.
+  If there is only one match it is auto-inserted.
+
+  Keep using ctrl-n or ctrl-p until you have the one you want, then
+  keep typing, hit Esc, whatever.
+
+  ctrl-n          Next match in completion mode
+  ctrl-p          Previous match in completion mode
+
+When completing, ctrl-y to accept match, ctrl-e to cancel
+
+  ctrl-x ctrl-l   Whole-line completion mode (instead of words)
+  ctrl-x ctrl-o   Syntax-aware omnicomplete
+
+  ctrl-x ctrl-f   Complete a local filesystem filename
+
+  And when completing something like a file path for :e ...
+
+  ctrl-d          Show possible expansions on current completion
+  
+  
+  
+  
+ *mytips-register_paste.txt*  Xaheen's personal Vim tips *mytips-register_paste*
+
+
+  :registers   Show what is in the current registers
+  "2p          Paste contents of current register
+
+  P       paste above/before cursor, not after/below as with "p"
+  "0p     paste last explicitly copied text, not the cut buffer
+  "*p     paste from system clipboard (if extant, e.g. on a Mac)
+  :reg    show list of registers that can be pasted with "<n>p
+  
+  
+  
+ *mytips-editing.txt*  Xaheen's personal Vim tips               *mytips-editing*
+
+General editing
+
+  c       change (cX where X = movements, etc.)
+  ce      change to end of word
+  c$      change to end of line
+  C       change to end of line
+  c/foo   change until match "foo"
+  ctf     change until next occurrence of "f"
+  ciw     change this word (inside)
+  caw     change this word (outside)
+  ci{     change inside block (ca{ for outside)
+  di{     delete inside block
+
+  K       go to man page for the word under the cursor (disabled...)
+
+  s       delete this char, then enter insert mode (xi)
+  cc      erase entire line, sub with new (0C or 0Da)
+  S       split line at cursor (custom map)
+
+  ctrl-a  increment number under cursor
+  ctrl-x  decrement number under cursor
+
+  ga      show char under cursor as dec, hex, oct ASCII.
+
+  ctrl-y  yank character directly above you to current line (duplicate)
+
+  g ctrl-g    show word count and other info
+
+  (in insert mode)
+    ctrl-r = (equation)     calculate and insert, e.g.    ^R=53+17
+
+  (with visual selection)
+    K     bubble selection up
+    J     bubble selection down
+
+  guu     convert line to lowercase
+  gUU     convert line to uppercase
+  
+  
+  
+  
+ *mytips-extcommands.txt*  Xaheen's personal Vim tips       *mytips-extcommands*
+
+External comands
+
+  :r!<cmd>        read in the result of a command
+
+  !cmd            pipe selection through command, replace with result
+
+  :echo glob($VIMRUNTIME . "/syntax/*.vim")      Show all known syntaxes
+
+  command | vim -     edit command's output in vim as a buffer
+
+
+  
+*mytips-file-mgmt.txt*  Xaheen's personal Vim tips            *mytips-file-mgmt*
+
+  :e!     Revert buffer to file on disk
+
+  :bd!    Remove buffer from buffer list, discarding changes
+
+  :wa     Write all buffers
+  :xa     Write all buffers, then exit
+
+
+  
+  
+*mytips-folds.txt*  Xaheen's personal Vim tips                     *mytips-folds*
+
+Folds
+
+  zo      open closed fold under cursor
+  zc      close current fold region
+  zR      open "(R)ip open?" all folds
+  zM      close "(M)inimize?" all folds
+
+Fold method
+
+  :set foldmethod=<method>
+
+  manual, indent, expr, marker, syntax, diff
+
+  marker: three opening, three closing, curly braces
+  indent: uses indent levels
+  syntax: uses syntax information for current syntax
+
+  indent is handy for large nested files like YAML or similar if they're
+  out of control.
+
+  See |'foldmethod'| for more.
+
+  
+  
+
+*mytips-fugitive.txt*  Xaheen's personal Vim tips              *mytips-fugitive*
+
+  :Glog       loads to quickfix list
+  :cnext      to next rev back in history
+
+  unimpaired.vim provides
+
+    [q    :cprev
+    ]q    :cnext
+    ]Q    :cfirst
+    ]Q    :clast
+
+  :Gedit      back to working copy
+  :Glog -10   only last 10 revs
+  :copen      open quickfix list
+
+
+  
+
+*mytips-g-and-v.txt*  Xaheen's personal Vim tips           *mytips-g* *mytips-v*
+
+|:g| globally applies the subsequent command to all lines matching a regex.
+
+|:v| is the same as :v but operates on the conVerse, lines that do not match
+the regex.
+
+Address prefixing:
+
+:.,+21g/foo/d       delete any lines matching /foo/ from current + 21 lines
+
+:.,$v/bar/d         delete any lines from here to EOF not matching /bar/
+
+Can mix this with |:s| and/or |:%| do to stuff like this:
+
+:%g/foo/s/bar/zzz/g
+
+For every line containing "foo", substitute all "bar" with "zzz".
+
+:g/foo/s/^/#/g
+
+Comment out lines containing "foo"
+
+"m" to move
+"j" to join
+
+:%g/foo/m$      Move all lines matching /foo/ to end of file,
+                while preserving their original ordering.
+
+:g/^$/d         Delete all empty lines
+:g/pattern/#    Display each line matching pattern, with line numbers
+
+===========================================================================
+
+How to affect lines surrounding your match. Example:
+
+"I want to delete the line 'Did not get valid lat and long', the line before
+it, and the line after it, everywhere in this text file, from within vim."
+
+:g/Did not get valid lat and long/-,/Did not get valid lat and long/+ d
+
+This deletes from the first pattern to the second.
+
+  Pattern 1: /Did not get valid lat and long/-
+  Pattern 2: /Did not get valid lat and long/+
+
+The trailing + and - mean the line before and the line after the match. So this
+deletes the line before through the line after (and the line in the middle just
+gets killed as a side effect).
+
+
+
+
+
+*mytips-history.txt*  Xaheen's personal Vim tips   *mytips-history* *mytips-undo*
+
+Undo
+
+  u       undo
+  U       undo entire line
+
+  :undolist       see your undo tree
+
+History views
+
+  :history    Show history, without duplicates
+
+  q/          search history
+  q:          command history
+  @:          repeat last command (optionally prefix with count)
+
+  type ":" then up/down arrow to see command history
+  type "/" then up/down arrow to see search history
+
+  ctrl-f      switch from command line or search input line, to
+              command line history or search history, respectively.
+
+  :args       Shows command line you used to start vim
+
+
+  
+  
+*mytips-indent.txt*  Xaheen's personal Vim tips                *mytips-indent*
+
+Indenting
+
+  =       syntax-aware reindent of selection
+  ==      syntax-aware reindent of line
+  gg=G    syntax reindent entire file
+
+  In insert mode:
+
+  ctrl-t  indent line one shiftwidth
+  ctrl-d  de-dent line one shiftwidth
+
+
+  
+  
+  
+*mytips-macros.txt*  Xaheen's personal Vim tips                *mytips-macros*
+
+Macros
+
+  q.      record macro into default register
+  q       stop recording
+  @.      play macro from default register
+
+  qa, @a  using register a
+  
+  
+  
+
+  
+  
+*mytips-navigate.txt*  Xaheen's personal Vim tips              *mytips-navigate*
+
+Navigating / jumping around
+
+  ^       beginning of line ignoring leading whitespace (vs. "0")
+  g_      end of line ignoring trailing whitespace (vs "$")
+
+  [{      jump back to opening brace of the current code block
+
+  H       high (top) line on this page
+  M       middle line on this page
+  L       low (bottom) line on this page
+
+  zt      keep cursor in place, but move that line to top of view
+  zz      keep cursor in place, but move that line to middle of view
+  zb      keep cursor in place, but move that line to bottom of view
+
+  (, )    jump to start, end of current "sentence"
+  {, }    jump to start, end of current "paragraph"
+
+  `.      return to last line you edited
+  '.      return to last line you edited
+  ``      return to last jump point (same as ^o)
+
+  g;      go to position of last change (again to go to change before...)
+  g,      move through changelist in opposite direction
+
+  gi      go to last place you exited insert mode
+  gl      go to last change (same as `.)
+
+  ctrl-o  move backward through jump list
+  ctrl-i  move forward through jump list
+
+  
+  
+  
+  
+*mytips-open.txt*  Xaheen's personal Vim tips                       *mytips-open*
+
+  gf          open filename under the cursor
+
+  '0          Open last-edited file (and '1, '2 ... '9)
+
+Finding files
+
+  :find       Find a file anywhere under current path, edit it.
+              Supports tab-completion and wildcards.
+
+    Examples:
+      :find SomeCl<tab>
+      :find *Class <tab>
+
+    See also: |find| and |path|.
+
+  :vim        Find files using globs and regex (with quickfix support)
+
+    Examples:
+
+      :vim /shoe/ **/*.java       Find all java files under cwd, filter
+                                  with regex /shoe/, queue up for edit.
+
+      :cw                         Open files generated by that :vim
+                                  command in a quickfix list.
+
+    See also: |:vim| and |quickfix|.
+
+
+	
+	
+	
+	
+*mytips-registers.txt*  Xaheen's personal Vim tips             *mytips-registers*
+
+Named registers
+
+  "c      refers to named register "c", can tie to actions, e.g.
+            "add        del cur line, copy into register a
+            "byy        copy current line into register b
+            "cy/foo     copy up to regex foo into register c
+            "ap         paste from register a
+            "bP         paste from register b to previous line
+
+  "_dd      Delete one line without overriding a buffer
+            "_ is the black hole register
+
+
+			
+			
+			
+			
+			
+*mytips-search.txt*  Xaheen's personal Vim tips                *mytips-search*
+
+Search and replace
+
+  *       search for the word under the cursor
+  #       ... and in reverse
+  gd      go to declaration of variable under the cursor
+  [I      Show lines containing word under cursor
+
+  f<c>    jump to next occurrence of char <c>                     ("Find")
+  F<c>    ... and in reverse
+
+  t<c>    jump to position *left* of next occurrence of char <c>  ("unTil")
+  T<c>    ... and in reverse
+
+  e       go to end of word (also works with v, c, d, etc.)
+  b       go to beginning of word
+
+  q/      Open search history window to edit/use search history
+  ctrl-f  From search input field, switch to search history window
+
+  /foo/e          search for foo, placing cursor at end of match
+
+  :%g/foo/m$      move all lines matching foo to end of file
+                      % = global search
+                      g = command
+                      /foo/ = regex
+                      m = move
+                      $ = to end
+                  you can do the same things with a NOT search
+                  (conVerse) using v instead of g.
+
+  :%g/foo/s/bar/zzz/g     for each line /foo/, replace bar with zzz.
+
+  :s/foo/bar/     search/replace this line
+  :%s/foo/bar/    search/replace entire file
+      add g (/g) to end for global (also see :help gdefault)
+
+  :s/\%V_/ /g     Add \%V to limit action to a *block* selection (by
+                  default entire lines are affected even in ^v mode).
+
+  :%s/\ r//g      Remove all the ^M from a file
+  :%s/\ r$//g     Remove ^M only at the end of a line
+
+  :s!/usr/local/!/opt/alt/!       Use delimiter other than /
+
+  &       repeat last :s command
+
+
+  
+  
+  
+*mytips-select.txt*  Xaheen's personal Vim tips    *mytips-select* *mytips-match*
+
+Selections and matching on things
+
+  B matches a block, so in a block you can say (a is "around" or
+  "this block plus enclosing delimiters, if any")
+      >aB     ident the current block
+      <aB     outdent the current block
+      daB     delete current block
+      caB     change current block
+
+  viw     select a word ("word" delimited not whitespace-delimited)
+  viW     select a word, whitespace delimited
+
+  gv      reselect last selection
+
+  o       (in visual block mode) move cursor to another corner of the
+          select area (to control which corner you're resizing from).
+
+Text object selections
+
+After a command like d (delete) or c (change) you can supply delimiters
+like brackets, braces.
+
+<img src="foo-bar-baz.jpg" alt="whatever" />
+
+  di>
+  # delete inner angle-bracket
+  # results in: <>
+
+  da>
+  # delete all-inclusive angle-bracket
+  # results in entire thing being removed.
+
+  ci>
+  # change inner angle-bracket
+  # wipes out contents, leaving you in insert mode inside to replace it.
+
+  ca>
+  # change all-inclusive angle-bracket
+  # wipes out the entire tag, leaving you in insert mode to replace it.
+
+  # you can use either delimiter in the pair, < or >, ( or ), { or },
+  # [ or ] ....
+
+  # w matches a puncuation-delimited word
+  # W matches a space-delimited word
+
+
+  
+  
+  
+*mytips-spell.txt*  Xaheen's personal Vim tips                 *mytips-spell*
+
+Spell check
+
+  :set spell!     Toggle spell check mode (also bound to ,s)
+  ]s              Next error
+  [s              Previous error
+  z=              List of suggestions
+  zg              Add to my dictionary (zug to undo)
+  zw              Remove from my dictionary (zuw to undo)
+
+
+  
+  
+  
+  
+*mytips-surround.txt*  Xaheen's personal Vim tips              *mytips-surround*
+
+  cs = "change surrounding"
+  ds = "delete surrounding"
+
+  # swap double quotes for single
+  cs"'   (c, s, doublequote, singlequote)
+
+  # swap single quotes for <q>..</q>
+  cs'<q>
+
+  # swap surrounding tag, whatever it is, with double quotes
+  cst"
+
+  # remove the delimiter doublequote
+  ds"
+
+
+  
+  
+  
+*mytips-varscope.txt*  Xaheen's personal Vim tips              *mytips-varscope*
+
+Variable scoping
+
+           (nothing) In a function: local to a function; otherwise: global
+|buffer-variable|    b:     Local to the current buffer.
+|window-variable|    w:     Local to the current window.
+|tabpage-variable|   t:     Local to the current tab page.
+|global-variable|    g:     Global.
+|local-variable|     l:     Local to a function.
+|script-variable|    s:     Local to a |:source|'ed Vim script.
+|function-argument|  a:     Function argument (only inside a function).
+|vim-variable|       v:     Global, predefined by Vim.
+
+
+
+
+*mytips-windows.txt*  Xaheen's personal Vim tips   *mytips-windows* *mytips-tabs*
+
+Window resizing
+
+  (ctrl-W works in place of :winc)
+
+  :res        resize to maximum available
+  :res -N     downsize by count N
+  :res +N     upsize by count N
+  :winc =     make all windows as equal as possible
+  :winc _     maximize window height
+  :winc |     maximize window width
+
+Windows moving
+
+  ctrl-w ctrl-j      Move to window below
+  ctrl-w ctrl-k      Move to window above
+  ctrl-w ctrl-h      Move to window at left
+  ctrl-w ctrl-l      Move to window at right

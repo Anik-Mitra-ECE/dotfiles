@@ -1,0 +1,40 @@
+URxvt.transparent: true
+URxvt.shading:20
+UXTerm*termName: xterm-256color
+XTerm.termName: xterm-256color
+
+! Included this so you know how to make your foreground not match the color of your background
+URxvt.foreground: #eeeeee
+
+! calm by dkeg
+
+*foreground:  #adb7c1
+*background: #1a1b1d
+*.foreground:  #bdbaae
+*.background:  #222222
+*.cursorColor: #bbbbbb
+
+*color0: #1d1f21
+*color1: #ab6548
+*color2: #88aa55
+*color3: #8e6b23
+*color4: #446688
+*color5: #f9f9f9
+*color6: #558888
+*color7: #aabbcc
+*color8: #445566
+*color9: #dd7777
+*color10: #bbdd88
+*color11: #ccb05f
+*color12: #7799bb
+*color13: #abacae
+*color14: #88bbbb
+
+
+## Rofi Theming
+rofi.color-enabled: true
+rofi.color-window: #273238, #273238, #1e2529
+rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
+rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
+rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844
+

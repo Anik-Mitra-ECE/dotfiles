@@ -1,0 +1,59 @@
+cd ~/Music
+set status_display_program=~/Code/dotfiles/.cmus/current-track.sh
+
+set format_current= %a: %l: %02n %t%= %y 
+set format_playlist= %-18a %-18l %02n %t%= %d %04y 
+set format_trackwin= %02n %t%= %d %04y 
+set format_title=cmus
+set altformat_title=cmus
+set lib_sort=artist album discnumber tracknumber title filename
+set play_sorted=false
+set repeat=true
+set softvol=false
+
+colorscheme zenburn
+
+bind -f common  h seek -10
+bind -f common  l seek +10
+bind -f common  < seek -30
+bind -f common  > seek +30
+bind -f common  d run /home/xollad/.cmus/cover-viewer
+bind -f common  Q quit
+bind -f common  i invert
+bind -f common  p player-pause
+bind -f common  k player-prev
+bind -f common  j player-next
+bind -f common  L win-sel-cur
+bind -f library a set lib_sort=artist album discnumber tracknumber title filename
+bind -f library A set lib_sort=album discnumber tracknumber title filename
+
+
+# set altformat_current= %F
+# set altformat_playlist= %f%= %d
+# set altformat_title=%f
+# set altformat_trackwin= %f%= %d
+# set auto_reshuffle=true
+# set continue=true
+# set play_library=false
+# set play_sorted=false
+# set repeat=false
+# set repeat_current=false
+# set replaygain=disabled
+# set replaygain_limit=true
+# set replaygain_preamp=6.000000
+# set resume=true
+# set show_hidden=false
+# set show_remaining_time=false
+# set shuffle=false
+# set smart_artist_sort=true
+# set status_display_program=
+fset 70s=date>=1970&date<1980
+fset 80s=date>=1980&date<1990
+fset 90s=date>=1990&date<2000
+# fset classical=genre="Classical"
+# fset missing-tag=!stream&(artist=""|album=""|title=""|tracknumber=-1|date=-1)
+# fset mp3=filename="*.mp3"
+# fset ogg=filename="*.ogg"
+# fset ogg-or-mp3=ogg|mp3
+# fset flca=filename="*.flac"
+# factivate

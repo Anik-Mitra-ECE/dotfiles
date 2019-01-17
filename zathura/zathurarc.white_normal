@@ -1,0 +1,101 @@
+##----------------------------------------------
+# settings
+#set window-height 800
+#set window-width 600
+set adjust-open                "best-fit"
+set synctex                     "true"
+set font                        "roboto mono 9"
+
+
+# set font "Pragmata Medium 7"
+
+
+set guioptions                  "s"
+set page-padding                4
+set selection-clipboard         "clipboard"
+set smooth-scroll               "true"
+set show-scrollbars             "true"
+set scroll-step                 50
+set incremental-search          "true"
+set show-recent                 "true"
+set window-title-basename       "true"
+set window-title-page           "true"
+set selection-notification      "false"
+set show-directories            "false"
+set render-loading              "false"
+set window-title-home-tilde     "true" 
+set statusbar-basename          "true"
+set highlight-transparency 0.25
+
+# keybindings
+map [fullscreen] a adjust_window best-fit
+map [fullscreen] s adjust_window width
+map [fullscreen] f follow
+map [fullscreen] <Tab> toggle_index
+map [fullscreen] j scroll down
+map [fullscreen] k scroll up
+
+map Q quit
+map D toggle_page_mode          # dual page or single page!! :D 
+map u scroll half-up
+map d scroll half-down
+map h scroll left
+map l scroll right
+
+map <PageUp> navigate previous
+map <Left> navigate previous
+map <PageDown> navigate next
+map <Right> navigate next
+
+map  a adjust_window best-fit
+map  s adjust_window width
+map  f follow
+map <C-p>        print
+
+
+map [normal]     <C-1> set "pages-per-row 1"
+map [fullscreen] <C-1> set "pages-per-row 1"
+map [normal]     <C-2> set "pages-per-row 2"
+map [fullscreen] <C-2> set "pages-per-row 2"
+map [fullscreen] <C-3> set "pages-per-row 3" 
+map [normal]     <C-3> set "pages-per-row 3"
+
+
+
+set window-icon /usr/share/icons/locolor/32x32/apps/gvim.png
+
+# -------------------- ----------------------
+# color mapping
+# -------------------- ----------------------
+set default-bg                  "#090300"
+set default-fg                  "#3a3432"
+
+set statusbar-fg                "#807d7c"
+set statusbar-bg                "#4a4543"
+
+set inputbar-bg                 "#090300"
+set inputbar-fg                 "#f7f7f7"
+
+set notification-bg             "#090300"
+set notification-fg             "#f7f7f7"
+
+set notification-error-bg       "#090300"
+set notification-error-fg       "#db2d20"
+
+set notification-warning-bg     "#090300"
+set notification-warning-fg     "#db2d20"
+
+set highlight-color             "#fded02"
+set highlight-active-color      "#01a0e4"
+
+set completion-bg               "#3a3432"
+set completion-fg               "#01a0e4"
+
+set completion-highlight-fg     "#f7f7f7"
+set completion-highlight-bg     "#01a0e4"
+
+set recolor-lightcolor          "#090300"
+set recolor-darkcolor           "#d6d5d4"
+
+set recolor                     "false"
+set recolor-keephue             "false"

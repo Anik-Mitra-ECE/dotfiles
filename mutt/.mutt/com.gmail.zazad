@@ -1,0 +1,81 @@
+set from = "myname@gmail.com"
+set realname = "Myreal name"
+set imap_user = "FULL EMAIL address"
+set imap_pass = "PASSWORD"
+
+#REMOTE GMAIL FOLDERS
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed ="+[Google Mail]/Drafts"
+set trash = "+[Google Mail]/Trash"
+
+##SMTP Settings to sent email
+set smtp_url = "smtp://zaheen.azad@smtp.gmail.com:587/"
+set smtp_pass = "PASSWORD"
+
+set from = "myname@gmail.com"
+set realname = "my full name"
+
+
+
+##LOCAL FOLDERS FOR CACHED HEADERS AND CERTIFICATES
+set header_cache =~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+set certificate_file =~/.mutt/certificates
+
+##SECURING
+set move = no  #Stop asking to "move read messages to mbox"!
+set imap_keepalive = 900
+
+##Sort by newest conversation first.
+set sort = reverse-threads
+set sort_aux = last-date-received
+
+##Set editor to create new email
+set editor="nvim -c 'set spell spelllang=de,en'"
+
+
+
+###
+### GENERIC
+###
+#
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+set certificate_file=~/.mutt/certificates
+# Move read messages from your spool mailbox to your $mbox mailbox
+set move = no
+# Reduce polling frequency to a sane level
+set mail_check=60
+# And poll the current mailbox more often (not needed with IDLE in post 1.5.11)
+set timeout=10
+# keep a cache of headers for faster loading (1.5.9+?)
+set header_cache=~/.hcache
+# Display download progress every 5K
+set net_inc=5
+# Don't switch to next mail when paging down in a mail and hitting bottom
+set pager_stop=yes
+# Confirm quit
+set quit=ask-yes
+# Date format in index view. Standard strftime syntax.
+set date_format="!%a, %b %d, %Y at %I:%M:%S%p %Z"
+# Default index format
+#set index_format="%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
+set index_format="%4C %Z %{%b %d %H:%M}  %-15.15L (%?l?%4l&%4c?) %s"
+
+#
+# macros
+# # Gmail-style keyboard shortcuts
+# macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
+# macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+# macro index,pager gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
+# macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+# macro index,pager gl "<change-folder>?" "Go to 'Label'" # will take you to a list of all your Labels (similar to viewing folders).
+
+mailboxes "+---- GMAIL Mailbox -----"
+set spoolfile = +INBOX
+set postponed = +Draft
+set record=+Sent
+mailboxes +INBOX
+mailboxes +Drafts
+mailboxes +Sent

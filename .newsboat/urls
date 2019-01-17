@@ -1,0 +1,24 @@
+# starred articles. Press ctrl+e then enter "flag: s" 
+"query:Starred Articles:flags # \"s\""
+
+# collection of urls for NewsBoat
+# news
+http://www.spiegel.de/schlagzeilen/tops/index.rss "news"
+https://netzpolitik.org/feed "news"
+
+# tech
+http://feeds.feedburner.com/ebursztein       "tech" "~***Hackers News***"
+https://www.reddit.com/r/programming/new.rss "tech" "~Reddit Programming"
+http://weirdthings.com/feed/ "tech"
+
+# Big_data
+https://www.reddit.com/r/bigdata/.rss "Big_data" "~Reddit-Programming"
+http://bigdata-madesimple.com/category/tech-and-tools/business-intelligence/feed "Big_data" "~Reddit Big DATA"
+
+# Data Science
+http://feeds.feedburner.com/FeaturedBlogPosts-DataScienceCentral "data_science" "~Data Science Central"
+https://www.kdnuggets.com/feed "data_science" "~Data Science KDnuggets"
+
+# Linux
+https://distrowatch.com/news/dw.xml "Linux" "~Distrowatch"
+https://www.linux.com/feeds/news/rss "Linux" "~Linux.com"

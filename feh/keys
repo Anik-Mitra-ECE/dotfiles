@@ -1,0 +1,57 @@
+#unset Keys first
+save_filelist
+toggle_menu
+flip
+save_image
+save_filelist
+orient_3
+blur
+mirror
+quit
+
+
+
+### settings ####
+quit   q Q
+close  x
+
+scroll_up     k
+scroll_down   j
+scroll_left   h
+scroll_right  l
+jump_random   z Tab
+
+
+
+delete Delete
+
+
+# zoom
+zoom_in       Up plus
+zoom_out      Down  minus
+zoom_default  d  0
+zoom_fit      s
+
+
+save_image     C-s
+save_filelist  C-l
+blur v
+
+
+#image Rotation
+mirror M
+flip F
+#rotate clockwise
+orient_3 C-f
+
+
+toggle_menu  m Menu
+menu_parent  h
+menu_child   l
+menu_down    j
+menu_up      k
+menu_close   m Escape
+menu_select  o Return
+
+
+toggle_fullscreen F11

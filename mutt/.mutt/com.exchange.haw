@@ -1,0 +1,73 @@
+
+# IMAP settings
+set imap_user = "ab...."  ###############
+set folder    = "imaps://haw-mailer.haw-hamburg.de:993/"
+set spoolfile = "imaps://haw-mailer.haw-hamburg.de:993/Inbox"
+# set spoolfile = "imaps://haw-mailer.haw-hamburg.de:993/INBOX"
+# set postponed = "imaps://haw-mailer.haw-hamburg.de:993/Drafts"
+# set trash     = "imaps://haw-mailer.haw-hamburg.de:993/Trash"
+set imap_keepalive = 300
+set imap_check_subscribed=yes
+set imap_passive=no
+set imap_pass = "PASSWORD" ###############
+
+
+# SMTP settings
+# with port 587, smtps will not work
+set smtp_url = "smtp://ab....@haw-mailer.haw-hamburg.de:587/" ###############
+set smtp_pass = "PASSWORD" ###############
+set realname = ".........."
+set from = "MYNAMExxxxd@haw-hamburg.de" ###############
+set use_from = yes
+set use_envelope_from = yes
+
+# activate TLS if available on the server
+set ssl_starttls=yes
+
+# always use SSL when connecting to a server
+set ssl_force_tls=yes
+
+# wait to enter mailbox manually
+set imap_passive
+
+# Automatically poll subscribed mailboxes for new mail (new in 1.5.11)
+set imap_check_subscribed
+
+
+# And poll the current mailbox more often (not needed with IDLE in post 1.5.11)
+#set timeout=10
+
+# keep a cache of headers for faster loading (1.5.9+?)
+set header_cache=~/.mutt/.hcache
+
+
+# Cancel a message when subject is blank
+set abort_nosubject=yes
+
+# Asks to include message when replying
+set include=ask-yes
+
+# Asks to postpone a message when not sent
+set postpone=ask-yes
+
+# Ask before printing
+set print=ask-yes
+
+
+# other settings
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+
+# keep cache clean
+set message_cache_clean = yes
+
+
+mailboxes "+------ HAW-HAMBURG -------"
+set spoolfile = +INBOX
+set postponed = +Draft
+set record=+Sent
+mailboxes +Inbox
+mailboxes +Drafts
+mailboxes +Sent
+auto_view text/html

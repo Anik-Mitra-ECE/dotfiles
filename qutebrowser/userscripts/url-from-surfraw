@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+DEFAULT_SEARCH=startpage
+
+if [[ "$1" =~ ^-.$ ]]; then
+    option="$1"
+    shift 1
+fi
+
+is_elvi=$(surfraw -elvi | grep -c "^$1\s")
+nbr_words=$(echo "$1" | wc -w)
+
+if [[ $is_elvi -eq 0 && $nbr_words -eq 1 && ("$1" == *.* || "$1" == *:*) ]]; then
+    url="$1"
+else
+    [[ $is_elvi -eq 0 ]] && sr="$DEFAULT_SEARCH $*" || sr=$*
+    url=$(surfraw -print $sr)
+fi
+
+echo "open $option $url" >> $QUTE_FIFO

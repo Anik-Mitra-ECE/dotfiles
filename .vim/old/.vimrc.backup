@@ -1,0 +1,312 @@
+
+""""""""""""""""""""VUNDLE CONFIG""""""""""""""""""""""""
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Chiel92/vim-autoformat'
+Bundle 'Valloric/YouCompleteMe'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'itchyny/lightline.vim' 	  " Statusline in vim
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'bogado/file-line'         " open file at a specific line   $ vim test.c:115
+Plugin 'kien/ctrlp.vim'           " fuzzy file finder using CTRL+P
+Plugin 'DavidEGx/ctrlp-smarttabs' " While inside ctrlp, CTRL+F to see the tabs
+
+""toggle comment with >> "gcc" and in visual mode, "gc"
+Plugin 'vim-scripts/tComment'
+
+" Reads any .editorconfig files and sets spacing etc automatically
+Plugin 'editorconfig/editorconfig-vim'
+
+
+" Plugin 'fugitive.vim'  		  " Git Wrapper
+" Plugin 'junegunn/fzf'
+" Plugin 'junegunn/fzf.vim'
+Plugin 'fisadev/vim-isort'
+if has('python')
+  Plugin 'pignacio/vim-yapf-format'
+endif
+
+" terminal inside vim
+" read -> https://www.micronbot.com/useful-plugins/vim-conque-term.html
+Plugin 'rosenfeld/conque-term'  
+
+
+call vundle#end()            " required
+" allow plugins by file type (required for plugins!)
+filetype plugin on
+filetype indent on
+"==========================================================================="
+"""" Settings yapf
+map <C-o> :YapfFullFormat<CR>
+imap <C-o> <ESC>:YapfFormat<CR>i
+vmap <C-o> :YapfFormat<CR>
+
+"""" Settings for ctrlp
+" don't change working directory
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_extensions = ['smarttabs']
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
+  \ 'file': '\.pyc$\|\.pyo$',
+  \ }
+"==========================================================================="
+""""""""""""""""Chiel92/vim-autoformat""""""""""""""""""""""""""""""
+noremap <F3> :Autoformat<CR>
+imap <F3> :Autoformat<CR>
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+
+""""""""""""""""NERDTree""""""""""""""""""""""""""""""
+let NERDTreeShowHidden=1 
+let g:NERDTreeWinSize=45
+let NERDTreeMinimalUI=1
+let NERDTreeHijackNetrw=1
+let NERDTreeCascadeSingleChildDir=0
+let NERDTreeCascadeOpenSingleChildDir=0
+let g:NERDTreeAutoDeleteBuffer=1
+let g:NERDTreeShowIgnoredStatus = 0
+let g:NERDTreeDirArrowExpandable = '§'
+let g:NERDTreeDirArrowCollapsible = 'x'
+let NERDTreeIgnore=['\.pyc$', '\~$','\.vim$','\.o$''\.swp$','\.git$'] "ignore files in NERDTree
+
+
+""""""""""""""""Airline""""""""""""""""""""""""""""""
+" Allow powerline symbols to show up
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep  = '>> '
+let g:airline_right_sep = '<< '
+let g:airline_left_alt_sep = '>'
+let g:airline_right_alt_sep = '>'
+let g:airline#extensions#tabline#enabled = 2
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_sep = '§'
+let g:airline#extensions#tabline#left_alt_sep = '>'
+let g:airline#extensions#tabline#right_sep = '§'
+let g:airline#extensions#tabline#right_alt_sep = '>'
+
+let g:airline_theme= 'luna'
+"==========================================================================="
+""" Extra confuguration needed for C autocompletion in YOUCompleteMe
+""" Read : https://wiki.archlinux.org/index.php/Vim/YouCompleteMe#C.2FC.2B.2B
+""" Read : http://unixnme.blogspot.de/2017/03/how-to-install-youcompleteme-vim-plugin.html
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+
+"==================================================================================="
+"============================ Navigation ==========================================="
+" jj is the ESCAPE(esc)
+inoremap jj <esc>
+colorscheme Monokai
+
+" move to beginning/end of line
+nnoremap B 0
+nnoremap E $
+" $/0 doesn't do anything
+nnoremap $ <nop>
+nnoremap 0 <nop>
+" Move up/down editor lines
+nnoremap j gj
+nnoremap k gk
+noremap H ^
+noremap L g_
+noremap J 5j
+noremap K 5k
+" tab navigation mappings
+map tn :tabn<CR>
+map tp :tabp<CR>
+map tm :tabm 
+map tt :tabnew 
+map ts :tab split<CR>
+
+" navigate windows with meta+arrows (altGr+Arrow)
+map <M-Right> <c-w>l
+map <M-Left> <c-w>h
+map <M-Up> <c-w>k
+map <M-Down> <c-w>j
+imap <M-Right> <ESC><c-w>l
+imap <M-Left> <ESC><c-w>h
+imap <M-Up> <ESC><c-w>k
+imap <M-Down> <ESC><c-w>j
+"==========================================================================="
+""" Press F2 or ctrl+s to save from anymode
+nmap <F2> :update<CR>
+vmap <F2> <Esc><F2>gv
+imap <F2> <c-o><F2>
+" ctrl+s is not working
+"nmap <c-s> :wa<CR>
+"vmap <c-s> <Esc><c-s>gv
+"imap <c-s> <c-o><c-s>
+
+"==========================================================================="
+set mouse=a         	" enable mouse scrolling with scroll wheel also select all visual mood    
+
+set tabstop=4       	" number of visual spaces per TAB
+set softtabstop=4   	" number of spaces in tab when editing
+set expandtab       	" tabs are spaces
+syntax enable       	" enable syntax processing
+set shiftwidth=4        " Indentation amount for < and > commands.
+
+set number relativenumber   " show line numbers
+set showcmd             " show command in bottom bar
+set cursorline          " highlight current line
+
+filetype indent on      " load filetype-specific indent files         
+set lazyredraw          " redraw only when we need to.
+
+set ignorecase          " When both ingnorecase and smartcase are on, 
+set smartcase           " if a pattern contains an uppercase, its only then case sensitive
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+
+set foldenable          " enable folding
+set foldlevelstart=10   " open most folds by default
+set foldnestmax=10      " 10 nested fold max
+set foldmethod=indent   " fold based on indent level
+
+" set modelines=1
+set hidden  			" Allow hidden buffers
+set ttyfast 			" Rendering
+set laststatus=2		" Status bar
+set showmode			" Shows Insert or command mode
+
+set shell=/bin/bash
+set matchtime=3
+set autoread            " Set to auto read when a file is changed from the outside
+
+"==========================================================================="
+" (useful for handling the permission-denied error) saves the file as SUDO all time
+" enter ":W" to save as sudo 
+command W w !sudo tee % > /dev/null
+
+" Working with split screen nicely - Resize Split When the window is resized"
+au VimResized * :wincmd =
+
+"==========================================================================="
+" C\C++ projects settings
+"==========================================================================="
+"Global project settings 
+let g:project_root = "."
+
+let g:search_root = g:project_root
+let g:search_pattern = "*.*"
+autocmd FileType c,cpp,java setlocal equalprg=clang-format " but you need >> sudo apt install clang-format
+"==========================================================================="
+"============================Map Leader=================================="
+let mapleader=","       " leader is comma
+
+" Toggle NERDtree with ,ne and F6
+nmap <leader>ne :NERDTreeToggle<cr> 
+nmap <F6> :NERDTreeToggle<CR>   " Toggle NERDTree with F6
+
+" toggle gundo
+nnoremap <leader>u :GundoToggle<CR>
+
+" vertical and Horizontal split
+nmap <leader>vs :vsplit \| terminal<CR>
+nmap <leader>hs :split \| terminal<CR>
+
+
+""""""""""Adding copy paste functionality like windows"""""""""
+""" !!!make sure vim-gtk is installed!!! "
+set clipboard=unnamedplus
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
+
+"==========================================================================="
+" Wildmenu completion "
+set wildmenu            " visual autocomplete for command menu
+set wildmode=list:longest
+set wildignore+=.hg,.git,.svn " Version Controls"
+set wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg,*.zip,*.rar "Binary Imgs"
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.exe,*.so "Compiled Object files"
+set wildignore+=*.spl "Compiled speolling world list"
+set wildignore+=*.sw? "Vim swap files"
+set wildignore+=*.DS_Store "OSX SHIT"
+set wildignore+=*.luac "Lua byte code"
+set wildignore+=migrations "Django migrations"
+set wildignore+=*.pyc "Python Object codes"
+set wildignore+=*.orig,*.rej "Merge resolution files"
+
+
+"==========================================================================="
+" FINDING FILES:
+
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
+set path+=**
+" FILE BROWSING:
+
+" Tweaks for browsing
+let g:netrw_banner=0        " disable annoying banner
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_liststyle=3     " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+
+"==========================================================================="
+" Auto completing parenthesis 
+" plugin added
+
+
+"==========================================================================="
+"========================= Expreriments ===================================="
+"==========================================================================="
+" Tell Vim which characters to show for expanded TABs,
+" trailing whitespace, and end-of-lines. VERY useful!
+"if &listchars ==# 'eol:$'
+"  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+"endif
+" set list                " Show problematic characters.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Also highlight all tabs and trailing whitespace characters.
+" highlight ExtraWhitespace ctermbg=dwarkgreen guibg=darkgreen
+" match ExtraWhitespace /\s\+$\|\t/
+
+"==========================================================================="
+
+
+
+
+
+
+
+
+
+
+"==========================================================================="
+"=========================== Backups ======================================="
+" better backup, swap and undos storage
+set directory=~/.vim/dirs/tmp     " directory to place swap files in
+set backup                        " make backup files
+set backupdir=~/.vim/dirs/backups " where to put backup files
+set undofile                      " persistent undos - undo after you re-open the file
+set undodir=~/.vim/dirs/undos
+set viminfo+=n~/.vim/dirs/viminfo
+" store yankring history file there too
+let g:yankring_history_dir = '~/.vim/dirs/'
+
+" create needed directories if they don't exist
+if !isdirectory(&backupdir)
+    call mkdir(&backupdir, "p")
+endif
+if !isdirectory(&directory)
+    call mkdir(&directory, "p")
+endif
+if !isdirectory(&undodir)
+    call mkdir(&undodir, "p")
+endif
