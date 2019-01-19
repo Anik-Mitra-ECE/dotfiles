@@ -69,8 +69,8 @@ TEXT
     ${if_match ${hwmon 1 temp 1}<50}"\#ffffff"${else}"\#ff0000"${endif}},
     
     # GPU temperature
-    { "full_text" : " ${execi 60 nvidia-settings -query [gpu:0]/GPUCoreTemp -t}°C", "color" : \
-    ${if_match ${execi 60 nvidia-settings -query [gpu:0]/GPUCoreTemp -t}<50}"\#ffffff"${else}"\#ff0000"${endif}},
+    { "full_text" : " ${execi 3 nvidia-settings -query [gpu:0]/GPUCoreTemp -t}°C", "color" : \
+    ${if_match ${execi 3 nvidia-settings -query [gpu:0]/GPUCoreTemp -t}<50}"\#ffffff"${else}"\#ff0000"${endif}},
 
     # ----------------------------------------------------------------
     # Networking
