@@ -37,6 +37,7 @@ alias py='bpython'
 alias rss="newsboat"
 alias viber='/opt/viber/Viber'
 alias eclip='~/eclipse/java-photon/eclipse/eclipse'
+alias cypress='cd ~/Dropbox/Documents/cypress-works/ && node_modules/.bin/cypress open'
 alias tma='tmux attach -t myworkbench'
 alias tmn='tmux new    -s myworkbench'
 alias starwars='telnet towel.blinkenlights.nl' # to exit : <c-+> quit
