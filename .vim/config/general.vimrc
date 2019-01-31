@@ -408,6 +408,10 @@ exec "!time javac %"
 " exec "!time java -cp %:p:h %:t:r"
 :vsplit term://java -cp %:p:h %:t:r
 
+elseif &filetype == 'javascript'
+echo "compiling JavaScript file with node"
+exec "!node %"
+
 elseif &filetype == 'scala'
 echo "Compiling scala Code...."
 exec "!time scalac %"
