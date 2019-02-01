@@ -67,13 +67,13 @@ echo "-----------------------------"
 echo "------i3-gaps update---------"
 echo "-----------------------------"
 echo -e $magenta"\n (PAUSED)Updating & compiling i3-gaps... \n"$white
-# cd /home/xollad/Downloads/sources/i3-gaps
-# git pull upstream
-# autoreconf --force --install
-# rm -rf build/
-# mkdir -p build && cd build/
-# ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-# make
+cd /home/xollad/Downloads/sources/i3-gaps
+git pull upstream
+autoreconf --force --install
+rm -rf build/
+mkdir -p build && cd build/
+../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+make
 echo -e $green"\n Previous i3-gaps version: \n"$white
 echo "─────────────────────────────────────────────────────────────────────────────────────────────────────────────"
 /usr/bin/i3 -v

@@ -97,7 +97,7 @@ ranger --copy-config=all                                       # for ranger
 # install editors, compilors
 sudo apt -y  update
 sudo apt install -y atom
-sudo apt install -y python python-pip python3 python3-pip python-dev python3-dev python-tk python3-tk
+sudo apt install -y python python-pip python3 python3-pip python-dev python3-dev python-tk python3-tk python3-venv
 sudo apt install -y vim vim-gnome neovim
      pip  install websocket-client sexpdata                                            # ensime server for scala
      pip3 install websocket-client sexpdata
