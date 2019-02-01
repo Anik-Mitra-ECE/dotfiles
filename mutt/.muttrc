@@ -12,7 +12,8 @@ folder-hook 'com.exchange.haw' 'source ~/.mutt/com.exchange.haw'
 # folder-hook 'com.hotmail.NAME' 'source ~/.mutt/com.hotmail.'
 #------------------------------------------------------
 # Default account
-source ~/.mutt/com.yandex.robot
+source ~/.mutt/com.exchange.haw
+# source ~/.mutt/com.yandex.robot
 # source ~/.mutt/com.exchange.haw
 #------------------------------------------------------
 # Macros for switching accounts
@@ -204,11 +205,16 @@ bind pager,index                dd  delete-message
 
 bind pager                      P   print-message # default binding p also works
 
-# right key behavior
+# right and l key behavior
 bind    browser <right> select-entry
 bind    index   <right> display-message
 bind    pager   <right> view-attachments
 bind    attach  <right> view-attach
+
+bind    browser l       select-entry
+bind    index   l       display-message
+bind    pager   l       view-attachments
+bind    attach  l       view-attach
 
 # left key bahavior
 bind    attach  <left>  exit
