@@ -1,5 +1,4 @@
-﻿# LOCAL FOLDERS FOR CACHED HEADERS AND CERTIFICATE
-# mutt -s "Test from mutt" user@yahoo.com < /tmp/message.txt -a /tmp/file.jpg
+# LOCAL FOLDERS FOR CACHED HEADERS AND CERTIFICATE
 #set header_cache =~/.mutt/cache/headers
 #set message_cachedir =~/.mutt/cache/bodies
 #set certificate_file =~/.mutt/certificates
@@ -12,25 +11,26 @@ folder-hook 'com.exchange.haw' 'source ~/.mutt/com.exchange.haw'
 # folder-hook 'com.hotmail.NAME' 'source ~/.mutt/com.hotmail.'
 #------------------------------------------------------
 # Default account
-source ~/.mutt/com.exchange.haw
 # source ~/.mutt/com.yandex.robot
-# source ~/.mutt/com.exchange.haw
+source ~/.mutt/com.exchange.haw
 #------------------------------------------------------
 # Macros for switching accounts
 
-macro index <F7> '<sync-mailbox><enter-command>source ~/.mutt/com.yahoo.rouge<enter><change-folder>!<enter>'
-macro index <F8> '<sync-mailbox><enter-command>source ~/.mutt/com.gmail.zazad<enter><change-folder>!<enter>'
-macro index <F9> '<sync-mailbox><enter-command>source ~/.mutt/com.yandex.robot<enter><change-folder>!<enter>'
+macro index <F7> '<sync-mailbox><enter-command>source ~/.mutt/com.yandex.robot<enter><change-folder>!<enter>'
+macro index <F8> '<sync-mailbox><enter-command>source ~/.mutt/com.yahoo.rouge<enter><change-folder>!<enter>'
+macro index <F9> '<sync-mailbox><enter-command>source ~/.mutt/com.gmail.zazad<enter><change-folder>!<enter>'
 macro index <F10> '<sync-mailbox><enter-command>source ~/.mutt/com.exchange.haw<enter><change-folder>!<enter>'
 # macro index <F12> '<sync-mailbox><enter-command>source ~/.mutt/com.hotmail.NAME<enter><change-folder>!<enter>'
 
+# notify on new email arrival
+set new_mail_command="notify-send --icon='/usr/share/icons/ubuntu-mono-light/status/16/applications-email-panel.svg' \ '%n new messages, %u unread.' &"
 
 #------------------------------------------------------
 #-------- Basic Config {{{
 #------------------------------------------------------
 set move = no
-set mail_check=90     # Reduce polling frequency to a sane level
-set timeout=10        # And poll the current mailbox more often (not needed with IDLE in post 1.5.11)
+set mail_check=30     # Reduce polling frequency to a sane level
+set timeout=5        # And poll the current mailbox more often (not needed with IDLE in post 1.5.11)
 set net_inc=5         # Display download progress every 5K
 set pager_stop=yes    # Don't switch to next mail when paging down in a mail and hitting bottom
 set quit=ask-yes      # Confirm quit
@@ -41,14 +41,13 @@ set date_format="!%a, %b %d, %Y at %I:%M:%S%p %Z"   # Date format in index view.
 #set index_format="%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
 set index_format="%4C %Z %{%b %d %H:%M}  %-15.15L (%?l?%4l&%4c?) %s"
 
-set copy=yes
+set copy=yes            # keep a copy of sent mail
 set record=~/.mutt/sent
-
+set sleep_time = 0
 set ssl_starttls = yes
 set ssl_force_tls = yes
 set imap_check_subscribed
-set timeout = 300
-set imap_keepalive = 300
+set timeout = 5                     # idle time before scanning
 set include
 set sort = 'threads'
 set sort_aux = 'reverse-last-date-received'
@@ -56,10 +55,12 @@ set auto_tag = yes
 ignore "Authentication-Results:"
 ignore "DomainKey-Signature:"
 ignore "DKIM-Signature:"
+ignore headers *
+unignore headers from to subject date cc
 hdr_order Date From To Cc
 set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
-alternative_order text/plain text/enriched text/html
-auto_view text/html text/Html text/x-vcard
+auto_view text/html text/Html text/x-vcard text/calendar
+alternative_order text/plain text/enriched text text/html
 set implicit_autoview=yes           # Load in pager if setting in .mailcap says 'copiousoutput'.
 
 ##SECURING
@@ -77,7 +78,8 @@ set edit_headers                     # show headers when composing
 set fast_reply                       # skip to compose when replying
 set askcc                            # ask for CC:
 set fcc_attach                       # save attachments with the body
-unset mime_forward                   # forward attachments as part of body
+set mime_forward                     # forward attachments not as a part of body
+set mime_forward_rest = yes 		 # forward attachements with mails<Paste>
 set forward_format = "Fwd: %s"       # format of subject when forwarding
 set forward_decode                   # decode when forwarding
 set attribution = "On %d, %n wrote:" # format of quoting header
@@ -86,13 +88,14 @@ set reverse_name                     # reply as whomever it was to
 set include                          # include message in replies
 set forward_quote                    # include message in forwards
 set editor="nvim -c 'set spell spelllang=en_us'"
-
-
-
+set smart_wrap
+unset mark_old                       # read/new is good enough for me
+set check_new
+set text_flowed = yes                #  This format is easier to handle for some mailing software, and generally just looks like ordinary text  
 # colorschemes
 # source ~/.mutt/colors/solarized.muttrc
-source ~/.mutt/colors/basic.muttrc
-# source ~/.mutt/colors/mutt-colors-solarized-dark-16.muttrc
+# source ~/.mutt/colors/basic.muttrc
+source ~/.mutt/colors/mutt-colors-solarized-dark-16.muttrc
 
 # Paths ----------------------------------------------
 set folder           = ~/.mutt/.mail         # mailbox location
@@ -103,6 +106,9 @@ set certificate_file = ~/.mutt/certificates  # where to store certs
 set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
 set tmpdir           = ~/.mutt/temp          # where to keep temp files
 set signature        = ~/.mutt/signatures    # my signature file
+
+# sourcing custom scripts
+
 
 
 #------------------------------------------------------------
@@ -168,6 +174,7 @@ bind index,pager <F4> sidebar-page-down
 # bind index,pager <F6> sidebar-next-new
 # Toggle the visibility of the Sidebar.
 
+set query_format="%t %-25.24n %a %e"
 bind editor <Tab> complete-query
 bind editor ^T complete
 bind editor <space> noop
@@ -211,15 +218,21 @@ bind    index   <right> display-message
 bind    pager   <right> view-attachments
 bind    attach  <right> view-attach
 
+
 bind    browser l       select-entry
 bind    index   l       display-message
 bind    pager   l       view-attachments
 bind    attach  l       view-attach
 
-# left key bahavior
+
+# left key and h bahavior
 bind    attach  <left>  exit
 bind    pager   <left>  exit
 macro   index   <left>  "c?"            "Browse mailfolders"
+
+bind    attach  h  exit
+bind    pager   h  exit
+macro   index   h  "c?"            "Browse mailfolders"
 
 # Select all
 macro   index   "\Ca"           "T.\n"  "Select all messages"
