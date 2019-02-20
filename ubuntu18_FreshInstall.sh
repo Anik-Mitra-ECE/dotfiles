@@ -53,7 +53,7 @@ echo "#################################################################"
 echo "############## Downloading all packages #########################"
 echo "#################################################################"
 sleep 3
-sudo apt install -y git curl wget colordiff meld
+sudo apt install -y git curl wget colordiff meld lolcat spark
 sudo apt install -y fonts-font-awesome
 sudo apt install -y ttf-mscorefonts-installer
 sudo apt install -y vlc browser-plugin-vlc mplayer 
@@ -157,7 +157,7 @@ cd livescore-cli
 cd ~
 #### Cool retro term and themes
 sudo add-apt-repository ppa:vantuz/cool-retro-term
-sudo apt install cool-retro-term
+sudo apt install cool-retro-term -y
 
 ### For wine
 # https://linuxconfig.org/install-wine-on-ubuntu-18-04-bionic-beaver-linux
@@ -239,7 +239,11 @@ sudo apt install -y  libxine2-ffmpeg libmad0 mpg321 libavcodec-extra
 echo "============================================================================"
 echo "SNAP INSTALLS"
 sudo apt install -y snapd
-sudo snap install skype slack cheet caprine # notepad-plus-plus shortcut wire
+sudo snap install slack --classic
+sudo snap install skype --classic 
+sudo snap install cheat 
+sudo snap install caprine 
+# sudo snap install notepad-plus-plus shortcut wire
 echo "============================================================================"
 
 echo "##################################################################"
