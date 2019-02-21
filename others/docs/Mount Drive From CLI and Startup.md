@@ -35,7 +35,7 @@ $ sudo vim /etc/fstab
 ##### get UUID
 ```sh
 sudo blkid
-UUID=<paste number copied from above>   /media/2ndHD    ext4    defaults    0    2
+UUID=pastenumbercopiedfromabove   /media/2ndHD    ext4    defaults    0    2
 ```
 
 ##### Add the following line for ext4 file system:
