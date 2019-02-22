@@ -107,6 +107,7 @@ sudo apt install -y vim vim-gnome neovim
      pip3 install --upgrade neovim
      pip  install --upgrade autopep8
      pip3 install --upgrade autopep8
+
 sudo apt install -y gcc g++ build-essential cmake                    			               # C and C++ compiler
 sudo apt install -y clang clang-format
 sudo apt install -y exuberant-ctags ack-grep ncurses-term par     				                 # code formatters c family
