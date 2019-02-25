@@ -1,0 +1,41 @@
+
+conky.config = {
+	
+    update_interval = 9,
+	out_to_console = false,
+	override_utf8_locale = true,
+	double_buffer = true,
+	no_buffers = true,
+	text_buffer_size = 32768,
+	imlib_cache_size = 0,
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_argb_visual = true,
+	own_window_argb_value = 50,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	border_inner_margin = 5,
+	border_outer_margin = 0,
+	xinerama_head = 2,
+	alignment = 'bottom_right',
+	gap_x = 0,
+	gap_y = 23,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+	use_xft = true,
+	font = 'Ubuntu Mono:size=12',
+	xftalpha = 0.8,
+	uppercase = false,
+	default_color = '#EDEDED',
+	own_window_colour = '#000000',
+	alignment = 'bottom_left',
+
+    own_window_class='Conky',
+    own_window_type='override',
+    background=true,
+
+};
+conky.text = [[
+${execpi 300 gcalcli --conky agenda}
+]];
