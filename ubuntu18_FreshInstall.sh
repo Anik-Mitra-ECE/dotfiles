@@ -162,6 +162,14 @@ sudo apt install cool-retro-term -y
 ### For wine
 # https://linuxconfig.org/install-wine-on-ubuntu-18-04-bionic-beaver-linux
 
+# install dunst
+sudo apt install -y libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk2.0-dev libxdg-basedir-dev
+cd ~/Downloads
+git clone https://github.com/dunst-project/dunst.git
+cd dunst
+make -j5
+sudo make install
+
 echo "############## removing unused Folders #######################"
 rm -rf ~/Public
 rm -rf ~/Templates

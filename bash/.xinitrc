@@ -16,3 +16,14 @@ fi
 # Load .Xdefaults
 test -r $HOME/.Xresources && xrdb -merge $HOME/.Xresources
 test -r $HOME/.Xdefaults && xrdb -merge $HOME/.Xdefaults
+
+
+## testing gcalcli
+[[ -x /usr/bin/dunst ]] && /usr/bin/dunst -config ~/.dunstrc &
+
+if [ -x /usr/bin/gcalcli ]; then
+  while true; do
+    /usr/bin/gcalcli remind
+    sleep 300
+  done &
+fi

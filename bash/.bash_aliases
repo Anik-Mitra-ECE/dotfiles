@@ -59,6 +59,8 @@ alias bashmount="cd $HOME/dotfiles/others/bashmount/ && ./bashmount.sh && clear 
 alias restartNetwork="cd $HOME/dotfiles/others/ && ./network_restart.sh"
 alias networkRestart="cd $HOME/dotfiles/others/ && ./network_restart.sh"
 
+# Messenger
+alias msngr="caprine"
 # livescore-cli
 alias bpl='livescore -t bpl'
 alias laliga='livescore -t laliga'
