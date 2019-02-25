@@ -484,6 +484,7 @@ exec --no-startup-id /usr/bin/dropbox start -i               # Dropbox
 exec_always compton --config ~/.config/i3/compton.conf
 exec --no-startup-id conky -c ~/.conkyrc
 exec --no-startup-id conky -c ~/.config/conky/.conkyrc_wttr    # show wttr weather in conky
+exec --no-startup-id conky -c ~/.config/conky/.conkyrc_gcal    # show google calender agendas
 
 # exec --no-startup-id compton -b
 # battery info
