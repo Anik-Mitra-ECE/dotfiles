@@ -457,67 +457,6 @@ bindsym XF86AudioPrev exec playerctl previous
 exec_always gsettings set org.gnome.desktop.background show-desktop-icons false
 exec_always gsettings set org.nemo.desktop show-desktop-icons false
 
-###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### 
-# #---Startups---# #
-# highing mouse cursor
-# exec --no-startup-id "unclutter -idle 3 -grab"
-# exec --no-startup-id exec unclutter -idle 5
-exec --no-startup-id "unclutter -idle 3"
-
-# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# exec --no-startup-id redshift -l 58.23:26.43
-# exec --no-startup-id kalu
-# exec --no-startup-id caffeine
-# exec --no-startup-id pulseaudio -D
-# exec pactl load-module module-bluetooth-discover
-# exec --no-startup-id systemctl enable bluetooth
-# exec --no-startup-id /etc/init.d/bluetooth start
-# exec --no-startup-id /usr/bin/blueman-applet                 # Bluetooth Manager
-## volume control applet --> not needed
-# exec --no-startup-id /usr/bin/pasystray
-# exec --no-startup-id volumeicon
-
-exec --no-startup-id /usr/bin/nm-applet
-exec --no-startup-id /usr/bin/dropbox start -i               # Dropbox
-
-
-exec_always compton --config ~/.config/i3/compton.conf
-exec --no-startup-id conky -c ~/.conkyrc
-exec --no-startup-id conky -c ~/.config/conky/.conkyrc_wttr    # show wttr weather in conky
-exec --no-startup-id conky -c ~/.config/conky/.conkyrc_gcal    # show google calender agendas
-
-# exec --no-startup-id compton -b
-# battery info
-exec --no-startup-id xfce4-power-manager
-
-# Set display mode
-# exec_always xrandr --output Virtual1 --mode 1360x768
-
-# exec --no-startup-id /usr/bin/gnome-power-manager           # Power Manager
-# exec --no-startup-id /usr/libexec/gnome-settings-daemon     # GNOME Settings Daemon
-# exec --no-startup-id /usr/bin/gnome-volume-control-applet   # Volume Control
-
-# Screen lock
-exec --no-startup-id i3lock-fancy -p -g
-exec --no-startup-id xautolock -time 9 -locker ~/.config/i3/scripts/i3_lock.sh      # original
-# exec --no-startup-id xautolock -time 10 -locker ~/dotfiles/i3/scripts/i3-screensaver.sh
-# bindsym $mod+odiaeresis exec --no-startup-id ~/.config/i3/scripts/i3_lock.sh
-bindsym $mod+odiaeresis exec --no-startup-id ~/.config/i3/scripts/i3_lock.sh
-bindsym Ctrl+mod1+l exec 'xdotool mousemove 0 0'; exec --no-startup-id i3lock-fancy;
-# exec_always --no-startup-id xautolock -time 5 -locker /usr/bin/cacafire
-# exec_always --no-startup-id exec ~/.config/i3/scripts/test.sh
-
-# making dunst default notification handler
-exec --no-startup-id killall -q notify-osd
-exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
-exec --no-startup-id notify-send "KEEP ALLAH IN YOUR ACIONS" -u critical -i ~/dotfiles/i3/scripts/happy.png    # Greeting on startup
-exec_always --no-startup-id paplay --volume=40000 ~/dotfiles/i3/scripts/alert.ogg
-
-## keyboard layout settings
-# Info -> setxkbmap  -query
-# exec --no-startup-id setxkbmap -layout us,bn -option grp:caps_toggle
- exec_always "setxkbmap -model pc105 -layout de,us -variant ,, -option grp:alt_shift_toggle"     
-###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ######
 
 # #---Extra XF86 Keys---# #
 # These are the extra media keys that some keyboards have.
@@ -703,3 +642,65 @@ bindsym $mod+Control+$ü exec ~/dotfiles/i3/scripts/i3-monitor-HDMI-only.sh
 exec_always --no-startup-id exec /home/xollad/dotfiles/i3/scripts/i3-random-wallpaper.sh
 
 
+###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### 
+# #---Startups---# #
+# highing mouse cursor
+# exec --no-startup-id "unclutter -idle 3 -grab"
+# exec --no-startup-id exec unclutter -idle 5
+exec --no-startup-id "unclutter -idle 3"
+
+# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec --no-startup-id redshift -l 58.23:26.43
+# exec --no-startup-id kalu
+# exec --no-startup-id caffeine
+# exec --no-startup-id pulseaudio -D
+# exec pactl load-module module-bluetooth-discover
+# exec --no-startup-id systemctl enable bluetooth
+# exec --no-startup-id /etc/init.d/bluetooth start
+# exec --no-startup-id /usr/bin/blueman-applet                 # Bluetooth Manager
+## volume control applet --> not needed
+# exec --no-startup-id /usr/bin/pasystray
+# exec --no-startup-id volumeicon
+
+exec --no-startup-id /usr/bin/nm-applet
+exec --no-startup-id /usr/bin/dropbox start -i               # Dropbox
+
+
+
+# exec --no-startup-id compton -b
+# battery info
+exec --no-startup-id xfce4-power-manager
+
+# Set display mode
+# exec_always xrandr --output Virtual1 --mode 1360x768
+
+# exec --no-startup-id /usr/bin/gnome-power-manager           # Power Manager
+# exec --no-startup-id /usr/libexec/gnome-settings-daemon     # GNOME Settings Daemon
+# exec --no-startup-id /usr/bin/gnome-volume-control-applet   # Volume Control
+
+# Screen lock
+exec --no-startup-id i3lock-fancy -p -g
+exec --no-startup-id xautolock -time 9 -locker ~/.config/i3/scripts/i3_lock.sh      # original
+# exec --no-startup-id xautolock -time 10 -locker ~/dotfiles/i3/scripts/i3-screensaver.sh
+# bindsym $mod+odiaeresis exec --no-startup-id ~/.config/i3/scripts/i3_lock.sh
+bindsym $mod+odiaeresis exec --no-startup-id ~/.config/i3/scripts/i3_lock.sh
+bindsym Ctrl+mod1+l exec 'xdotool mousemove 0 0'; exec --no-startup-id i3lock-fancy;
+# exec_always --no-startup-id xautolock -time 5 -locker /usr/bin/cacafire
+# exec_always --no-startup-id exec ~/.config/i3/scripts/test.sh
+
+# making dunst default notification handler
+exec --no-startup-id killall -q notify-osd
+exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+exec --no-startup-id notify-send "KEEP ALLAH IN YOUR ACIONS" -u critical -i ~/dotfiles/i3/scripts/happy.png    # Greeting on startup
+exec_always --no-startup-id paplay --volume=40000 ~/dotfiles/i3/scripts/alert.ogg
+
+## keyboard layout settings
+# Info -> setxkbmap  -query
+# exec --no-startup-id setxkbmap -layout us,bn -option grp:caps_toggle
+ exec_always "setxkbmap -model pc105 -layout de,us -variant ,, -option grp:alt_shift_toggle"     
+###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ######
+ exec_always compton --config ~/.config/i3/compton.conf
+ exec --no-startup-id conky -c ~/.conkyrc
+ exec --no-startup-id conky -c ~/.config/conky/.conkyrc_wttr    # show wttr weather in conky
+ exec --no-startup-id conky -c ~/.config/conky/.conkyrc_gcal    # show google calender agendas
+###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ######
