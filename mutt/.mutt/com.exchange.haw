@@ -70,4 +70,9 @@ set record=+Sent
 mailboxes +Inbox
 mailboxes +Drafts
 mailboxes +Sent
+mailboxes +ORders
+mailboxes +others
+mailboxes +studierendenwerk
+mailboxes +JOB_applications
+mailboxes +unnecessary
 auto_view text/html
