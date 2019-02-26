@@ -23,12 +23,13 @@ echo "============================================"
 
 ### copy .vimrc to HOME
 echo "Copying VIM configs"
-# cd ~/dotfiles/vim
 echo "TBD"
+# cd ~/dotfiles/vim
 echo "============================================"
 
 ### NEOVIM
 echo "Copying NEOVIM configs"
+echo "TBD"
 #cd ~/dotfiles
 #cp -r -v --remove-destination nvim ~/.config/
 
@@ -49,9 +50,11 @@ cd ~/dotfiles/mutt
 echo "============================================"
 
 ### newsboat
+cd ~
+rm -rf .newsboat/*
 cd ~/dotfiles/.newsboat
-cp -va --remove-destination config ~/.newsboat
-cp -va --remove-destination urls ~/.newsboat
+cp -va --remove-destination config ~/.newsboat/
+cp -va --remove-destination urls ~/.newsboat/
 echo "============================================"
 
 ### urlview
@@ -69,8 +72,11 @@ echo "============================================"
 
 ### Conky
 echo "copying Conky config"
-cd ~/dotfiles/others
+cd ~/.config
+mkdir conky
+cd ~/dotfiles/conky
 cp -va --remove-destination .conkyrc ~
+cp -va --remove-destination * ~/.config/conky/
 echo "============================================"
 
 ### neofetch
@@ -99,6 +105,6 @@ echo "============================================"
 
 
 # make useful directories
-#cd ~/Downloads
-#mkdir sources     # for repos
-#mkdir attachments # for mutt
+cd ~/Downloads
+mkdir sources     # for repos
+mkdir attachments # for mutt
