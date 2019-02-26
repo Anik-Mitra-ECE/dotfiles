@@ -1,6 +1,6 @@
 
 # IMAP settings
-set imap_user = "ab...."  ###############
+set imap_user = "USERNAME"                      ###############
 set folder    = "imaps://haw-mailer.haw-hamburg.de:993/"
 set spoolfile = "imaps://haw-mailer.haw-hamburg.de:993/Inbox"
 # set spoolfile = "imaps://haw-mailer.haw-hamburg.de:993/INBOX"
@@ -9,15 +9,15 @@ set spoolfile = "imaps://haw-mailer.haw-hamburg.de:993/Inbox"
 set imap_keepalive = 300
 set imap_check_subscribed=yes
 set imap_passive=no
-set imap_pass = "PASSWORD" ###############
+set imap_pass = "PASSWORD"                       ###############
 
 
 # SMTP settings
 # with port 587, smtps will not work
-set smtp_url = "smtp://ab....@haw-mailer.haw-hamburg.de:587/" ###############
-set smtp_pass = "PASSWORD" ###############
-set realname = ".........."
-set from = "MYNAMExxxxd@haw-hamburg.de" ###############
+set smtp_url = "smtp://USERNAME@haw-mailer.haw-hamburg.de:587/"   ###############
+set smtp_pass = "PASSWORD"                       ###############
+set realname = "MYFULLNAME"
+set from = "MYNAME@haw-hamburg.de"               ###############
 set use_from = yes
 set use_envelope_from = yes
 
