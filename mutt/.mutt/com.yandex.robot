@@ -4,8 +4,8 @@ set message_cachedir = ~/.mutt/com.yandex.robot/cache/bodies
 
 unmailboxes *
 # RECEIVE OPTIONS
-set imap_user = "mr.robot.de@yandex.com"
-set imap_pass = "PASSWORDxxj"
+set imap_user = "mr.robot.me@yandex.com"
+set imap_pass = "PASSWORD"
 #set imap_check_subscribed
 #unset imap_passive
 #set imap_keepalive = 900
@@ -21,9 +21,9 @@ set postponed = "+[Yandex]/Drafts"
 set ssl_starttls  = yes
 set ssl_force_tls = yes
 set realname      = "Mr. Robot"
-set from          = "mr.robot.de@yandex.com"
+set from          = "mr.robot.me@yandex.com"
 set smtp_url      = "smtps://mr.robot.de@smtp.yandex.com:465/"
-set smtp_pass 	  = "password"
+set smtp_pass 	  = "PASSWORD"
 
 
 
