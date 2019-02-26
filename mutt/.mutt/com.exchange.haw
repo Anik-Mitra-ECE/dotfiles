@@ -69,7 +69,7 @@ set postponed = +Draft
 set record=+Sent
 mailboxes +Inbox
 mailboxes +Drafts
-mailboxes +Sent
+mailboxes +Sent%20Items
 mailboxes +ORders
 mailboxes +others
 mailboxes +studierendenwerk
