@@ -87,6 +87,7 @@ floating_modifier $mod
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+Return  exec urxvt -fn "xft:Source Code Pro for Powerline:size=10"    # -e tmux
+bindsym $mod+Control+Return  exec cool-retro-term
 bindsym $mod+Return exec i3-sensible-terminal --class FloatingTerm
 
 # kill focused window
