@@ -6,7 +6,7 @@ alias ll='ls -AlFXh --color=auto --group-directories-first'
 alias la='ls -A --color=auto'
 alias sl='ls --color=auto --group-directories-first'
 alias l='ls -1 --color=auto'
-alias clear='clear; echo; echo; seq 1 $(tput cols) | sort -R | spark | lolcat; echo; echo' # https://github.com/holman/spark
+alias clear='clear; # echo; echo; seq 1 $(tput cols) | sort -R | spark | lolcat; echo; echo' # https://github.com/holman/spark
 
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'
@@ -36,7 +36,7 @@ alias cr='curseradio'
 alias py='bpython'
 alias rss="newsboat"
 alias viber='/opt/viber/Viber'
-alias eclip='~/eclipse/java-photon/eclipse/eclipse'
+alias eclip="cd ~/eclipse/java-2019-03/eclipse && ./eclipse"
 alias cypress='cd ~/Dropbox/Documents/cypress-works/ && node_modules/.bin/cypress open'
 alias tma='tmux attach -t myworkbench'
 alias tmn='tmux new    -s myworkbench'
@@ -67,6 +67,7 @@ alias laliga='livescore -t laliga'
 alias bundesliga='livescore -t bundesliga'
 alias ligue1='livescore -t ligue1'
 alias seriea='livescore -t seriea'
+alias eagle="cd ~/Downloads/eagle-9.3.0/ && ./eagle"
 
 #### confirmation ####
 alias mv='mv -iv'
