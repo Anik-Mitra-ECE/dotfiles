@@ -76,7 +76,7 @@ TEXT
     # Networking
     # change wlp3s0b1 and enp2s0  according to your "ifconfig" command
 	# ----------------------------------------------------------------
-   ${if_up wlp3s0b1} { "full_text" : " (${wireless_essid wlp3s0b1})" , "color" : "\#00ff00","icon":"/home/xollad/.config/i3/i3status-conky/xbmicons/wifi_01.xbm"}, ${else}\
+   ${if_up wlp3s0} { "full_text" : " (${wireless_essid wlp3s0})" , "color" : "\#00ff00","icon":"/home/xollad/.config/i3/i3status-conky/xbmicons/wifi_01.xbm"}, ${else}\
    ${if_up eth0} { "full_text" : "  ${addr eth0}" , "color" : "\#00ff00" }, ${else}\
       ${if_up enp2s0} { "full_text" : "  ${addr enp2s0}" , "color" :"\#00ff00" , "color" : "\#00ff00","icon":"/home/xollad/.config/i3/i3status-conky/xbmicons/net_wired.xbm"}, ${else}\
            { "full_text" : "No Network" , "border": "\#ff0000","color" : "\#ff0000" },\
