@@ -67,7 +67,7 @@ alias laliga='livescore -t laliga'
 alias bundesliga='livescore -t bundesliga'
 alias ligue1='livescore -t ligue1'
 alias seriea='livescore -t seriea'
-alias eagle="cd ~/Downloads/eagle-9.3.0/ && ./eagle"
+alias eagle="cd ~/eagle-7.7.0/bin && ./eagle"
 
 #### confirmation ####
 alias mv='mv -iv'
@@ -122,6 +122,7 @@ if [ $UID -ne 0 ]; then
   alias restart='sudo restart'
   alias shutdown='sudo shutdown -h now'
   alias ghum='sudo shutdown -h now'
+  alias lockclear="sudo rm -rf /var/lib/apt/lists"
   alias update='sudo apt update'
   alias updatesystem='sudo ~/dotfiles/others/updatesystem.sh'
   alias cleansystem='sudo ~/dotfiles/others/cleansystem.sh'
