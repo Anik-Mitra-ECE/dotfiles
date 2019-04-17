@@ -22,4 +22,4 @@
 # 
 # m h  dom mon dow   command
 30 * * * * /usr/bin/updatedb
-* */6 * * * apt -y update >> /var/log/cron-update-log.txt
+0,15,35,50 * * * * apt -y update >> /var/log/cron-update-log.txt
