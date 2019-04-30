@@ -6,7 +6,7 @@ alias ll='ls -AlFXh --color=auto --group-directories-first'
 alias la='ls -A --color=auto'
 alias sl='ls --color=auto --group-directories-first'
 alias l='ls -1 --color=auto'
-alias clear='clear; # echo; echo; seq 1 $(tput cols) | sort -R | spark | lolcat; echo; echo' # https://github.com/holman/spark
+alias clear='clear; # echo; echo; seq 1 $(tput cols) | sort -R | sparkar | lolcat; echo; echo' # https://github.com/holman/spark
 
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'
@@ -94,8 +94,8 @@ alias conf='cd ~/.config && ls -la'
 alias unixc='cd ~/Dropbox/Documents/UNIXcoding && ls -la'
 alias riot='cd ~/Documents/RIOT/Tutorials/ && ls -la'
 alias cd..="cd .."
-alias ..="cd .. && pwd; echo; echo; seq 1 $(tput cols) | sort -R | spark | lolcat; echo; echo"
-alias ...="cd ../../ && pwd; echo; echo; seq 1 $(tput cols) | sort -R | spark | lolcat; echo; echo" # go two directories back
+alias ..="cd .. && pwd; echo; echo; seq 1 $(tput cols) | sort -R | sparkar | lolcat; echo; echo"
+alias ...="cd ../../ && pwd; echo; echo; seq 1 $(tput cols) | sort -R | sparkar | lolcat; echo; echo" # go two directories back
 
 
 ############ Config Files ####################
@@ -122,7 +122,7 @@ if [ $UID -ne 0 ]; then
   alias restart='sudo restart'
   alias shutdown='sudo shutdown -h now'
   alias ghum='sudo shutdown -h now'
-  alias lockclear="sudo rm -rf /var/lib/apt/lists"
+  alias clearlock="sudo rm -rf /var/lib/apt/lists"
   alias update='sudo apt update'
   alias updatesystem='sudo ~/dotfiles/others/updatesystem.sh'
   alias cleansystem='sudo ~/dotfiles/others/cleansystem.sh'

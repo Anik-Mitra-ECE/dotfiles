@@ -243,7 +243,7 @@ sudo update-alternatives --config vimdiff
 sudo apt install -y  ffmpeg id3tool lame
 sudo apt install -y  pulseaudio pavucontrol  # open volume-control
 sudo apt install -y  gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav
-sudo apt install -y  libxine2-ffmpeg libmad0 mpg321 libavcodec-extra
+sudo apt install -y  libxine2-ffmpeg libmad0 mpg321 libavcodec-extra v4l-utils
 
 echo "============================================================================"
 echo "SNAP INSTALLS"
