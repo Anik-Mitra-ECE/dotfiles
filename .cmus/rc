@@ -18,6 +18,7 @@ bind -f common  l seek +10
 bind -f common  < seek -30
 bind -f common  > seek +30
 bind -f common  d run /home/xollad/.cmus/cover-viewer
+bind -f common  F run /home/xollad/.cmus/cmus-feh.sh
 bind -f common  Q quit
 bind -f common  i invert
 bind -f common  p player-pause
