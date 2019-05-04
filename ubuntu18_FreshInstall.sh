@@ -35,6 +35,7 @@ sudo add-apt-repository -y ppa:apandada1/up-clock
 sudo add-apt-repository -y ppa:linrunner/tlp
 sudo add-apt-repository -y ppa:neovim-ppa/stable         	   # neovim
 sudo add-apt-repository -y ppa:peek-developers/stable
+sudo add-apt-repository -y ppa:bluetooth/bluez
 
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
