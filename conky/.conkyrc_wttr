@@ -41,7 +41,7 @@ conky.config = {
 
 };
 conky.text = [[
-${texeci 10 curl wttr.in/hamburg.png | convert - -transparent black $HOME/.config/conky/out.png}
+${texeci 10 curl https://wttr.in/hamburg.png | convert - -transparent black $HOME/.config/conky/out.png}
 # ${texeci 12 rm -rf out_cropped.png}
 # ${texeci 15 convert out.png -crop 250x106+0+0 out_cropped.png}
 ${image $HOME/.config/conky/out.png -p 0,0}
