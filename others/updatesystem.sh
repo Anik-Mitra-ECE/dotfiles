@@ -58,6 +58,12 @@ echo "-----------------------------"
 youtube-dl -U
 
 echo "-----------------------------"
+echo "---------npm update----------"
+echo "-----------------------------"
+sudo npm-check -g
+sudo npm-check -gy
+
+echo "-----------------------------"
 echo "----font-cache update--------"
 echo "-----------------------------"
 fc-cache -fv
@@ -67,7 +73,7 @@ echo "-----------------------------"
 echo "------i3-gaps update---------"
 echo "-----------------------------"
 echo -e $magenta"\n (PAUSED)Updating & compiling i3-gaps... \n"$white
-cd /home/xollad/Downloads/sources/i3-gaps
+cd /home/xollad/Downloads/i3-gaps
 git pull upstream
 autoreconf --force --install
 rm -rf build/
