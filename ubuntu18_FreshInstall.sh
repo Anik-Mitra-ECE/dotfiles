@@ -122,6 +122,9 @@ sudo npm install -g eslint
 sudo npm install -g eslint-config-airbnb babel-eslint eslint-plugin-react
 sudo npm install -g instant-markdown-d
 sudo npm install -g neovim
+sudo npm install -g terminalizer
+sudo npm install -g cli-typer
+sudo npm install -g npm-check
 
 ## MySQL and mongodb
 # sudo apt -y install mysql-server mysql-workbench
@@ -137,6 +140,7 @@ sudo npm install -g neovim
 sudo apt -y  update
 sudo apt install -y taskwarrior recoll     # task manager and file finder/search like everything
 sudo apt install -y cowsay cmatrix neofetch up-clock conky-all at leave 
+sudo apt install -y howdoi
 sudo apt install -y most tty-clock pydf pacman4console
 sudo apt install -y fortune-mod fortunes-de fortunes-off
 sudo apt install -y keepassx              # password manager
