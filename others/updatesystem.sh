@@ -64,6 +64,11 @@ sudo npm-check -g
 sudo npm-check -gy
 
 echo "-----------------------------"
+echo "------flatpack update--------"
+echo "-----------------------------"
+sudo flatpack update -y -v
+
+echo "-----------------------------"
 echo "----font-cache update--------"
 echo "-----------------------------"
 fc-cache -fv
