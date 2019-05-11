@@ -38,6 +38,7 @@ echo "-----------------------------"
 echo "--------nVIM update----------"
 echo "-----------------------------"
 /usr/bin/nvim +PlugInstall +PlugUpdate +PlugUpgrade +qa
+sudo chmod ugo+rw ~/.viminfo
 
 echo "-----------------------------"
 echo "------base-16 update---------"
