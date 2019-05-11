@@ -36,7 +36,7 @@ sudo add-apt-repository -y ppa:linrunner/tlp
 sudo add-apt-repository -y ppa:neovim-ppa/stable         	   # neovim
 sudo add-apt-repository -y ppa:peek-developers/stable
 sudo add-apt-repository -y ppa:bluetooth/bluez
-
+sudo add-apt-repository -y ppa:alexlarsson/flatpak
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
 
@@ -85,16 +85,6 @@ ranger --copy-config=all                                       # for ranger
 # gksu is removed from Ubuntu 18
 # use the format --> gedit admin:///etc/default/apport
 
-# install VIBER
-# cd ~/Downloads
-# wget -O ~/viber.deb http://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
-# sudo apt-mark hold libcurl4
-# sudo dpkg -i --ignore-depends=libcurl3 ./viber.deb
-# sudo apt install -f
-# sudo dpkg -i --ignore-depends=libcurl3 ./viber.deb
-# sudo apt-mark unhold libcurl4
-# start viber by -> /opt/viber/Viber
-
 # install editors, compilors
 sudo apt -y  update
 sudo apt install -y atom
@@ -118,6 +108,8 @@ sudo apt install -y texmaker focuswriter
 sudo apt install -y pandoc pandoc-citeproc dvipng
 sudo apt install -y sudo apt -y install pdf-presenter-console   # [https://github.com/pdfpc/pdfpc]
 sudo apt install -y xdotool nodejs npm                          # for vim markdown live preview
+
+## node installs
 sudo npm install -g eslint
 sudo npm install -g eslint-config-airbnb babel-eslint eslint-plugin-react
 sudo npm install -g instant-markdown-d
@@ -258,6 +250,19 @@ sudo snap install skype --classic
 sudo snap install cheat 
 sudo snap install caprine 
 # sudo snap install notepad-plus-plus shortcut wire
+echo "============================================================================"
+
+echo "============================================================================"
+echo "flatpack INSTALLS"
+echo "============================================================================"
+sudo apt install -y gnome-software-plugin-flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo apt install -y flatpak
+sudo flatpak install -y flathub org.octave.Octave
+# sudo flatpak install -y flathub com.viber.Viber
+# sudo flatpac install -y flathub org.blender.Blender
+
+
 echo "============================================================================"
 
 echo "##################################################################"
