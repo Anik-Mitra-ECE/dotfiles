@@ -1,11 +1,13 @@
 
 # IMAP settings
-set imap_user = "USERNAME"                      ###############
-set folder    = "imaps://haw-mailer.haw-hamburg.de:993/"
-set spoolfile = "imaps://haw-mailer.haw-hamburg.de:993/Inbox"
-# set spoolfile = "imaps://haw-mailer.haw-hamburg.de:993/INBOX"
-# set postponed = "imaps://haw-mailer.haw-hamburg.de:993/Drafts"
-# set trash     = "imaps://haw-mailer.haw-hamburg.de:993/Trash"
+set imap_user   = "USERNAME"                      ###############
+set folder      = "imaps://haw-mailer.haw-hamburg.de:993/"
+set spoolfile   = "imaps://haw-mailer.haw-hamburg.de:993/Inbox"
+set postponed   = "imaps://haw-mailer.haw-hamburg.de:993/Drafts"
+set Trash       = "imaps://haw-mailer.haw-hamburg.de:993/Deleted%20Items"
+set postponed   ="+Drafts"
+set record      =+Sent%20Items
+
 set imap_keepalive = 300
 set imap_check_subscribed=yes
 set imap_passive=no
@@ -64,12 +66,10 @@ set message_cache_clean = yes
 
 
 mailboxes "+------ HAW-HAMBURG -------"
-set spoolfile = +INBOX
-set postponed = +Draft
-set record=+Sent
 mailboxes +Inbox
 mailboxes +Drafts
 mailboxes +Sent%20Items
+mailboxes +Deleted%20Items
 mailboxes +ORders
 mailboxes +others
 mailboxes +studierendenwerk
