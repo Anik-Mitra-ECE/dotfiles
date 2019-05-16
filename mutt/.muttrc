@@ -238,6 +238,9 @@ macro   index   h  "c?"            "Browse mailfolders"
 macro   index   "\Ca"           "T.\n"  "Select all messages"
 # Mark read
 macro   index   "\Cr"           "T~N\nN\Ct.\n"  "Mark as read"
+
+# fetch email
+bind index if imap-fetch-mail
 #############################
 #------------------------------------------------------------
 #  w3m with W and then press ":"

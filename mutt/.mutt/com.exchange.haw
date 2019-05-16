@@ -4,7 +4,7 @@ set imap_user   = "USERNAME"                      ###############
 set folder      = "imaps://haw-mailer.haw-hamburg.de:993/"
 set spoolfile   = "imaps://haw-mailer.haw-hamburg.de:993/Inbox"
 set postponed   = "imaps://haw-mailer.haw-hamburg.de:993/Drafts"
-set Trash       = "imaps://haw-mailer.haw-hamburg.de:993/Deleted%20Items"
+set trash       = "imaps://haw-mailer.haw-hamburg.de:993/Deleted%20Items"
 set postponed   ="+Drafts"
 set record      =+Sent%20Items
 
