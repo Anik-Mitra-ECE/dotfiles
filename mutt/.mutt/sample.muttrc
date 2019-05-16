@@ -1,0 +1,464 @@
+# -*- muttrc -*- rc file for mutt
+# Muttrc file
+# Based on the muttrc files by Dave Pearson
+# HTMLized by his utility available from:
+# http://www.hagbard.demon.co.uk/mutt.html
+
+
+set spoolfile="~/Mail/gohomemail"
+set hostname=paranoidfreak.co.uk
+set newsrc=~/.mutt-newsrc
+set news_server=localhost
+
+set hdrs				# add my_hdr lines
+set alias_file=~/.mutt_mail_aliases     # Keep aliases in this file.
+source ~/.mutt_mail_aliases             # And read them in.
+set allow_8bit				# leave all the bits alone :)
+set postpone=ask-no                     # Ask about postponing.
+set postponed=+postponed                # Where postponed messages live.
+set print=ask-yes                       # Ask before printing.
+set delete=yes				# Just Do It
+set move=ask-yes
+set include=yes                         # Include the message in replies.
+set edit_hdrs                           # I want to edit the message headers.
+set editor="msg"			# Use my script to run htag and
+					# then vim
+set nomark_old                          # Don't mark unread new msgs as old.
+set mbox=+mbox                          # Where my mailbox lives.
+set copy=yes                            # Keep copies of outgoing mail...
+set record=+outbox                      # ... and it gets saved in =outbox.
+set mime_forward=ask-yes		# Forward attached or in body? Ask.
+set nobeep                              # We don't need no beeping software.
+set nosmart_wrap                        # Don't want smart wrapping.
+set nomarkers                           # Don't want any wrap markers.
+set pager_context=3                     # Display 3 lines of context in pager.
+set nostrict_threads                    # Lets have some fuzzy threading.
+set envelope_from=yes			# add sender with -f
+set sendmail_wait=-1                    # Don't wait around for sendmail.
+set nopipe_decode                       # Don't decode messages when piping.
+set tmpdir="~/tmp"
+set print_cmd="lpr"
+set tilde                               # Fill out messages with '~'.
+set read_inc=50                         # Read counter ticks every 50 msgs.
+set write_inc=50                        # Write counter ticks every 50 msgs.
+set noconfirmappend                     # Just append, don't hassle me.
+set pager_stop                          # Don't skip msgs on next page.
+set pager_index_lines=1                 # Start off with index footer in pager.
+                                        # Where to find the mailcap.
+set nowrite_bcc
+
+# gpg stuff
+
+set pgp_replysign
+set pgp_replyencrypt
+set pgp_replysignencrypted
+
+set pgp_verify_sig
+# decode application/pgp
+set pgp_decode_command="gpg %?p?--passphrase-fd 0? --no-verbose --batch -o - %f"
+
+# verify a pgp/mime signature
+set pgp_verify_command="gpg --no-verbose --batch -o - --verify %s %f"
+
+# decrypt a pgp/mime attachment
+set pgp_decrypt_command="gpg --passphrase-fd 0 --no-verbose --batch -o - %f"
+
+# create a pgp/mime signed attachment
+set pgp_sign_command="gpg --no-verbose --batch -o - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
+
+# create a application/pgp signed (old-style) message
+set pgp_clearsign_command="gpg --no-verbose --batch -o - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
+
+# create a pgp/mime encrypted attachment
+set pgp_encrypt_only_command="/usr/lib/mutt/pgpewrap gpg -v --batch -o - --encrypt --textmode --armor --always-trust %?a?-u %a? -- -r %r -- %f"
+
+# create a pgp/mime encrypted and signed attachment
+set pgp_encrypt_sign_command="/usr/lib/mutt/pgpewrap gpg --passphrase-fd 0 -v --batch -o - --encrypt --sign --armor --always-trust %?a?-u %a? -- -r %r -- %f"
+
+# import a key into the public key ring
+set pgp_import_command="gpg --no-verbose --import -v %f"
+
+# export a key from the public key ring
+set pgp_export_command="gpg --no-verbose --export --armor %r"
+
+# verify a key
+set pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs %r"
+
+# read in the public key ring
+set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r" 
+
+# read in the secret key ring
+set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r" 
+
+# receive key from keyserver:
+# Hmm, has anyone got this to work?
+#
+#set pgp_getkeys_command="wrap.sh -g %r"
+#set pgp_getkeys_command="gpg -q --batch --keyserver the.earth.li --recv-keys %r"
+
+pgp-hook nic.uk 0xDE83DF45
+
+set send_charset="us-ascii:iso-8859-1:iso-8859-15:utf-8"
+set charset="iso-8859-15"		# Leave my bits alone :)
+set ascii_chars				# Use + and - and > not the clever
+					# bits
+set ignore_list_reply_to		# When To: and Reply-To: are the
+					# same.  Press L for list replies.
+					# Yes.
+set reply_to=ask-yes			# Ask me!
+set honor_followup_to=ask-yes		# Ask me!
+
+set mailcap_path=~/.mutt/mutt_mailcap:/usr/local/etc/mailcap:/etc/mailcap
+                                        # What we consider to be a quote.
+set quote_regexp="^( {0,4}[>|:#]| {0,4}[a-z0-9]+[>|]+)+"
+                                        # Alternative addresses
+set alternates=((huggie@((the.|)earth\.li|dial\.pipex\.com|orange\.keble\.ox\.ac\.uk))|((huggie|simon)@blackcatnetworks\.co\.uk)|(leyssjh@(|granby\.)nottingham\.ac\.uk)|shuggins@axialys.net)
+
+# Tell mutt which MIME types to auto-view
+auto_view application/zip
+auto_view application/x-gzip
+auto_view application/x-gunzip
+auto_view application/octet-stream
+auto_view application/x-zip-compressed
+auto_view application/x-tar-gz
+auto_view application/msword
+auto_view application/x-perl
+auto_view application/x-sh
+auto_view application/x-tcl
+auto_view application/RTF
+auto_view text/html
+auto_view text/x-vcard
+auto_view image/tiff
+
+alternative_order text/enriched text/plain text
+
+# Tell mutt about the mailing lists I belong to
+subscribe adherents aic7xxx dacode-dev debian-french debian-user-french debian-news debian-security debian-devel debian-user debian-security-announce earthlings earthworms ENG-FRA eng-fra galeon-devel galeon-user general incidents juddians kernel-audit linux@parinux.org linux-laptop linux-mac68k linux-raid linux-sound linuxuk-devl linux-uk-discuss linux-uk-help linux-usb modperl netsaint-devel netsaintplug-devel netsaint-users new-httpd parinux paris-pm-list projectpurple redhat-watch-list sane-devel sawmill sec-audit security-audit utah-glx-dev utah-glx-users webdev villette ourhouse postfix-users trollerz London_Skaters net-snmp-coders net-snmp-users devel www-voice nottingham defi bookworms linux-irda gnokii debian-uk vortex interest securite debian-devel-announce mango-announce mango-hackers mango-users photopub-devel htag totty lipex lonap sclug oxlug bogofilter bogofilter-dev customers nom-steer nom-discuss nom-announce nom-tech ipv6 deity debian-release colo-babble 6bone linuxjobs
+
+# Tell mutt about mailboxes that can receive mail
+mailboxes !
+mailboxes =nildram
+mailboxes =pipex
+mailboxes =spam-unsure
+mailboxes =blackcat-todo
+mailboxes =lipex
+mailboxes =lonap
+mailboxes =packetexchange
+mailboxes =debian-devel-announce
+mailboxes =debian-security-announce
+mailboxes =oxlug-announce
+mailboxes =bookworms
+mailboxes =ourhouse
+mailboxes =colo-babble
+mailboxes =htag
+mailboxes =earthlings
+mailboxes =earthworms
+mailboxes =photopub
+mailboxes =totty
+mailboxes =bugtraq
+mailboxes =debian-french
+mailboxes =debian-news
+mailboxes =debian-security
+mailboxes =debian-uk
+mailboxes =engfra
+mailboxes =galeon
+mailboxes =general
+mailboxes =glx
+mailboxes =incidents
+mailboxes =juddians
+mailboxes =juddians-approval
+mailboxes =kernel-audit
+mailboxes =6bone
+mailboxes =bogofilter-dev
+mailboxes =bogofilter
+mailboxes =gnokii
+mailboxes =owner-juddians
+mailboxes =listadmin
+mailboxes =paris-pm-list
+mailboxes =redhat-watch-list
+mailboxes =sec-audit
+mailboxes =toanswer
+mailboxes =villette
+mailboxes =postfix-users
+mailboxes =london-skate
+
+mailboxes =sclug
+mailboxes =nulug
+mailboxes =nottlug
+mailboxes =oxlug
+mailboxes =linuxjobs
+
+mailboxes =parinux
+mailboxes =securite
+mailboxes =adherents
+mailboxes =defi
+mailboxes =devel
+mailboxes =defi
+mailboxes =webdev
+mailboxes =trollerz
+
+mailboxes =vortex
+mailboxes =aic7xxx
+mailboxes =linuxuk-devl
+mailboxes =linux-uk-discuss
+mailboxes =linux-uk-help
+
+mailboxes =interest
+mailboxes =deity
+mailboxes =debian-user
+mailboxes =debian-release
+mailboxes =debian-devel
+mailboxes =blackcat-bounce
+mailboxes =nominet
+mailboxes =spam-bcn
+mailboxes =spam-bogofilter
+
+# Ignore some of the headers.
+unignore *
+ignore Received:
+ignore "From "
+ignore Return-Path:
+ignore X-Delivery-Time:
+ignore X-Envelope-To:
+ignore X-Envelope-From:
+ignore References:
+ignore In-Reply-To:
+ignore Return-Path:
+ignore Mime-Version:
+ignore Status:
+ignore X-Status:
+ignore Content-Length:
+ignore Lines:
+ignore Content-Type:
+ignore X-Priority:
+ignore X-MSMail-Priority:
+ignore X-MimeOLE:
+ignore Approved-By:
+ignore X-Flags:
+ignore List-Id:
+ignore X-BeenThere:
+ignore X-Mailman-Version:
+ignore Content-Type-Encoding:
+ignore Content-Transfer-Encoding:
+ignore Errors-To:
+ignore list-help:
+ignore list-unsubscribe:
+ignore list-post:
+ignore Mailing-List:
+ignore X-No-Archive:
+ignore Importance:
+ignore X-Spam-Rating:
+ignore X-Loop:
+ignore X-Accept-Language:
+ignore X-List:
+ignore X-list-Unsubscribe:
+ignore X-Unsub:
+ignore Path:
+ignore X-Trace:
+ignore NNTP-Posting-Host:
+ignore NNTP-Posting-Date:
+ignore Xref:
+ignore X-Received:
+
+# Now order the visable header lines
+unhdr_order *
+hdr_order From: Subject: Date: To: Message-ID: CC: Date: Organization: X-Mailer: User-Agent:
+
+# Fine tune mutt depending on which folder I'm viewing.
+folder-hook .                  source ~/.mutt/defaults
+folder-hook "!$"               source ~/.mutt/defaults.inbox
+folder-hook =aic7xxx$		source ~/.mutt/defaults.maillist
+folder-hook =bugtraq$		source ~/.mutt/defaults.maillist
+folder-hook =dacode-dev$	source ~/.mutt/defaults.maillist
+folder-hook =debian-french$	source ~/.mutt/defaults.maillist
+folder-hook =debian-news$	source ~/.mutt/defaults.maillist
+folder-hook =debian-security-announce$	source ~/.mutt/defaults.maillist
+folder-hook =debian-security$	source ~/.mutt/defaults.maillist
+folder-hook =earthlings$	source ~/.mutt/defaults.maillist
+folder-hook =bookworms$		source ~/.mutt/defaults.maillist
+folder-hook =earthworms$	source ~/.mutt/defaults.maillist
+folder-hook =engfra$		source ~/.mutt/defaults.maillist
+folder-hook =galeon$		source ~/.mutt/defaults.maillist
+folder-hook =general$		source ~/.mutt/defaults.maillist
+folder-hook =glx$		source ~/.mutt/defaults.maillist
+folder-hook =ikernel-audit$	source ~/.mutt/defaults.maillist
+folder-hook =incidents$		source ~/.mutt/defaults.maillist
+folder-hook =juddians-approval$	source ~/.mutt/defaults.maillist
+folder-hook =juddians$		source ~/.mutt/defaults.maillist
+folder-hook =kernel-audit$		source ~/.mutt/defaults.maillist
+folder-hook =linux-laptop$	source ~/.mutt/defaults.maillist
+folder-hook =linux-mac68k$	source ~/.mutt/defaults.maillist
+folder-hook =linuxuk-devl$	source ~/.mutt/defaults.maillist
+folder-hook =linux-uk-discuss$	source ~/.mutt/defaults.maillist
+folder-hook =linux-uk-help$	source ~/.mutt/defaults.maillist
+folder-hook =linux-usb$		source ~/.mutt/defaults.maillist
+folder-hook =lk$		source ~/.mutt/defaults.maillist
+folder-hook =linux-irda$		source ~/.mutt/defaults.maillist
+folder-hook =gnokii$		source ~/.mutt/defaults.maillist
+folder-hook =lr$		source ~/.mutt/defaults.maillist
+folder-hook =ls$		source ~/.mutt/defaults.maillist
+folder-hook =modperl$		source ~/.mutt/defaults.maillist
+folder-hook =netsaint-devel$	source ~/.mutt/defaults.maillist
+folder-hook =netsaintplug-devel$	source ~/.mutt/defaults.maillist
+folder-hook =netsaint-users$	source ~/.mutt/defaults.maillist
+folder-hook =new-httpd$		source ~/.mutt/defaults.maillist
+folder-hook =nulug$		source ~/.mutt/defaults.maillist
+folder-hook =owner-juddians$	source ~/.mutt/defaults.maillist
+folder-hook =parinux$		source ~/.mutt/defaults.maillist
+folder-hook =adherents$		source ~/.mutt/defaults.maillist
+folder-hook =paris-pm-list$		source ~/.mutt/defaults.maillist
+folder-hook =redhat-watch-list$	source ~/.mutt/defaults.maillist
+folder-hook =sane$		source ~/.mutt/defaults.maillist
+folder-hook =sawmill$		source ~/.mutt/defaults.maillist
+folder-hook =sec-audit$		source ~/.mutt/defaults.maillist
+folder-hook =webdev$		source ~/.mutt/defaults.maillist
+folder-hook =villette$		source ~/.mutt/defaults.maillist
+folder-hook =ourhouse$		source ~/.mutt/defaults.maillist
+folder-hook =postfix-users$		source ~/.mutt/defaults.maillist
+folder-hook =trollerz$		source ~/.mutt/defaults.maillist
+folder-hook =isp-bgp$		source ~/.mutt/defaults.maillist
+folder-hook =london-skate$		source ~/.mutt/defaults.maillist
+folder-hook =defi$		source ~/.mutt/defaults.maillist
+folder-hook =devel$		source ~/.mutt/defaults.maillist
+folder-hook =nottlug$		source ~/.mutt/defaults.maillist
+folder-hook =oxlug$		source ~/.mutt/defaults.maillist
+folder-hook =sclug$		source ~/.mutt/defaults.maillist
+folder-hook =debian-uk$		source ~/.mutt/defaults.maillist
+folder-hook =vortex$	source ~/.mutt/defaults.maillist
+folder-hook =securite$	source ~/.mutt/defaults.maillist
+folder-hook =interest$	source ~/.mutt/defaults.maillist
+folder-hook =debian-devel-announce$	source ~/.mutt/defaults.maillist
+folder-hook =photopub$	source ~/.mutt/defaults.maillist
+folder-hook =htag$	source ~/.mutt/defaults.maillist
+folder-hook =totty$	source ~/.mutt/defaults.maillist
+folder-hook =bogofilter$	source ~/.mutt/defaults.maillist
+folder-hook =bogofilter-dev$	source ~/.mutt/defaults.maillist
+folder-hook =packetexchange$	source ~/.mutt/defaults.maillist
+folder-hook =nominet$	source ~/.mutt/defaults.maillist
+folder-hook =debian-user$	source ~/.mutt/defaults.maillist
+folder-hook =debian-devel$	source ~/.mutt/defaults.maillist
+folder-hook =deity$	source ~/.mutt/defaults.maillist
+folder-hook =debian-release$	source ~/.mutt/defaults.maillist
+folder-hook =colo-babble$	source ~/.mutt/defaults.maillist
+folder-hook =6bone$	source ~/.mutt/defaults.maillist
+folder-hook =linuxjobs$		source ~/.mutt/defaults.maillist
+
+# Fcc hooks
+# A load of fcc hooks that people don't need to see
+
+#eveyone else to outbox
+fcc-hook .*                                   =outbox
+
+#Default From
+my_hdr From: Simon Huggins <huggie@earth.li>
+my_hdr Organization: Black Cat Networks, http://www.blackcatnetworks.co.uk/
+my_hdr X-Attribution: huggie
+
+# Default save from ! to wherever
+# A lot of save hooks people don't need to see
+
+mbox-hook blackcat-todo =blackcat
+mbox-hook spam-bcn =spam-keep
+mbox-hook spam-bogofilter =spam-keep
+
+# Generic key bindings.
+bind generic <home>  first-entry
+bind generic <end>   last-entry
+bind generic <left>  previous-entry
+bind generic <right> next-entry
+
+# Specific key bindings.
+bind index   "{"      previous-thread
+bind index   "}"      next-thread
+bind index   <up>     previous-entry
+bind index   <down>   next-entry
+#bind alias   " "      tag-entry
+bind pager   <home>   top
+#bind pager   "g"      top
+bind pager   <end>    bottom
+bind pager   "G"      bottom
+bind pager   "{"      previous-thread
+bind pager   "}"      next-thread
+bind pager   <up>     previous-line
+bind pager   <down>   next-line
+bind pager   <left>   previous-entry
+bind pager   <right>  next-entry
+#bind pager   "t"      display-headers
+
+# simluate the old url menu
+macro index \cb |urlview\n 'call urlview to extract URLs out of a message'
+macro pager \cb |urlview\n 'call urlview to extract URLs out of a message'
+
+# Default color definitions
+color	hdrdefault	black		cyan
+color	quoted		brightred	black
+color	signature	magenta		black
+color	indicator	brightwhite	red
+color	attachment	black		green
+color	error		red		black
+color	message		white		black
+color	search		brightwhite	magenta
+color	status		brightyellow	blue
+color	tree		red		black
+color	normal		white		black
+color	tilde		green		black
+color	bold		brightyellow	black
+#color	underline	magenta		black
+color	markers		red		black
+
+# Colour definitions when on a mono screen
+mono bold      bold
+mono underline underline
+mono indicator reverse
+
+# Colours for items in the reader
+color header black cyan ".*:"
+color header brightwhite cyan "^(From|Subject):"
+mono  header bold             "^(From|Subject):"
+
+# Colours for items in the index
+color index brightblue  black ~N
+# Hmm, don't like this.
+#color index brightgreen black "~N (~x byers.world)|(~x byers.x)|(~x langly.levallois123.axialys.net)|(~x the.earth.li)"
+color index red         black ~F
+color index black       green ~T
+color index brightwhite black ~D
+mono  index bold              ~N
+mono  index bold              ~F
+mono  index bold              ~T
+mono  index bold              ~D
+
+# Highlights inside the body of a message.
+
+# URLs
+color body brightblue  black "(http|ftp|news|telnet|finger)://[^ \"\t\r\n]*"
+color body brightblue  black "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+mono  body bold              "(http|ftp|news|telnet|finger)://[^ \"\t\r\n]*"
+mono  body bold              "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+
+# email addresses
+color body brightblue  black "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+mono  body bold              "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+
+# Various smilies and the like
+color body brightgreen black "<[Ee]?[Bb]?[Gg]>"		# <g>
+color body brightgreen black "<[Bb][Gg]>"		# <bg>
+color body brightgreen black " [;:]-*[)>(<|]"		# :-) etc...
+
+macro index @ !~/bin/movemutt
+macro index X ":unset wait_key\n| spamassassin -d >>~/Mail/spam\n:set wait_key\n"
+macro pager X ":unset wait_key\n| spamassassin -d >>~/Mail/spam\n:set wait_key\n"
+
+macro	pager	\ef	"|~/bin/view-x-face"
+
+bind pager i exit # only this menu
+bind pager M change-newsgroup
+bind index M change-newsgroup
+
+# for =spam-unsure, just register as bogofilter hasn't seen this mail yet.
+folder-hook =spam-unsure source ~/.mutt/defaults.spam-unsure
+
+
+
+# Last, but not least, get mutt to display it's version on startup.
+push V
