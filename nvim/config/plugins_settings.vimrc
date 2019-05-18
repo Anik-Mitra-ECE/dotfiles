@@ -2,21 +2,29 @@
 "==========================================================================="
 "                           PLUGINS Setup                                   "
 "==========================================================================="
+set  runtimepath+=/usr/local/lib/python3.6/site-packages/powerline/bindings/vim/
+
 " powerline settings
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"      " needed for tmux
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set t_Co=256                      "  enable 256 colors in vim
-set background=dark               " or light
-if (has("termguicolors"))
-   set termguicolors
-endif
-" set t_8f=^[[38;2;%lu;%lu;%lum
-" set t_8b=^[[48;2;%lu;%lu;%lum
-set  runtimepath+=/usr/local/lib/python3.6/site-packages/powerline/bindings/vim/
+
 " ------------ Color scheme settings ------------
-" let g:lucius_no_term_bg=0             " (default: 0)
-" colorscheme lucius
-" LuciusLightLowContrast	" or LuciusDark, LuciusBlack, LuciusLight, LuciusWhite 
+set background=dark               " or light
+
+" set termgui color and colorsche based on terminal
+function! IsSSH()
+   let termname = system('pstree -sA $$ | grep -c sshd')
+   let chars = split(termname, '\zs') 
+   let termcond=chars[0]
+   if termcond
+        colorscheme gruvbox "onehalf-light 
+    else
+        set termguicolors
+        colorscheme custom_onehalf-dark  " neodark,solarized8,Monokai,railscasts,feral,PaperColor,afterglow,subtle_dark,ayu
+    endif
+endfunction
+call IsSSH()
 
 let g:gruvbox_italic='1'
 let g:gruvbox_italicize_strings='1'
@@ -28,26 +36,14 @@ let g:gruvbox_contrast_light='light'
 " " let g:gruvbox_improved_strings=1
 highlight Comment cterm=italic
 
-" colorscheme gruvbox
-" colorscheme railscasts
-" colorscheme subtle_dark       " ----> mega nice subtle lightblue colorscheme
-" colorscheme Monokai
-" colorscheme PaperColor
-colorscheme neodark
-
-" let ayucolor="dark"   " for dark version of theme ---> BEST
-" colorscheme ayu
-
-" altercation/vim-colors-solarized --> NOT WORKING!
 " http://ethanschoonover.com/solarized/vim-colors-solarized#advanced-configuration
  if has("gui_running")
      set background=light
-     colorscheme solarized 
+     colorscheme solarized8
  endif
   
-" colorscheme solarized8,Monokai,railscasts,feral,molokai, afterglow
-let base16colorspace=256  	       " Access colors present in 256 colorspace
-" colorscheme base16-railscasts        "solarized-dark, bonedark, base16-spacemacs
+let base16colorspace=256  	           " Access colors present in 256 colorspace
+" colorscheme base16-railscasts        " solarized-dark, bonedark, base16-spacemacs
 " colorscheme base16-default-dark      " base16-seti
 " let g:airline_theme='base16_google'  " with other colorschemes, use luna or murmur
 
@@ -55,6 +51,7 @@ let base16colorspace=256  	       " Access colors present in 256 colorspace
 highlight SpellBad guisp=red  gui=undercurl guifg=#ff0000 guibg=NONE ctermfg=white ctermbg=red  term=underline cterm=none
 highlight SpellCap guisp=red  gui=undercurl guifg=#ff0000 guibg=NONE ctermfg=white ctermbg=red  term=underline cterm=none
 highlight search   guibg=lightblue guifg=#3a4550 cterm=bold ctermfg=black ctermbg=grey
+
 "======================================================================"
 " ----------------------- Deoplete Autocomplete -----------------------
 "======================================================================"

@@ -55,10 +55,12 @@ Plug 'tpope/vim-surround'              " enable change around ys..,cs..,ds..
 " Themes and Aesthetics  -----------------------------------
 Plug 'morhetz/gruvbox'                " super mega awesome colorscheme
 Plug 'NLKNguyen/papercolor-theme'  
-Plug 'ayu-theme/ayu-vim'              " Ayu dark --> best
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'chriskempson/base16-vim'        " >> BEST of ALL
+" Plug 'ayu-theme/ayu-vim'              " Ayu dark
+" Plug 'jpo/vim-railscasts-theme'
+" Plug 'lifepillar/vim-solarized8'
 " Plug 'jacoborus/tender.vim'
-" Plug 'chriskempson/base16-vim'        " >> BEST of ALL
 " Plug 'rafi/awesome-vim-colorschemes'  " solarized8 is good
 " Plug 'flazz/vim-colorschemes'         " Huge collection of colorschemes(gruvbox, Monokai, feral, railscasts,donbass)
 
