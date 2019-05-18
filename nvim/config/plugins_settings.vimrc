@@ -27,17 +27,16 @@ let g:gruvbox_invert_signs='1'        " Inverts GitGutter and Syntastic signs.
 let g:gruvbox_contrast_light='light'
 " " let g:gruvbox_improved_strings=1
 highlight Comment cterm=italic
-colorscheme tender
+
 " colorscheme gruvbox
 " colorscheme railscasts
 " colorscheme subtle_dark       " ----> mega nice subtle lightblue colorscheme
 " colorscheme Monokai
+" colorscheme PaperColor
+colorscheme neodark
 
 " let ayucolor="dark"   " for dark version of theme ---> BEST
 " colorscheme ayu
-
-" autocmd ColorScheme janah highlight Normal ctermbg=265  "or 235
-" colorscheme janah
 
 " altercation/vim-colors-solarized --> NOT WORKING!
 " http://ethanschoonover.com/solarized/vim-colors-solarized#advanced-configuration
@@ -178,7 +177,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:Powerline_symbols = "fancy"
-let g:airline_theme= 'luna' " others -> dark
+let g:airline_theme= 'luna' " others -> dark, 'papercolor'
 " let g:airline_symbols_branch =  "\uE0A0"   " 'ψ'
 " let g:airline_skip_empty_sections = 1
 " let g:airline#extensions#linecolumn#prefix = '¶'

@@ -54,17 +54,13 @@ Plug 'tpope/vim-surround'              " enable change around ys..,cs..,ds..
 
 " Themes and Aesthetics  -----------------------------------
 Plug 'morhetz/gruvbox'                " super mega awesome colorscheme
-Plug 'mhinz/vim-janah'                " super awesome colorscheme
-Plug 'ayu-theme/ayu-vim'  
-Plug 'cocopon/iceberg.vim'
-Plug 'kadekillary/subtle_solo'
-Plug 'jacoborus/tender.vim'
-" Plug 'kadekillary/tender.vim'
-" Plug 'chriskempson/base16-vim'        " >> BEST
+Plug 'NLKNguyen/papercolor-theme'  
+Plug 'ayu-theme/ayu-vim'              " Ayu dark --> best
+Plug 'KeitaNakamura/neodark.vim'
+" Plug 'jacoborus/tender.vim'
+" Plug 'chriskempson/base16-vim'        " >> BEST of ALL
 " Plug 'rafi/awesome-vim-colorschemes'  " solarized8 is good
-" Plug 'altercation/vim-colors-solarized'  
 " Plug 'flazz/vim-colorschemes'         " Huge collection of colorschemes(gruvbox, Monokai, feral, railscasts,donbass)
-" Plug 'trevordmiller/nova-vim'  
 
 Plug 'mhinz/vim-startify'             " awesome vim startup screen
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " on statusline
