@@ -103,7 +103,7 @@ sudo apt install -y gcc g++ build-essential cmake                    			        
 sudo apt install -y clang clang-format
 sudo apt install -y exuberant-ctags ack-grep ncurses-term par     				                 # code formatters c family
 sudo apt install -y groff groff-base
-sudo apt install -y texlive-base texlive texlive-latex-recommended texlive-latex-extra latexmk lacheck chktex texlive-xetex nbibtex libsynctex-dev perl-tk # Latex
+sudo apt install -y texlive-base texlive texlive-latex-recommended texlive-science texlive-latex-extra latexmk lacheck chktex texlive-xetex nbibtex libsynctex-dev perl-tk # Latex
 sudo apt install -y texmaker focuswriter
 sudo apt install -y pandoc pandoc-citeproc dvipng
 sudo apt install -y sudo apt -y install pdf-presenter-console   # [https://github.com/pdfpc/pdfpc]
