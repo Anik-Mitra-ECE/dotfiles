@@ -466,7 +466,8 @@ noremap <Leader>Gr :Gremove<CR>
 " -----------------------------------------------------------
 " ------------ Settings for LaTex ------------- -------------
 " -----------------------------------------------------------
-let g:tex_flavor = "latex"          " to let vim know .tex is LaTex FileType
+let g:tex_flavor = "xelatex"          " to let vim know .tex is LaTex FileType
+let g:Tex_CompileRule_pdf='xelatex --interaction=nonstopmode $*'
 augroup latex_setup
     autocmd!
     autocmd Filetype tex setl updatetime=2

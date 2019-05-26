@@ -111,6 +111,7 @@ Plug 'godlygeek/tabular',                 { 'for': ['markdown', 'text'] }
 " Plug 'shime/vim-livedown',              { 'for': 'markdown'}
 
 " https://www.webpagefx.com/tools/emoji-cheat-sheet/
+Plug 'vim-pandoc/vim-rmarkdown',          { 'for': 'rmd'} 
 Plug 'fszymanski/deoplete-emoji',         { 'for': 'markdown'} 
 " Plug 'junegunn/vim-emoji'
 " Plug 'tpope/vim-markdown',              { 'for': ['markdown', 'text'] }
@@ -135,6 +136,7 @@ Plug 'dpelle/vim-LanguageTool',           { 'for': ['markdown', 'text','tex'] }
 
 " ------------- ------------- LaTex plugins ------------- -------------
 Plug 'lervag/vimtex',                   { 'for': 'tex' }    " this one is enough-use local leader
+Plug 'xuhdev/vim-latex-live-preview',   { 'for': 'tex' }
 Plug 'poppyschmo/deoplete-latex',       { 'for': 'tex' }    " autocompletion for latex
 
 " Plug 'donRaphaco/neotex',               { 'for': 'tex' }
@@ -170,7 +172,6 @@ Plug 'triglav/vim-visual-increment'         " incremant numbers in visual select
 
 " R in vim --> https://kadekillary.work/post/nvim-r/
 " Plug 'jalvesaq/Nvim-R'
-" Plug 'vim-pandoc/vim-rmarkdown'
 
 " :HackerNews -> o or O to open, u to go back
 Plug 'dansomething/vim-hackernews'          " Browse Hacker News inside Vim

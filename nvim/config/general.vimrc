@@ -369,7 +369,7 @@ nnoremap <leader>ve :Vexplore<CR>
 "===================================================="
 
 " No More up down arrow Keys when you are in vim
-nnoremap <down> :echom "-_- stop being lazy!!!"<Esc>
+" nnoremap <down> :echom "-_- stop being lazy!!!"<Esc>
 nnoremap <up> :echom "-_- stop being lazy!!!"<Esc>
 nnoremap <left> :echom "-_- stop being lazy!!!"<Esc>
 nnoremap <right> :echom "-_- stop being lazy!!!"<Esc>
@@ -422,7 +422,6 @@ exec "!time scalac %"
 
 elseif &filetype == 'tex'
 :VimtexCompile
-
 elseif &filetype == 'sh'
 exec "!time bash %"
 elseif &filetype == 'python'
@@ -435,8 +434,10 @@ exec "!time go run %"
 elseif &filetype == 'markdown'
 " exec "!~/.vim/markdown.pl % > %.html &"
 " exec "!firefox %.html &"
-exec "!pandoc --latex-engine=xelatex % -o %.pdf"
 " exec "!pandoc --latex-engine=xelatex % -t beamer -o %.pdf" " --> for presentation
+exec "!pandoc --latex-engine=xelatex % -o %.pdf"
+elseif &filetype == 'rmd'
+:!Rscript -e "rmarkdown::render('%', 'pdf_document')"
 elseif &filetype=="awk"
 exec "!chmod +x %"
 :split term://./%<.awk -cp
