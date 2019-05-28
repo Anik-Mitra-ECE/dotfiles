@@ -78,3 +78,9 @@ hi Underlined guifg=#20b0eF guibg=NONE guisp=NONE gui=NONE ctermfg=39 ctermbg=NO
 hi DiffAdd guifg=#07AF07 guibg=#1D1D1D guisp=#1D1D1D gui=NONE ctermfg=34 ctermbg=234 cterm=NONE
 hi cursorim guifg=#192224 guibg=#536991 guisp=#536991 gui=NONE ctermfg=235 ctermbg=60 cterm=NONE
 hi lcursor guifg=#ffdab9 guibg=#000000 guisp=#000000 gui=NONE ctermfg=223 ctermbg=NONE cterm=NONE
+
+
+
+:hi String ctermfg=140
+:hi CursorLine ctermbg=235
+:hi CursorLine guibg=#3d3d3d cterm=none
