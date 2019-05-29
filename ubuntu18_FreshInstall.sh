@@ -78,7 +78,7 @@ sudo apt install -y gthumb                  # like picasa
 sudo apt install -y shutter                 # taking screenshot
 sudo apt install -y simplescreenrecorder    # small handy screen recorder
 sudo apt install -y urlview feh	            # urlviewer, image, viewer
-sudo apt install -y zathura okular          # PDF viewer
+
 sudo apt install -y openssh-server openssh-client vnc4server	  # remote connection
 # sudo apt install -y browser-plugin-freshplayer-pepperflash	  # dont install it if you dont need it -- not secure
 ranger --copy-config=all                                       # for ranger
@@ -107,8 +107,12 @@ sudo apt install -y groff groff-base
 sudo apt install -y texlive-base texlive texlive-latex-recommended texlive-science texlive-latex-extra latexmk lacheck chktex texlive-xetex nbibtex libsynctex-dev perl-tk # Latex
 sudo apt install -y texmaker focuswriter
 sudo apt install -y pandoc pandoc-citeproc dvipng
-sudo apt install -y sudo apt -y install pdf-presenter-console   # [https://github.com/pdfpc/pdfpc]
 sudo apt install -y xdotool nodejs npm                          # for vim markdown live preview
+
+## PDF stuff
+sudo apt install -y zathura okular                              # PDF viewer
+sudo apt install -y pdf-presenter-console                       # [https://github.com/pdfpc/pdfpc]
+sudo apt install -y diffpdf
 
 ## node installs
 sudo npm install -g eslint
