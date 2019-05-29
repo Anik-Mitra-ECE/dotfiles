@@ -122,7 +122,9 @@ set text_flowed = yes                #  This format is easier to handle for some
 # source ~/.mutt/colors/solarized-dark-256.muttrc
 # source ~/.mutt/colors/solarized-light-256.muttrc
 # source ~/.mutt/colors/dracula.muttrc
-source ~/.mutt/colors/gruvbox.muttrc
+# source ~/.mutt/colors/gruvbox.muttrc
+source ~/.mutt/colors/neonwolf.muttrc
+# source ~/.mutt/colors/moonshine.muttrc
 
 # Paths ----------------------------------------------
 set folder           = ~/.mutt/.mail         # mailbox location
