@@ -9,6 +9,7 @@ alias l='ls -1 --color=auto'
 alias clear='clear; # echo; echo; seq 1 $(tput cols) | sort -R | sparkar | lolcat; echo; echo' # https://github.com/holman/spark
 
 ## Colorize the grep command output for ease of use (good for log files)##
+alias terminalName=""
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -25,11 +26,13 @@ alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
 alias h='howdoi --color --all'
+alias pdfdiff='/home/xollad/dotfiles/others/pdfdiff.sh'
 alias e='nvim'
 alias vi='nvim'
 alias edit='nvim'
 alias vimplug="vim +PlugInstall +PlugUpdate +PlugUpgrade +qa && vim"
 alias nvimplug="nvim +PlugInstall +PlugUpdate +PlugUpgrade +qa && nvim"
+alias mysql="mysql --auto-rehash -p"
 alias mutt='neomutt'
 alias mail='neomutt' # install neomutt first ;)
 alias cradio='curseradio'
@@ -69,6 +72,7 @@ alias bundesliga='livescore -t bundesliga'
 alias ligue1='livescore -t ligue1'
 alias seriea='livescore -t seriea'
 alias eagle="cd ~/eagle-7.7.0/bin && ./eagle"
+alias octav="flatpak run org.octave.Octave"
 
 #### confirmation ####
 alias mv='mv -iv'
