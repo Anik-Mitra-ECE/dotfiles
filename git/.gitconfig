@@ -2,7 +2,7 @@
 	name = Xaheen
 	email = mr.robot.me@yandex.com
 	username = XaheenA
-        useConfigOnly = true
+	useConfigOnly = true
 	signingkey =
 
 [github]
@@ -11,19 +11,19 @@
 	token =
 
 [core]
-       editor = nvim
-       whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-       abbrev = 12
-       attributesfile = ~/.gitattributes
-       autocrlf = input
-       excludesfile = ~/.gitignore
+	editor = nvim
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	abbrev = 12
+	attributesfile = ~/.gitattributes
+	autocrlf = input
+	excludesfile = ~/.gitignore
 
 [alias]
 	acall = !git add -A && git commit -m \"Minor fixes\"
 	st    = status
-  POM   = push origin master
-  PUM   = pull origin master
-  filehist = log --follow -p
+	POM   = push origin master
+	PUM   = pull origin master
+	filehist = log --follow -p
 
 [push]
 	default = matching
@@ -42,14 +42,14 @@
 	old = red bold
 	new = green bold
 	whitespace = white reverse
-        newMoved = cyan
-        oldMoved = blue
-        colorMoved = zebra
+	newMoved = cyan
+	oldMoved = blue
+	colorMoved = zebra
 
 [color "status"]
-       added = green reverse
-       changed = yellow reverse
-       untracked = red reverse
+	added = green reverse
+	changed = yellow reverse
+	untracked = red reverse
 
 [diff]
 	tool = vimdiff
