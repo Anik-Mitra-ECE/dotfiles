@@ -128,7 +128,7 @@ if [ $UID -ne 0 ]; then
   alias shutdown='sudo shutdown -h now'
   alias ghum='sudo shutdown -h now'
   alias clearlock="sudo rm -rf /var/lib/apt/lists"
-  alias update='sudo apt update'
+  alias update='sudo apt update && sudo apt list --upgradable'
   alias updatesystem='sudo ~/dotfiles/others/updatesystem.sh'
   alias cleansystem='sudo ~/dotfiles/others/cleansystem.sh'
   alias emptythrash='sudo chown -R xollad ~/.local/share/Trash && rm -rfv ~/.local/share/Trash/* && sudo rm -rf ~/.cache/thumbnails/*'

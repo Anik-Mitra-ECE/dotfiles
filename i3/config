@@ -288,8 +288,9 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 # always open web browser on window 2
 assign [class="qutebrowser"] $ws2
-# assign [class="Firefox"] $ws2
+assign [class="Firefox"] $ws2
 assign [class="chrome"] $ws2
+assign [class="Opera"] $ws2
 assign [class="vivaldi-stable"] $ws2
 assign [class="Vivaldi"] $ws2
 assign [class="chromium-browser"] $ws2
@@ -566,7 +567,7 @@ bindsym $mod+mod1+w 		exec --no-startup-id firefox -private-window /home/xollad/
 bindsym $mod+Control+n          exec --no-startup-id nautilus
 bindsym $mod+Control+m		exec --no-startup-id $term -e neomutt
 bindsym $mod+mod1+m		exec --no-startup-id thunderbird
-bindsym $mod+Control+t		exec --no-startup-id /home/xollad/Downloads/Trello-linux-0.1.9/Trello
+# bindsym $mod+Control+t		exec --no-startup-id /home/xollad/Downloads/Trello-linux-0.1.9/Trello
 bindsym $mod+Control+f	        exec --no-startup-id recoll; focus right
 bindsym $mod+Control+r 		exec --no-startup-id $term -e "ranger -r ~/.config/ranger/"
 bindsym $mod+mod1+r	    	exec --no-startup-id $term -e "sudo ranger -r ~/.config/ranger/"
