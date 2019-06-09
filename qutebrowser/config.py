@@ -448,7 +448,7 @@ c.completion.timestamp_format = '%Y-%m-%d'
 ## How many URLs to show in the web history. 0: no history / -1:
 ## unlimited
 ## Type: Int
-c.completion.web_history_max_items = -1
+c.completion.web_history.max_items = -1
 
 ## Whether quitting the application requires a confirmation.
 ## Type: ConfirmQuit
@@ -505,7 +505,8 @@ c.content.default_encoding = 'iso-8859-1'
 ## menu. For QtWebEngine, see `--enable-webengine-inspector` in
 ## `qutebrowser --help` instead.
 ## Type: Bool
-c.content.developer_extras = False
+## REMOVED
+# c.content.developer_extras = False
 
 ## Try to pre-fetch DNS entries to speed up browsing.
 ## Type: Bool
@@ -1040,12 +1041,12 @@ c.qt.force_platform = None
 ## Force software rendering for QtWebEngine. This is needed for
 ## QtWebEngine to work with Nouveau drivers. This setting requires a
 ## restart.
-## Type: Bool
-c.qt.force_software_rendering = True
+## Type: str
+c.qt.force_software_rendering = "software-opengl"
 
 ## Show a scrollbar.
-## Type: Bool
-c.scrolling.bar = False
+## Type: str
+c.scrolling.bar = "when-searching"
 
 ## Enable smooth scrolling for web pages. Note smooth scrolling does not
 ## work with the `:scroll-px` command.
@@ -1139,8 +1140,8 @@ c.tabs.close_mouse_button = 'middle'
 c.tabs.favicons.scale = 1.0
 
 ## Show favicons in the tab bar.
-## Type: Bool
-c.tabs.favicons.show = True
+## Type: str
+c.tabs.favicons.show = "always"
 
 ## Padding for tab indicators
 ## Type: Padding
@@ -1334,7 +1335,7 @@ c.url.yank_ignored_parameters = ['ref', 'utm_source', 'utm_medium', 'utm_campaig
 
 ## Hide the window decoration when using wayland (requires restart)
 ## Type: Bool
-c.window.hide_wayland_decoration = False
+c.window.hide_decoration = False
 
 ## The format to use for the window title. The following placeholders are
 ## defined:  * `{perc}`: The percentage as a string like `[10%]`. *
