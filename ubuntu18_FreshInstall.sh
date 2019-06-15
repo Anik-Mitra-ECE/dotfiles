@@ -110,10 +110,11 @@ sudo apt install -y texmaker focuswriter
 sudo apt install -y pandoc pandoc-citeproc dvipng
 sudo apt install -y xdotool nodejs npm                          # for vim markdown live preview
 
-## PDF stuff
+## PDF stuff and EBook/epub readers
 sudo apt install -y zathura okular                              # PDF viewer
 sudo apt install -y pdf-presenter-console                       # [https://github.com/pdfpc/pdfpc]
 sudo apt install -y diffpdf
+sudo apt install -y calibre fbreader                            # ebook reader
 
 ## node installs
 sudo npm install -g eslint
