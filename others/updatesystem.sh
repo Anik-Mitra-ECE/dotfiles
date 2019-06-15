@@ -64,6 +64,10 @@ echo "-----------------------------"
 sudo npm-check -g
 sudo npm-check -gy
 
+sudo chown -R xollad /usr/local/lib/node_modules
+sudo chown -R xollad /usr/local/bin
+sudo chown -R xollad /usr/local/share
+
 echo "-----------------------------"
 echo "------flatpack update--------"
 echo "-----------------------------"

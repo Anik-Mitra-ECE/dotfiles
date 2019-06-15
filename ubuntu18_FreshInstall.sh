@@ -120,7 +120,7 @@ sudo npm install -g eslint
 sudo npm install -g eslint-config-airbnb babel-eslint eslint-plugin-react
 sudo npm install -g instant-markdown-d
 sudo npm install -g neovim
-sudo npm install -g terminalizer
+sudo npm install -g terminalizer                                # terminal recorder
 sudo npm install -g cli-typer
 sudo npm install -g npm-check
 
