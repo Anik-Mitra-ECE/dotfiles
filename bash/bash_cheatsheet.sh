@@ -59,7 +59,7 @@ clear               # clears content on window (hide displayed lines)
 
 
 ls                            # lists your files in current directory, ls <dir> to print files in a specific directory
-ls -l                         # lists your files in 'long format', which contains the exact size of the file, who owns the file and who has the right to look at it, and when it was last modified
+ls -l                         # lists your files in 'long format', which contains exact size, ownership, read/write right and last modification time
 ls -a                         # lists all files, including hidden files (name beginning with '.')
 ln -s <filename> <link>       # creates symbolic link to file
 touch <filename>              # creates or updates (edit) your file
@@ -69,11 +69,11 @@ more <filename>               # shows the first part of a file (move with space 
 head <filename>               # outputs the first lines of file (default: 10 lines)
 tail <filename>               # outputs the last lines of file (useful with -f option) (default: 10 lines)
 vim <filename>                # opens a file in VIM (VI iMproved) text editor, will create it if it doesn't exist
-mv <filename1> <dest>         # moves a file to destination, behavior will change based on 'dest' type (dir: file is placed into dir; file: file will replace dest (tip: useful for renaming))
+mv <filename1> <dest>         # moves a file to destination, behavior will change based on 'dest' type (dir: file is placed into dir; file: file will replace dest)
 cp <filename1> <dest>         # copies a file
 rm <filename>                 # removes a file
 diff <filename1> <filename2>  # compares files, and shows where they differ
-wc <filename>                 # tells you how many lines, words and characters there are in a file. Use -lwc (lines, word, character) to ouput only 1 of those informations
+wc <filename>                 # tells how many lines, words and chars there are in a file. Use -lwc (lines, word, character) to ouput only 1 of those informations
 chmod -options <filename>     # lets you change the read, write, and execute permissions on your files (more infos: SUID, GUID)
 gzip <filename>               # compresses files using gzip algorithm
 gunzip <filename>             # uncompresses files compressed by gzip
