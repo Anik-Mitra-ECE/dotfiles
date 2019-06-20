@@ -75,7 +75,7 @@ sudo apt install -y rxvt-unicode            # another terminal
 sudo apt install -y peek                    # record gif
 sudo apt install -y gthumb                  # like picasa
 sudo apt install -y gimp gimp-data gimp-plugin-registry gimp-data-extras 
-sudo apt install -y kphotoalbum             # photo editor small
+sudo apt install -y pinta                   # photo editor small
 sudo apt install -y darktable               # photo editor large 
 sudo apt install -y shutter                 # taking screenshot
 sudo apt install -y simplescreenrecorder    # small handy screen recorder
