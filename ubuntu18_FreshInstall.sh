@@ -60,29 +60,30 @@ sudo apt install -y ttf-mscorefonts-installer
 sudo apt install -y vlc browser-plugin-vlc mplayer 
 sudo apt install -y crm114 qutebrowser
 sudo apt install -y mtp-tools mtpfs go-mtpfs libmtp     # for connecting mobile
-sudo apt install -y gimp gimp-data gimp-plugin-registry gimp-data-extras 
-sudo apt install -y kolourpaint          # photo editor
-sudo apt install -y gufw                 # firewall --> https://help.ubuntu.com/community/Gufw
+sudo apt install -y gufw                                # firewall --> https://help.ubuntu.com/community/Gufw
 sudo apt install -y dconf-tools                         # for Dock customization
 sudo apt install -y rar unrar zip unzip arj zoo cabextract uudeview mpack unace sharutils  # extracting tools
 sudo apt install -y p7zip p7zip-full p7zip-rar
 sudo apt install -y laptop-mode-tools
-sudo apt install -y calcurse cmus   	   # Commandline calender and Music player
+sudo apt install -y calcurse cmus   	      # Commandline calender and Music player
 sudo apt install -y w3m w3m-img apache2    # command line web browser
 sudo apt install -y caca-utils highlight transmission-cli atool poppler-utils mediainfo odt2txt ranger nnn # commandline file manager
 sudo apt install -y tree htop tmux net-tools
 sudo apt install -y mpv newsboat            # gif viewer and rss reader
      pip install rtv                        # reddit cli
-sudo apt install -y rxvt-unicode
+sudo apt install -y rxvt-unicode            # another terminal
 sudo apt install -y peek                    # record gif
 sudo apt install -y gthumb                  # like picasa
+sudo apt install -y gimp gimp-data gimp-plugin-registry gimp-data-extras 
+sudo apt install -y kphotoalbum             # photo editor small
+sudo apt install -y darktable               # photo editor large 
 sudo apt install -y shutter                 # taking screenshot
 sudo apt install -y simplescreenrecorder    # small handy screen recorder
 sudo apt install -y urlview feh	            # urlviewer, image, viewer
 
 sudo apt install -y openssh-server openssh-client vnc4server	  # remote connection
 # sudo apt install -y browser-plugin-freshplayer-pepperflash	  # dont install it if you dont need it -- not secure
-ranger --copy-config=all                                          # for ranger
+ranger --copy-config=all                                       # ranger config files
 # gksu is removed from Ubuntu 18
 # use the format --> gedit admin:///etc/default/apport
 
