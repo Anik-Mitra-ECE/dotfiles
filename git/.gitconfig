@@ -19,13 +19,22 @@
 	excludesfile = ~/.gitignore
 
 [alias]
-    ll    = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-	acall = !git add -A && git commit -m --verbose \"Minor fixes\"
+    # log
+    ll    = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lgb   = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    lgp   = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'
+    lga   = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lgt   = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+    # list branch
+    lb    = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+    # list aliases
+    la    = "!git config -l | grep alias | cut -c 7-"    
+    acall = !git add -A && git commit -m \"Minor fixes\"
 	st    = status
 	POM   = push origin master
 	PUM   = pull origin master
 	filehist = log --follow -p
-
+    rank  = shortlog -sn --no-merges
 [push]
 	default = matching
 
