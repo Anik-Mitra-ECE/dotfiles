@@ -4,7 +4,7 @@
 	username = XaheenA
 	useConfigOnly = true
 	signingkey =
-
+# git config --global credential.helper 'cache --timeout=4800'
 [github]
 	user = XaheenA
 	email = mr.robot.me@yandex.com
@@ -19,7 +19,8 @@
 	excludesfile = ~/.gitignore
 
 [alias]
-	acall = !git add -A && git commit -m \"Minor fixes\"
+    ll    = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+	acall = !git add -A && git commit -m --verbose \"Minor fixes\"
 	st    = status
 	POM   = push origin master
 	PUM   = pull origin master
