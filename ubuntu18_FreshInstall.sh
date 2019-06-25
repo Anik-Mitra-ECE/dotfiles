@@ -40,6 +40,11 @@ sudo add-apt-repository -y ppa:alexlarsson/flatpak
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
 
+# brave browser
+curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+source /etc/os-release
+echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/brave-browser-release-${UBUNTU_CODENAME}.list
+
 # enable 32 bit architecture on 64 bit system
 sudo dpkg --add-architecture i386 
 
@@ -59,6 +64,7 @@ sudo apt install -y fonts-font-awesome
 sudo apt install -y ttf-mscorefonts-installer
 sudo apt install -y vlc browser-plugin-vlc mplayer 
 sudo apt install -y crm114 qutebrowser
+sudo apt install -y brave-keyring brave-browser
 sudo apt install -y mtp-tools mtpfs go-mtpfs libmtp     # for connecting mobile
 sudo apt install -y gufw                                # firewall --> https://help.ubuntu.com/community/Gufw
 sudo apt install -y dconf-tools                         # for Dock customization
