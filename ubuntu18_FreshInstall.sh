@@ -59,20 +59,25 @@ echo "#################################################################"
 echo "############## Downloading all packages #########################"
 echo "#################################################################"
 sleep 3
+# browsers
+sudo apt install -y crm114 qutebrowser
+sudo apt install -y brave-keyring brave-browser
+sudo apt install -y torbrowser-launcher
+# sudo apt install -y ddgr                             # commandline DuckDuckGo -> Snap install
+sudo apt install -y w3m w3m-img apache2 urlview        # command line web browser
+# sudo apt install -y browser-plugin-freshplayer-pepperflash	  # dont install it if you dont need it -- not secure
+
 sudo apt install -y git curl wget colordiff meld lolcat spark
 sudo apt install -y fonts-font-awesome
 sudo apt install -y ttf-mscorefonts-installer
 sudo apt install -y vlc browser-plugin-vlc mplayer 
-sudo apt install -y crm114 qutebrowser
-sudo apt install -y brave-keyring brave-browser
 sudo apt install -y mtp-tools mtpfs go-mtpfs libmtp     # for connecting mobile
 sudo apt install -y gufw                                # firewall --> https://help.ubuntu.com/community/Gufw
 sudo apt install -y dconf-tools                         # for Dock customization
 sudo apt install -y rar unrar zip unzip arj zoo cabextract uudeview mpack unace sharutils  # extracting tools
 sudo apt install -y p7zip p7zip-full p7zip-rar
 sudo apt install -y laptop-mode-tools
-sudo apt install -y calcurse cmus   	      # Commandline calender and Music player
-sudo apt install -y w3m w3m-img apache2    # command line web browser
+sudo apt install -y calcurse cmus   	    # Commandline calender and Music player
 sudo apt install -y caca-utils highlight transmission-cli atool poppler-utils mediainfo odt2txt ranger nnn # commandline file manager
 sudo apt install -y tree htop tmux net-tools
 sudo apt install -y mpv newsboat            # gif viewer and rss reader
@@ -85,10 +90,9 @@ sudo apt install -y pinta                   # photo editor small
 sudo apt install -y darktable               # photo editor large 
 sudo apt install -y shutter                 # taking screenshot
 sudo apt install -y simplescreenrecorder    # small handy screen recorder
-sudo apt install -y urlview feh	            # urlviewer, image, viewer
+sudo apt install -y feh	                    # image viewer
 
 sudo apt install -y openssh-server openssh-client vnc4server	  # remote connection
-# sudo apt install -y browser-plugin-freshplayer-pepperflash	  # dont install it if you dont need it -- not secure
 ranger --copy-config=all                                       # ranger config files
 # gksu is removed from Ubuntu 18
 # use the format --> gedit admin:///etc/default/apport
@@ -116,7 +120,7 @@ sudo apt install -y texlive-base texlive texlive-latex-recommended texlive-scien
 sudo apt install -y texmaker focuswriter
 sudo apt install -y pandoc pandoc-citeproc dvipng
 sudo apt install -y xdotool nodejs npm                          # for vim markdown live preview
-
+sudo apt install -y visidata                                    # vd -> commandline CSV editor and anlysis tool
 ## PDF stuff and EBook/epub readers
 sudo apt install -y zathura okular                              # PDF viewer
 sudo apt install -y pdf-presenter-console                       # [https://github.com/pdfpc/pdfpc]
@@ -262,6 +266,7 @@ sudo apt install -y snapd
 sudo snap install slack --classic
 sudo snap install skype --classic 
 sudo snap install cheat 
+sudo snap install ddgr
 sudo snap install caprine 
 # sudo snap install notepad-plus-plus shortcut wire
 echo "============================================================================"
