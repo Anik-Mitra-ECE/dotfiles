@@ -9,7 +9,6 @@ alias l='ls -1 --color=auto'
 alias clear='clear; # echo; echo; seq 1 $(tput cols) | sort -R | sparkar | lolcat; echo; echo' # https://github.com/holman/spark
 
 ## Colorize the grep command output for ease of use (good for log files)##
-alias terminalName=""
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -89,19 +88,17 @@ alias alert='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal ||
 alias nolock='cd /home/xollad/dotfiles/i3/scripts/ && ./no-screen-lock.sh'
 alias study='cd ~/Dropbox/TUTORIALS/must-know-topics/ && ranger'
 ############ Movements ####################
-alias doc='cd ~/Dropbox/Documents && ls -la'
-alias temp='cd ~/Dropbox/temp && ls -la'
-alias testdir='cd ~/Dropbox/Documents/test && ls -la'
+alias doc='cd ~/Dropbox/Documents && ls -AlFXh --color=auto --group-directories-first'
+alias temp='cd ~/Dropbox/temp && ls -AlFXh --color=auto --group-directories-first'
+alias testdir='cd ~/Dropbox/Documents/test && ls -AlFXh --color=auto --group-directories-first'
 alias dot='cd ~/dotfiles && git status'
 alias doto='cd ~/dotfiles/others && git status'
-alias down='cd ~/Downloads && ls -la'
-alias conf='cd ~/.config && ls -la'
-alias unixc='cd ~/Dropbox/Documents/UNIXcoding && ls -la'
-alias riot='cd ~/Documents/RIOT/Tutorials/ && ls -la'
+alias down='cd ~/Downloads && ls -AlFXh --color=auto --group-directories-first'
+alias conf='cd ~/.config && ls -AlFXh --color=auto --group-directories-first'
+alias unixc='cd ~/Dropbox/Documents/UNIXcoding && ls -AlFXh --color=auto --group-directories-first'
 alias cd..="cd .."
 alias ..="cd .. && pwd; echo; echo; seq 1 $(tput cols) | sort -R | sparkar | lolcat; echo; echo"
 alias ...="cd ../../ && pwd; echo; echo; seq 1 $(tput cols) | sort -R | sparkar | lolcat; echo; echo" # go two directories back
-
 
 ############ Config Files ####################
 alias nvimrc='cd ~/.config/nvim/config && nvim ../init.vim'
@@ -194,9 +191,7 @@ alias get_image="_get_image"
 alias get_video='_get_video'
 alias youtube2mp4='_get_video'
 alias youtube2mp3='youtube-dl -t -c -v --extract-audio --restrict-filenames --audio-format mp3'
-alias get_audio='youtube-dl -t -c -v --extract-audio --restrict-filenames --audio-format mp3'
 alias youtube2playlist='youtube-dl --restrict-filenames -i -f mp4 --yes-playlist'
-alias get_playlist='youtube-dl --restrict-filenames -i -f mp4 --yes-playlist'
 alias ripaudio='mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile'
 
 # This is a bash function for .bashrc to automatically change the directory to
