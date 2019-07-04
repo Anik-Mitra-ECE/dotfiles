@@ -119,6 +119,10 @@ echo "....Cleaning and removing...."
 echo "-----------------------------"
 sudo chown -R xollad ~/.local/share/Trash && rm -rfv ~/.local/share/Trash/*
 sudo rm -rfv ~/.cache/thumbnails/*        # removing thumbnails
+echo "─────────────────────────────────────────────────────────────────────────────────────────────────────────────"
 sudo apt clean                      # clean out the cache in its entirety
 sudo apt autoclean                  # Cleaning up of partial package:
 sudo apt  -y autoremove             # removes unused libs and packages and old kernals
+echo "─────────────────────────────────────────────────────────────────────────────────────────────────────────────"
+echo "─────────────────────────────────────────────────────────────────────────────────────────────────────────────"
+echo "-------------------- DONE ----------------------------------------------"
