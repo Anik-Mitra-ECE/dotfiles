@@ -45,6 +45,11 @@ curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt
 source /etc/os-release
 echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/brave-browser-release-${UBUNTU_CODENAME}.list
 
+# TOR Browser
+sudo apt install -y apt-transport-https
+wget -q -O - https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | sudo apt-key add -
+echo "deb https://deb.torproject.org/torproject.org $(lsb_release -cs) main" | sudo tee -a /etc/apt/sources.list
+
 # enable 32 bit architecture on 64 bit system
 sudo dpkg --add-architecture i386 
 
@@ -59,10 +64,12 @@ echo "#################################################################"
 echo "############## Downloading all packages #########################"
 echo "#################################################################"
 sleep 3
+
 # browsers
 sudo apt install -y crm114 qutebrowser
 sudo apt install -y brave-keyring brave-browser
-sudo apt install -y torbrowser-launcher
+sudo apt install -y tor deb.torproject.org-keyring torbrowser-launcher
+
 # sudo apt install -y ddgr                             # commandline DuckDuckGo -> Snap install
 sudo apt install -y w3m w3m-img apache2 urlview        # command line web browser
 # sudo apt install -y browser-plugin-freshplayer-pepperflash	  # dont install it if you dont need it -- not secure
