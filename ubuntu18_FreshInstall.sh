@@ -248,12 +248,7 @@ sudo apt install -y gnome-tweak-tool nvidia-common
 #Improve battery life and reduce overheating with TLP
 sudo apt install -y  tlp tlp-rdw
 sudo tlp start
-# change the default apps in /var/lib/dpkg/alternatives
-# and settings > details > default apps
-sudo update-alternatives --config x-www-browser
-sudo update-alternatives --config editor
-sudo update-alternatives --config vi
-sudo update-alternatives --config vimdiff
+
 # media libs
 sudo apt install -y  ffmpeg id3tool lame
 sudo apt install -y  pulseaudio pavucontrol  # open volume-control
@@ -282,8 +277,6 @@ sudo flatpak install -y flathub org.octave.Octave
 # sudo flatpac install -y flathub org.blender.Blender
 
 
-echo "============================================================================"
-
 echo "##################################################################"
 echo "################## Finally Cleaning ##############################"
 echo "##################################################################"
@@ -304,6 +297,15 @@ echo "			===================="
 echo " 			TIME FOR A REBOOT!  "
 echo "			===================="
 echo "========================================================"
+
+echo "============================================================================"
+# change the default apps in /var/lib/dpkg/alternatives
+# and settings > details > default apps
+#sudo update-alternatives --config x-www-browser
+#sudo update-alternatives --config editor
+#sudo update-alternatives --config vi
+#sudo update-alternatives --config vimdiff
+echo "============================================================================"
 
 echo -ne "REBOOTING in 3 secs"
 sleep 3
