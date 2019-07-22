@@ -236,7 +236,7 @@ alias cleanqutebrowser='rm -rf ~/.local/share/qutebrowser/webengine/*  && rm -rf
 function readme() {
     for readme in {readme,README}.{md,MD,markdown,txt,TXT,mkd}; do
         if [[ -f "$readme" ]]; then
-            cat $readme
+            less $readme
         fi
     done
 }
