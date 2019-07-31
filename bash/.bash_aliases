@@ -241,6 +241,10 @@ function readme() {
     done
 }
 #========================================================================
+function csv {
+    column -t -s, -n "$@" | less -F -S -X -K
+}
+#========================================================================
 function datelog(){
     date=`date '+%d-%m-%y'`
     minute=$(cat ~/Dropbox/linux_stuff/laptop_time/log/"$date")
