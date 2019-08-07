@@ -50,7 +50,7 @@ alias pie-piu='cd ~/dotfiles/others && ./pie-piu'
 # do not delete / or prompt if deleting more than 3 files at a time #
 alias rm='rm -Iv --preserve-root'
 alias findg="find . | grep -i"  # Search files in the current folder
-alias recent="find . -type f -printf '%TY-%Tm-%Td %TT %p\n' | sort -r"
+alias recent="find . -type f -printf '%TY-%Tm-%Td %TT %p\n' | sort -r | head -n 20"
 alias diskspace="du -S -h | sort -n -r |more" # Alias's to show disk space and space used in a folder
 alias dusort='du -a -d 1 | sort -hr'
 alias dfsort='pydf -h | sort -r -n'
