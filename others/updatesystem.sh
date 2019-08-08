@@ -61,7 +61,8 @@ cd ~/.fzf
 echo "-----------------------------"
 echo "----youtube-dl update---------"
 echo "-----------------------------"
-youtube-dl -U
+# Self update mechanism is disabled in DEBIAN derivatives
+# youtube-dl -U
 
 echo "-----------------------------"
 echo "---------npm update----------"
@@ -76,7 +77,7 @@ sudo chown -R xollad /usr/local/share
 echo "-----------------------------"
 echo "------flatpack update--------"
 echo "-----------------------------"
-sudo flatpack update -y -v
+sudo flatpak update -y -v
 
 echo "-----------------------------"
 echo "----font-cache update--------"
