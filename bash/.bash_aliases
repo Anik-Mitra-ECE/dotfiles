@@ -125,11 +125,11 @@ if [ $UID -ne 0 ]; then
   alias restart='sudo restart'
   alias shutdown='sudo shutdown -h now'
   alias ghum='sudo shutdown -h now'
-  alias clearlock="sudo rm -rf /var/lib/apt/lists"
-  alias update='sudo apt update && sudo apt list --upgradable'
-  alias updatesystem='sudo ~/dotfiles/others/updatesystem.sh'
-  alias cleansystem='sudo ~/dotfiles/others/cleansystem.sh'
-  alias emptythrash='sudo chown -R xollad ~/.local/share/Trash && rm -rfv ~/.local/share/Trash/* && sudo rm -rf ~/.cache/thumbnails/*'
+  alias clearlock="sudo rm -rfv /var/lib/apt/lists | lolcat"
+  alias update='sudo apt update | lolcat && sudo apt list --upgradable | lolcat'
+  alias updatesystem='sudo ~/dotfiles/others/updatesystem.sh | lolcat'
+  alias cleansystem='sudo ~/dotfiles/others/cleansystem.sh | lolcat'
+  alias emptythrash='sudo chown -R xollad ~/.local/share/Trash && rm -rfv ~/.local/share/Trash/* | lolcat && sudo rm -rfv ~/.cache/thumbnails/* | lolcat'
   alias dnscache='sudo ~/dotfiles/others/dnscache.sh'
 fi
 
