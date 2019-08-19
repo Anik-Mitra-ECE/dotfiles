@@ -267,7 +267,7 @@ echo "SNAP INSTALLS"
 sudo apt install -y snapd
 sudo snap install slack --classic
 sudo snap install skype --classic 
-sudo snap install vscode --classic
+sudo snap install code --classic
 sudo snap install cheat 
 sudo snap install ddgr
 sudo snap install caprine 
