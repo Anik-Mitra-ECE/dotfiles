@@ -564,9 +564,10 @@ bindsym $mod+a focus parent
 # bindsym $mod+w		      exec --no-startup-id $BROWSER
 # bindsym $mod+Shift+w	      exec --no-startup-id $BROWSER
 # bindsym $mod+Control+w      exec --no-startup-id qutebrowser
-bindsym $mod+Control+w 		exec --no-startup-id brave-browser
-bindsym $mod+Shift+w 		exec --no-startup-id opera
-bindsym $mod+mod1+w 		exec --no-startup-id firefox -private-window /home/xollad/.config/qutebrowser/startpage.html
+# bindsym $mod+Shift+w 		exec --no-startup-id opera
+bindsym $mod+Shift+w 		workspace $ws2; exec --no-startup-id brave-browser
+bindsym $mod+Control+w 		workspace $ws2; exec --no-startup-id opera
+bindsym $mod+mod1+w 		exec --no-startup-id firefox            # -private-window /home/xollad/.config/qutebrowser/startpage.html
 bindsym $mod+Control+n      exec --no-startup-id nautilus
 bindsym $mod+Control+m		exec --no-startup-id $term -e neomutt
 bindsym $mod+mod1+m		    exec --no-startup-id thunderbird
@@ -575,8 +576,8 @@ bindsym $mod+Control+f	    exec --no-startup-id recoll; focus right
 bindsym $mod+Control+r 		exec --no-startup-id $term -e "ranger -r ~/.config/ranger/"
 bindsym $mod+mod1+r	    	exec --no-startup-id $term -e "sudo ranger -r ~/.config/ranger/"
 
-bindsym $mod+Control+k	        exec --no-startup-id $term -e cmus
-bindsym $mod+Control+j	        workspace $6; exec --no-startup-id $term -e curseradio
+bindsym $mod+Control+k	    exec --no-startup-id $term -e cmus
+bindsym $mod+Control+j	    workspace $ws6; exec --no-startup-id $term -e curseradio
 
 bindsym $mod+Control+e		exec --no-startup-id /home/xollad/eclipse/java-latest-released/eclipse/eclipse
 bindsym $mod+mod1+e         exec --no-startup-id /home/xollad/dotfiles/i3/scripts/dmenuunicode.sh
