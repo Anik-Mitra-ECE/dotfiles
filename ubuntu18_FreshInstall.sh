@@ -28,7 +28,7 @@ echo "#################################################################"
 echo "################ add repositories ###############################"
 echo "#################################################################"
 sudo add-apt-repository -y "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
-sudo add-apt-repository -y ppa:webupd8team/atom
+# sudo add-apt-repository -y ppa:webupd8team/atom
 sudo add-apt-repository -y ppa:webupd8team/java	       		    # repo for ORacle JDK
 sudo add-apt-repository -y ppa:dawidd0811/neofetch
 sudo add-apt-repository -y ppa:apandada1/up-clock
@@ -107,7 +107,7 @@ ranger --copy-config=all                                       # ranger config f
 # install editors, compilors
 sudo apt -y  update
 sudo apt install -y aspell-en aspell-de
-sudo apt install -y atom
+# sudo apt install -y atom
 sudo apt install -y python python-pip python3 python3-pip python-dev python3-dev python-tk python3-tk python3-venv
 sudo apt install -y vim vim-gnome neovim
      pip  install websocket-client sexpdata                                            # ensime server for scala
