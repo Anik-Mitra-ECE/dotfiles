@@ -27,8 +27,6 @@ sudo apt -y  dist-upgrade
 echo "#################################################################"
 echo "################ add repositories ###############################"
 echo "#################################################################"
-sudo add-apt-repository -y "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
-# sudo add-apt-repository -y ppa:webupd8team/atom
 sudo add-apt-repository -y ppa:webupd8team/java	       		    # repo for ORacle JDK
 sudo add-apt-repository -y ppa:dawidd0811/neofetch
 sudo add-apt-repository -y ppa:apandada1/up-clock
@@ -41,14 +39,10 @@ sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
 
 # brave browser
-curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
-source /etc/os-release
-echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/brave-browser-release-${UBUNTU_CODENAME}.list
+
 
 # TOR Browser
-sudo apt install -y apt-transport-https
-wget -q -O - https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | sudo apt-key add -
-echo "deb https://deb.torproject.org/torproject.org $(lsb_release -cs) main" | sudo tee -a /etc/apt/sources.list
+
 
 # enable 32 bit architecture on 64 bit system
 sudo dpkg --add-architecture i386 
@@ -74,14 +68,14 @@ sudo apt install -y tor deb.torproject.org-keyring torbrowser-launcher
 sudo apt install -y w3m w3m-img apache2 urlview        # command line web browser
 # sudo apt install -y browser-plugin-freshplayer-pepperflash	  # dont install it if you dont need it -- not secure
 
-sudo apt install -y git curl wget colordiff meld lolcat spark
+sudo apt install -y git-core curl wget colordiff meld lolcat spark
 sudo apt install -y fonts-font-awesome
 sudo apt install -y ttf-mscorefonts-installer
 sudo apt install -y vlc browser-plugin-vlc mplayer 
-sudo apt install -y mtp-tools mtpfs go-mtpfs libmtp     # for connecting mobile
+sudo apt install -y mtp-tools go-mtpfs                  # for connecting mobile
 sudo apt install -y gufw                                # firewall --> https://help.ubuntu.com/community/Gufw
 sudo apt install -y dconf-tools                         # for Dock customization
-sudo apt install -y rar unrar zip unzip arj zoo cabextract uudeview mpack unace sharutils  # extracting tools
+sudo apt install -y rar unrar zip unzip arj cabextract uudeview mpack unace sharutils  # extracting tools
 sudo apt install -y p7zip p7zip-full p7zip-rar
 sudo apt install -y laptop-mode-tools
 sudo apt install -y calcurse cmus   	    # Commandline calender and Music player
@@ -104,10 +98,11 @@ ranger --copy-config=all                                       # ranger config f
 # gksu is removed from Ubuntu 18
 # use the format --> gedit admin:///etc/default/apport
 
+
 # install editors, compilors
 sudo apt -y  update
 sudo apt install -y aspell-en aspell-de
-# sudo apt install -y atom
+sudo apt install -y atom
 sudo apt install -y python python-pip python3 python3-pip python-dev python3-dev python-tk python3-tk python3-venv
 sudo apt install -y vim vim-gnome neovim
      pip  install websocket-client sexpdata                                            # ensime server for scala
@@ -199,11 +194,11 @@ rm -rf ~/Templates
 rm -rf ~/examples.desktop
 echo  "==================================================================================="
 echo "############## remove default apps #######################"
-sudo apt remove  -y gnome-mahjongg gnome-mines gnome-sudoku simple-scan rhythmbox
+sudo apt remove  -y gnome-mahjongg gnome-mines gnome-sudoku simple-scan
 sudo apt remove  -y zeitgeist zeitgeist-core zeitgeist-datahub
-sudo apt remove  -y account-plugin-aim account-plugin-facebook account-plugin-flickr account-plugin-jabber
+sudo apt remove  -y account-plugin-facebook account-plugin-flickr account-plugin-jabber
 sudo apt remove  -y account-plugin-salut account-plugin-twitter account-plugin-windows-live account-plugin-yahoo
-sudo apt remove  -y aisleriot brltty deja-dup deja-dup-backend-gvfs duplicity example-content
+sudo apt remove  -y aisleriot brltty deja-dup duplicity example-content
 sudo apt remove  -y gnome-mahjongg gnome-mines gnome-orca gnome-sudoku gnomine
 sudo apt remove  -y rhythmbox rhythmbox-plugins rhythmbox-plugin-zeitgeist sane-utils mcp-account-manager-uoa python3-uno
 sudo apt remove  -y totem totem-common totem-plugins empathy empathy-common evolution-data-server-online-accounts
@@ -214,11 +209,7 @@ sudo apt remove  -y evince  # default pdf viewer
 # sudo apt remove -y unity-scope-audacious unity-scope-chromiumbookmarks unity-scope-clementine unity-scope-colourlovers unity-scope-devhelp unity-scope-firefoxbookmarks unity-scope-gdrive unity-scope-gmusicbrowser unity-scope-gourmet unity-scope-manpages unity-scope-musicstores unity-scope-musique unity-scope-openclipart unity-scope-texdoc unity-scope-tomboy unity-scope-video-remote unity-scope-virtualbox unity-scope-yelp unity-scope-zotero
 
 sudo apt purge -y ubuntu-web-launchers
-sudo rm /usr/share/applications/ubuntu-amazon-default.desktop
-sudo rm /usr/share/unity-webapps/userscripts/unity-webapps-amazon/Amazon.user.js
-sudo rm /usr/share/unity-webapps/userscripts/unity-webapps-amazon/manifest.json
-sudo dpkg --divert /usr/share/applications/ubuntu-amazon-default.desktop.diverted --local --rename /usr/share/applications/ubuntu-amazon-default.desktop
-sudo apt -y  update
+
 
 echo "#################################################################"
 echo "############## Update System Settings ###########################"
@@ -245,9 +236,9 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 sudo apt install -y ubuntu-restricted-extras
 sudo apt install -y ubuntu-restricted-addons libavcodec-extra
-sudo apt install -y default-jre oracle-java8-installer oracle-java8-set-default maven icedtea-plugin  #JRE and JDK
+sudo apt install -y default-jre default-jdk maven icedtea-plugin  #JRE and JDK
 sudo apt install -y bleachbit
-sudo apt install -y gnome-tweak-tool nvidia-common
+sudo apt install -y gnome-tweak-tool
 
 ## language tool for vim --> Huge file -> put it inside nvim folder
 
@@ -267,7 +258,6 @@ echo "SNAP INSTALLS"
 sudo apt install -y snapd
 sudo snap install slack --classic
 sudo snap install skype --classic 
-sudo snap install code --classic
 sudo snap install cheat 
 sudo snap install ddgr
 sudo snap install caprine 
