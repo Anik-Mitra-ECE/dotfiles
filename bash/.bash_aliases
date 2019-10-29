@@ -25,7 +25,7 @@ alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
 alias h='howdoi --color --all'
-alias pdfdiff='/home/xollad/dotfiles/others/pdfdiff.sh'
+alias pdfdiff='/home/zaheen/dotfiles/others/pdfdiff.sh'
 alias e='nvim'
 alias vi='nvim'
 alias edit='nvim'
@@ -40,7 +40,6 @@ alias py='bpython'
 alias rss="newsboat"
 alias viber='/opt/viber/Viber'
 alias eclip="cd ~/eclipse/java-2019-03/eclipse && ./eclipse"
-alias cypress='cd ~/Dropbox/Documents/cypress-works/ && node_modules/.bin/cypress open'
 alias tma='tmux attach -t myworkbench'
 alias tmn='tmux new    -s myworkbench'
 alias starwars='telnet towel.blinkenlights.nl' # to exit : <c-+> quit
@@ -51,15 +50,16 @@ alias pie-piu='cd ~/dotfiles/others && ./pie-piu'
 alias rm='rm -Iv --preserve-root'
 alias findg="find . | grep -i"  # Search files in the current folder
 alias recent="find . -type f -printf '%TY-%Tm-%Td %TT %p\n' | sort -r | head -n 20"
-alias diskspace="du -S -h | sort -n -r |more" # Alias's to show disk space and space used in a folder
-alias dusort='du -a -d 1 | sort -hr'
-alias dfsort='pydf -h | sort -r -n'
+alias diskspace="du -S -h -d 1 | sort -n -b | more" # Alias's to show disk space and space used in a folder
+alias dusort='du -a -h -d 1 | sort -h -r -b'
+alias dfsort='pydf -h -H -l | sort -r -n'
+alias df='pydf -h -H -l | sort -r -n'
 alias feh="feh -Tdefault --scale-down --auto-zoom"
 alias lock="sh $HOME/dotfiles/others/i3_lock.sh"
 alias extract="~/dotfiles/others/extract"
-alias bm="cd $HOME/dotfiles/others/bashmount/ && ./bashmount.sh && clear && cd "
-alias td="cd /home/xollad/Dropbox/linux_stuff/ && nvim todos.txt"
+alias td="cd /home/zaheen/Documents/linux_stuff/ && nvim todos.txt"
 alias bashmount="cd $HOME/dotfiles/others/bashmount/ && ./bashmount.sh && clear && cd"
+alias bm="cd $HOME/dotfiles/others/bashmount/ && ./bashmount.sh && clear && cd "
 alias restartNetwork="cd $HOME/dotfiles/others/ && ./network_restart.sh"
 alias networkRestart="cd $HOME/dotfiles/others/ && ./network_restart.sh"
 
@@ -72,7 +72,7 @@ alias bundesliga='livescore -t bundesliga'
 alias ligue1='livescore -t ligue1'
 alias seriea='livescore -t seriea'
 alias eagle="cd ~/eagle-7.7.0/bin && ./eagle"
-alias octav="flatpak run org.octave.Octave"
+alias octav="octave-cli"
 
 #### confirmation ####
 alias mv='mv -iv'
@@ -86,17 +86,16 @@ alias myip="curl http://ipecho.net/plain; echo"  # your public IP address
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias nolock='cd /home/xollad/dotfiles/i3/scripts/ && ./no-screen-lock.sh'
+alias nolock='cd /home/zaheen/dotfiles/i3/scripts/ && ./no-screen-lock.sh'
 alias study='cd ~/Dropbox/TUTORIALS/must-know-topics/ && ranger'
 ############ Movements ####################
-alias doc='cd ~/Dropbox/Documents && ls -AlFXh --color=auto --group-directories-first'
+alias doc='cd ~/Documents && ls -AlFXh --color=auto --group-directories-first'
 alias temp='cd ~/Dropbox/temp && ls -AlFXh --color=auto --group-directories-first'
 alias testdir='cd ~/Dropbox/Documents/test && ls -AlFXh --color=auto --group-directories-first'
 alias dot='cd ~/dotfiles && git status'
 alias doto='cd ~/dotfiles/others && git status'
 alias down='cd ~/Downloads && ls -AlFXh --color=auto --group-directories-first'
 alias conf='cd ~/.config && ls -AlFXh --color=auto --group-directories-first'
-alias unixc='cd ~/Dropbox/Documents/UNIXcoding && ls -AlFXh --color=auto --group-directories-first'
 alias cd..="cd .."
 alias ..="cd .. && pwd; echo; echo; seq 1 $(tput cols) | sort -R | sparkar | lolcat; echo; echo"
 alias ...="cd ../../ && pwd; echo; echo; seq 1 $(tput cols) | sort -R | sparkar | lolcat; echo; echo" # go two directories back
@@ -129,7 +128,7 @@ if [ $UID -ne 0 ]; then
   alias update='sudo apt update | lolcat && sudo apt list --upgradable | lolcat'
   alias updatesystem='sudo ~/dotfiles/others/updatesystem.sh'
   alias cleansystem='sudo ~/dotfiles/others/cleansystem.sh | lolcat'
-  alias emptythrash='sudo chown -R xollad ~/.local/share/Trash && rm -rfv ~/.local/share/Trash/* | lolcat && sudo rm -rfv ~/.cache/thumbnails/* | lolcat'
+  alias emptythrash='sudo chown -R zaheen ~/.local/share/Trash && rm -rfv ~/.local/share/Trash/* | lolcat && sudo rm -rfv ~/.cache/thumbnails/* | lolcat'
   alias dnscache='sudo ~/dotfiles/others/dnscache.sh'
 fi
 
@@ -175,7 +174,7 @@ alias clk='tty-clock -s -S -b -B -c'
 
 # get image from website
 _get_image(){
-    wget -r -l1 --no-parent -nH -nd -P/home/xollad/Downloads/images -A".gif,.jpg" $1
+    wget -r -l1 --no-parent -nH -nd -P/home/zaheen/Downloads/images -A".gif,.jpg" $1
 }
 
 # download youtuve video
@@ -253,8 +252,8 @@ function datelog(){
     min=$(($minute%60))
     echo -e "Laptop used today for : \n\t\t$hour hours and $min minutes" | lolcat -F 0.2
 }
-alias datelogplot='python3 /home/xollad/dotfiles/others/datelog_month.py'
-alias datelogplot_all='python3 /home/xollad/dotfiles/others/datelog_all.py'
+alias datelogplot='python3 /home/zaheen/dotfiles/others/datelog_month.py'
+alias datelogplot_all='python3 /home/zaheen/dotfiles/others/datelog_all.py'
 #========================================================================
 move_to_trash () {
     mv -v "$@" ~/.local/share/Trash
