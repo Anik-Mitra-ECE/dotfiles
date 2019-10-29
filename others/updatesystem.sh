@@ -70,9 +70,9 @@ echo "-----------------------------"
 sudo npm-check -g
 sudo npm-check -gy
 
-sudo chown -R xollad /usr/local/lib/node_modules
-sudo chown -R xollad /usr/local/bin
-sudo chown -R xollad /usr/local/share
+sudo chown -R $USER /usr/local/lib/node_modules
+sudo chown -R $USER /usr/local/bin
+sudo chown -R $USER /usr/local/share
 
 echo "-----------------------------"
 echo "------flatpack update--------"
@@ -89,7 +89,7 @@ echo "-----------------------------"
 echo "------i3-gaps update---------"
 echo "-----------------------------"
 echo -e $magenta"\n (PAUSED)Updating & compiling i3-gaps... \n"$white
-# cd /home/xollad/Downloads/i3-gaps
+# cd /home/$USER/Downloads/i3-gaps
 # git pull upstream
 # autoreconf --force --install
 # rm -rf build/
@@ -118,7 +118,7 @@ echo "────────────────────────�
 echo "-----------------------------"
 echo "....Cleaning and removing...."
 echo "-----------------------------"
-sudo chown -R xollad ~/.local/share/Trash && rm -rfv ~/.local/share/Trash/*
+sudo chown -R $USER ~/.local/share/Trash && rm -rfv ~/.local/share/Trash/*
 sudo rm -rfv ~/.cache/thumbnails/*        # removing thumbnails
 echo "─────────────────────────────────────────────────────────────────────────────────────────────────────────────"
 sudo apt clean                      # clean out the cache in its entirety

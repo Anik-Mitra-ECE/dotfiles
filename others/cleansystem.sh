@@ -78,7 +78,7 @@ rm -rfv ~/.viminfo
 echo -e "$(tput setaf 3)"
 echo "cleaning Thrash"
 
-sudo chown -R xollad ~/.local/share/Trash 
+sudo chown -R $USER ~/.local/share/Trash 
 rm -rfv ~/.local/share/Trash/* 
 sudo rm -rfv ~/.cache/thumbnails/*
 sudo rm -rfv ~/.thumbnails/*
