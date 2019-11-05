@@ -1,0 +1,170 @@
+#### Conky configuration file
+## to replace the i3status for i3bar
+# This script was partly stolen from different places
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+
+########### Testing transperency
+	own_window true
+	own_window_type normal
+	own_window_argb_visual true
+	own_window_argb_value 20
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager'
+
+########### test 2
+# own_window yes
+# own_window_transparent yes 
+# own_window_type conky
+# own_window_argb_visual yes 
+# own_window_class override
+###########
+
+# Update interval in seconds
+update_interval 1.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Shortens units to a single character (kiB->k, GiB->G, etc.). Default is off.
+short_units yes
+
+# Network interface must have an ip address to be considered up 
+if_up_strictness address
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+# use_spacer should have an argument of left, right, or none
+use_spacer left
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# Stuff after 'TEXT' will be formatted on screen
+TEXT
+
+# JSON for i3bar
+[
+    ## Free storage space in /home
+    #{ "full_text" : " ${fs_free /home} Free" , "color" : "\#ffffff" },
+    
+    ## RAM
+    { "full_text" : "${mem}" , "icon":"/home/tema/.i3/xbmicons/mem.xbm", "color" : \
+    ${if_match ${memperc}<70}"\#ffffff"${else}"\#ff0000"${endif} }, 
+
+    ## CPU 
+    #{ "full_text" : " ${cpu}% ${freq_g 1}GHz", "color" : \
+    #${if_match ${cpu}<90}"\#ffffff"${else}"\#ff0000"${endif}},
+    { "full_text" : "  ${cpu}%", "color" : \
+    ${if_match ${cpu}<70}"\#ffffff"${else}"\#ff0000"${endif}},
+   
+    # Temperature CPU
+    { "full_text" : " ${hwmon 1 temp 1}°C", "color" : \
+    ${if_match ${hwmon 1 temp 1}<60}"\#ffffff"${else}"\#ff0000"${endif}},
+    
+    # GPU temperature
+    { "full_text" : " ${execi 3 nvidia-settings -query [gpu:0]/GPUCoreTemp -t}°C", "color" : \
+    ${if_match ${execi 3 nvidia-settings -query [gpu:0]/GPUCoreTemp -t}<50}"\#ffffff"${else}"\#ff0000"${endif}},
+
+    # ----------------------------------------------------------------
+    # Networking
+    # change wlp3s0b1 and enp2s0  according to your "ifconfig" command
+	# ----------------------------------------------------------------
+   ${if_up wlp0s20f3} { "full_text" : " [${wireless_essid wlp0s20f3}]" , "color" : "\#00ff00","icon":"/home/zaheen/.config/i3/i3status-conky/xbmicons/wifi_01.xbm"}, ${else}\
+   ${if_up /sys/class/net/enp8s0/operstate down} { "full_text" : "  " , "color" : "\#00ff00" }, ${else}\
+      ${if_up enp8s0} { "full_text" : "  ${addr enp8s0}" , "color" :"\#00ff00" , "color" : "\#00ff00","icon":"/home/zaheen/.config/i3/i3status-conky/xbmicons/net_wired.xbm"}, ${else}\
+           { "full_text" : "No Network" , "border": "\#ff0000","color" : "\#ff0000" },\
+      ${endif}\
+     ${endif}\
+   ${endif}\
+    #
+    # All the charges for the Battery
+    # This looks aweful because conky doesn't have an "else if"
+    # icon cheet sheet https://fortawesome.github.io/Font-Awesome/cheatsheet/
+   ${if_match ${battery_percent BAT0}>15}\
+       ${if_match ${battery_percent BAT0}>35}\
+           ${if_match ${battery_percent BAT0}>60}\
+               ${if_match ${cat /sys/class/power_supply/BAT0/capacity}>80}\
+                   # 100% ish
+                   { "full_text" : " ${battery_percent BAT0}%", "color" : "\#088A08" }, \
+               ${else}\
+                   # less than 75% 
+                   { "full_text" : " ${battery_percent BAT0}%", "color" : "\#e88A08" }, \
+               ${endif}\
+           ${else}\
+               # less than 50%
+               { "full_text" : " ${battery_percent BAT0}%", "color" : "\#FA5858" }, \
+           ${endif}\
+       ${else}\
+           # 20ish % charge
+           { "full_text" : " ${battery_percent BAT0}%", "color" : "\#FE2E2E" }, \
+       ${endif}\
+   ${else}\
+       #empty battery
+       { "full_text" : " ${battery_percent BAT0}%", "color" : "\#DF0101" }, \
+   ${endif}\
+
+    
+    # Charging/discharging Info
+    # { "full_text" : "${exec cat /sys/class/power_supply/BAT1/status}", "color" : "\#DDE189" }, \
+    
+    
+	# Volume ♪🔇 🔈 🔉 
+    # { "full_text" : "🔊 ${exec amixer get Master -M | grep -oE -m1 "[[:digit:]]*%"}", "color" : "\#ffffff", "icon":"/home/zaheen/.config/i3/i3status-conky/xbmicons/spkr_01.xbm"},
+   ${if_match ${exec amixer -c 0 get Master | grep Mono: | awk -F'[^0-9]*' '$0=$3'}>1}\
+        ${if_match ${exec amixer -c 0 get Master | grep Mono: | awk -F'[^0-9]*' '$0=$3'}>15}\
+            ${if_match ${exec amixer -c 0 get Master | grep Mono: | awk -F'[^0-9]*' '$0=$3'}>60}\
+                    { "full_text" : "🔊${exec amixer -c 0 get Master | grep Mono: | awk -F'[^0-9]*' '$0=$3'}%", "color" : "\#ffffff", "icon":"/home/zaheen/.config/i3/i3status-conky/xbmicons/spkr_01.xbm"},
+             ${else}\
+                    { "full_text" : "🔉${exec amixer -c 0 get Master | grep Mono: | awk -F'[^0-9]*' '$0=$3'}%", "color" : "\#ffffff", "icon":"/home/zaheen/.config/i3/i3status-conky/xbmicons/spkr_01.xbm"},
+               ${endif}\
+        ${else}\
+                    { "full_text" : "🔇${exec amixer -c 0 get Master | grep Mono: | awk -F'[^0-9]*' '$0=$3'}%", "color" : "\#ffffff", "icon":"/home/zaheen/.config/i3/i3status-conky/xbmicons/spkr_01.xbm"},
+    
+   ${endif}\
+    
+    # Hard Disk drive space
+    { "full_text" : "💾${fs_free /home}" , "color" : "\#c5e0c6" },
+	
+    # Time 
+    { "full_text" : "${time %H:%M:%S}" , "color" : "\#C4C221", "border": "\#aaaaa0",  "icon":"/home/zaheen/.config/i3/i3status-conky/xbmicons/clock.xbm"},
+    
+    # Weather
+    # { "full_text": "${exec ~/.config/i3/i3status-conky/weather.sh} " },
+    
+    # show icon when recording --> doesnt work
+     # ${if_match ${exec ps -A | grep ffmpeg | awk '{print $1}'}>0}\
+      # {"full_text": "📸" },
+     #    ${else}\
+      # {"full_text": "NO!"},
+     # ${endif}\
+    { "full_text" : ${if_match ${exec ps -A | grep ffmpeg | awk '{print $1}'}>0} "📸" ${else} "_" ${endif} }, 
+
+	# Date
+    { "full_text" : " ${time %d-%m %a}-${time %V}W|" , "color" : "\#75B0E6" },
+
+    # keyboard layout
+    { "full_text" : ${if_match ${exec xset -q | grep -A 0 'LED' | cut -c59-67}<3} "DE|" ${else} "EN|" ${endif} } 
+
+
+    ### show cmus song
+    # {execi 2 /home/zaheen/i3/scripts/show_cmus.sh}
+
+    # # update notification
+    # ${if_match ${exec /usr/lib/update-notifier/apt-check --human-readable| grep 'packages' | awk '{print $1}'}>0}
+    # {
+    #     "full_text": "updates",
+    #     "color": "\#ff0000",  # red
+    #     "border": "\#ff0000",  # red
+    #     "background": "\#000000",
+    #     "separator_block_width": 3,
+    #     "border_bottom": 2, "border_top": 0, "border_left": 0, "border_right": 2
+    # }
+    #{ "full_text" : "                 " , "color" : "\#75B0E6" }
+    ],

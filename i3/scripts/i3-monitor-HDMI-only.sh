@@ -1,7 +1,7 @@
 
 #!/bin/bash
-INTERNAL_OUTPUT="HDMI-1-1"
-EXTERNAL_OUTPUT="LVDS-1-1"
+INTERNAL_OUTPUT="HDMI-0"
+EXTERNAL_OUTPUT="eDP-1-1"
 
 # if we don't have a file, start at zero
 if [ ! -f "/tmp/monitor_mode2.dat" ] ; then
